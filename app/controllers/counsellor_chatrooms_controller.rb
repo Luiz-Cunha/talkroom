@@ -1,0 +1,2 @@
+class CounsellorChatroomsController < ApplicationController
+end

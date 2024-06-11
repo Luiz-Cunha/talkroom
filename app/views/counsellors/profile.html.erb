@@ -1,4 +1,21 @@
 <h1>opa</h1>
+
+<% @appointments.each do |appointment| %>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= appointment.user.email %></h5>
+      <p class="card-text"><%= appointment.symptom %></p>
+      <%#= This approach is not working, it should be made using javascript %>
+      <%= link_to profile_counsellor_path(@counsellor), class:"btn btn-primary" do %>
+        <%= "Button Name" %>
+        <% appointment.counsellor_id = current_counsellor %>
+        <% appointment.confirmation = true %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+
 <% @patients.each do |patient| %>
-  <%= patient.name %>
+  <%= patient.email %>
 <% end %>

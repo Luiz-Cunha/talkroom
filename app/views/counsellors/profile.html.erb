@@ -6,11 +6,10 @@
       <div class="card-body">
         <h5 class="card-title"><%= appointment.user.email %></h5>
         <p class="card-text"><%= appointment.symptom %></p>
-        <%#= This approach is not working, it should be made using javascript %>
-        <%= link_to profile_counsellor_path(@counsellor), class:"btn btn-primary" do %>
-          <%= "Accept Appointment" %>
-          <% appointment.counsellor_id = current_counsellor %>
-          <% appointment.confirmation = true %>
+        <%= simple_form_for appointment do |f| %>
+          <%= f.input :confirmation, as: :hidden, input_html: { value: true} %>
+          <%= f.input :counsellor_id, as: :hidden, input_html: { value: current_counsellor.id } %>
+          <%= f.submit 'Accept', class: 'btn btn-info' %>
         <% end %>
       </div>
     </div>

@@ -1,21 +1,24 @@
-<h1>opa</h1>
+<div class="container">
+  <h1>Counsellor Dashboard</h1>
 
-<% @appointments.each do |appointment| %>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title"><%= appointment.user.email %></h5>
-      <p class="card-text"><%= appointment.symptom %></p>
-      <%#= This approach is not working, it should be made using javascript %>
-      <%= link_to profile_counsellor_path(@counsellor), class:"btn btn-primary" do %>
-        <%= "Button Name" %>
-        <% appointment.counsellor_id = current_counsellor %>
-        <% appointment.confirmation = true %>
-      <% end %>
+  <% @appointments.each do |appointment| %>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= appointment.user.email %></h5>
+        <p class="card-text"><%= appointment.symptom %></p>
+        <%#= This approach is not working, it should be made using javascript %>
+        <%= link_to profile_counsellor_path(@counsellor), class:"btn btn-primary" do %>
+          <%= "Accept Appointment" %>
+          <% appointment.counsellor_id = current_counsellor %>
+          <% appointment.confirmation = true %>
+        <% end %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 
 
-<% @patients.each do |patient| %>
-  <%= patient.email %>
-<% end %>
+  <h1>ONGOING</h1>
+  <% @patients.each do |patient| %>
+    <%= patient.email %>
+  <% end %>
+</div>

@@ -1,4 +1,6 @@
 class Counsellor < ApplicationRecord
+  has_many :appointments
+  has_many :users, through: :appointments
   has_many :messages, as: :sendable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

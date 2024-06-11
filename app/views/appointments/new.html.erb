@@ -1,0 +1,6 @@
+<h1>create me</h1>
+<%= simple_form_for @appointment do |f| %>
+  <%= f.input :schedule_time, as: :datetime %>
+  <%= f.input :symptom, as: :text %>
+  <%= f.button :submit, 'Book Appointment' %>
+<% end %>

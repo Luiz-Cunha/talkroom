@@ -6,5 +6,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         has_many :appointments
+  before_validation :remove_empty_issues_array
+
+  private
+
+  def remove_empty_issues_array
+    self.issues_array = issues_array.reject!(&:empty?) unless issues_array.nil?
+  end
+
 end

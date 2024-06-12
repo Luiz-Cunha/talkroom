@@ -27,7 +27,7 @@
                           input_html: { autocomplete: "location" }%>
             <%= f.input :received_counseling_before, as: :select, label: "Have you received counseling or therapy before?" %>
             <%= f.input :received_counseling_description, as: :text, label: "If yes, please briefly describe your experience" %>
-            <%= f.input :main_issues, as: :check_boxes, collection: [['Anxiety', 'anxiety'], ['Depression', 'depression'], ['Stress', 'stress'], ['Relationship Issues', 'relationship_issues'], ['Family Issues', 'family_issues'], ['Work/School Issues', 'work_school_issues'], ['Self-Esteem', 'self_esteem'], ['Grief/Loss', 'grief_loss'], ['Other', 'other']], label: "What are the main issues you are seeking help with? (Check all that apply)" %>
+            <%= f.input :issues_array, as: :check_boxes, include_blank: false, collection: [['Anxiety', 'anxiety'], ['Depression', 'depression'], ['Stress', 'stress'], ['Relationship Issues', 'relationship_issues'], ['Family Issues', 'family_issues'], ['Work/School Issues', 'work_school_issues'], ['Self-Esteem', 'self_esteem'], ['Grief/Loss', 'grief_loss'], ['Other', 'other']], label: "What are the main issues you are seeking help with? (Check all that apply)" %>
             <%= f.input :other_issues, as: :text, label: "If you selected 'Other', please specify" %>
             <%= f.input :consent, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: "Do you consent to receiving counseling services from a psychology student under supervision?" %>
             <%= f.input :terms_conditions, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: "Do you agree to adhere to TalkRoom’s terms and conditions?" %>

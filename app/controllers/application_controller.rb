@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:fullname, :birthdate, :gender, :location, :received_counseling_before, :received_counseling_description, :main_issues, :other_issues, :consent, :terms_conditions])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:fullname, :birthdate, :gender, :location, :received_counseling_before, :received_counseling_description, :other_issues, :consent, :terms_conditions, issues_array: []])
   end
 end

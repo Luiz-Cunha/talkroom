@@ -16,9 +16,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_10_195912) do
 
   create_table "appointments", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "counsellor_id", null: false
+    t.bigint "counsellor_id"
     t.datetime "schedule_time"
-    t.boolean "confirmation"
+    t.boolean "confirmation", default: false
     t.text "symptom"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

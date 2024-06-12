@@ -1,2 +1,18 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="main-content w-100">
+  <section class="hero w-100">
+    <div class="hero-content d-flex justify-content-around align-items-baseline align-self-center mt-3">
+      <div class="left-side">
+        <h1 class="ms-5">DO YOU NEED TO TALK?</h1>
+        <p class="subtitle ms-5">A safe space for a free meeting with Psychology Students</p>
+        <p class="phrase">We are here for you!</p>
+        <div class="buttons">
+          <%= link_to 'Sign In', new_user_session_path, class: 'btn btn-pri' %>
+          <%= link_to 'Get Started', '#', class: 'btn btn-sec' %>
+        </div>
+      </div>
+      <div class="right-side ms-3">
+        <%= image_tag 'logo.png', class: 'logo' %>
+      </div>
+    </div>
+  </section>
+</div>

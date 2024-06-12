@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   end
 
   resources :appointments, only: [:new, :create, :update]
-  # Defines the root path route ("/")
-  # root "posts#index"
+
+  resources :client_chatrooms, only: :show do
+    resources :messages, only: :create
+  end
 end

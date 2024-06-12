@@ -1,4 +1,23 @@
-<h1>opa</h1>
-<% @patients.each do |patient| %>
-  <%= patient.name %>
-<% end %>
+<div class="container">
+  <h1>Counsellor Dashboard</h1>
+
+  <% @appointments.each do |appointment| %>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= appointment.user.email %></h5>
+        <p class="card-text"><%= appointment.symptom %></p>
+        <%= simple_form_for appointment do |f| %>
+          <%= f.input :confirmation, as: :hidden, input_html: { value: true} %>
+          <%= f.input :counsellor_id, as: :hidden, input_html: { value: current_counsellor.id } %>
+          <%= f.submit 'Accept', class: 'btn btn-info' %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+
+  <h1>ONGOING</h1>
+  <% @patients.each do |patient| %>
+    <%= patient.email %>
+  <% end %>
+</div>

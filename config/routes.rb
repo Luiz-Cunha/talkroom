@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :appointments, only: [:new, :create]
+  resources :appointments, only: [:new, :create, :update]
   # Defines the root path route ("/")
   # root "posts#index"
 end

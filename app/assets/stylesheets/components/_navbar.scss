@@ -1,6 +1,10 @@
 .navbar {
   background-color: #F0F4F1;
   box-shadow: 0px 8px 16px #287a26;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
 
   .nav-link {
     color: #287a26;

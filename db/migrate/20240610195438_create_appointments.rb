@@ -4,7 +4,7 @@ class CreateAppointments < ActiveRecord::Migration[7.1]
       t.references :user, null: false, foreign_key: true
       t.references :counsellor, foreign_key: true
       t.datetime :schedule_time
-      t.boolean :confirmation
+      t.boolean :confirmation, default: false
       t.text :symptom
 
       t.timestamps

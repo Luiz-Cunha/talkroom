@@ -25,5 +25,20 @@ Rails.application.routes.draw do
         sessions: "supervisors/sessions",
  }
 
+  resources :counsellors, only: :show do
+    member do
+      get 'profile'
+    end
+  end
+
+  resources :users, only: :show do
+    member do
+      get 'profile'
+    end
+  end
+
+  resources :appointments, only: [:new, :create, :update]
+  # Defines the root path route ("/")
+  # root "posts#index"
 
 end

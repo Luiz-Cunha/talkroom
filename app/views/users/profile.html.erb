@@ -9,6 +9,8 @@
         <strong>Time:</strong> <%= appointment.schedule_time %><br>
         <strong>Symptom:</strong> <%= appointment.symptom %><br>
         <strong>Confirmed:</strong> <%= appointment.confirmation ? 'Yes' : 'No' %><br>
+        <%= link_to 'Edit', edit_appointment_path(appointment), class: "btn btn-secondary" %>
+        <%= link_to 'Delete', appointment_path(appointment), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-danger" %>
       </li>
     <% end %>
   </ul>

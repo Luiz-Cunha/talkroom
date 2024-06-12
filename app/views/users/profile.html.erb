@@ -1,1 +1,17 @@
 <%= link_to 'Book an appointment', new_appointment_path, class: "btn btn-primary" %>
+<h1>Your Appointments</h1>
+
+<% if @appointments.any? %>
+  <ul>
+    <% @appointments.each do |appointment| %>
+      <li>
+        <strong>With:</strong> <%= appointment.counsellor.email %><br>
+        <strong>Time:</strong> <%= appointment.schedule_time %><br>
+        <strong>Symptom:</strong> <%= appointment.symptom %><br>
+        <strong>Confirmed:</strong> <%= appointment.confirmation ? 'Yes' : 'No' %><br>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>You have no appointments.</p>
+<% end %>

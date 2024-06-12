@@ -2,7 +2,7 @@
   padding: 10px 20px;
   text-transform: uppercase;
   border-radius: 20px;
-  margin: 5px;
+  margin: 20px;
   font-family: "Alegreya", serif;
 
   &-pri {
@@ -10,6 +10,7 @@
     color: #287a26;
     box-shadow:  0px 8px 16px #287a26;
     font-family: "Alegreya", serif;
+    margin-bottom: 50px;
 
     &:hover {
       background-color: darken(#f0f4f1, 10%);
@@ -21,6 +22,7 @@
     color: #287a26;
     box-shadow:  0px 8px 16px #287a26;
     font-family: "Alegreya", serif;
+    margin-bottom: 50px;
 
     &:hover {
       background-color: darken(#f0f4f1, 10%);

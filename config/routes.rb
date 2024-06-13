@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  devise_for :supervisors
-  devise_for :counsellors
-  devise_for :users
-
   root to: "pages#home"
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -37,6 +33,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :client_chatrooms, only: :show do
+    resources :messages, only: :create
+  end
   resources :appointments, only: [:new, :create, :edit, :update, :destroy, :show]
 
 end

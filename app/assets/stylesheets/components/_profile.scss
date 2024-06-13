@@ -1,73 +1,73 @@
-/* app/assets/stylesheets/profile.scss */
+// /* app/assets/stylesheets/profile.scss */
 
-.container {
-  max-width: 900px;
-  margin: 0 auto; /* Center the container */
-}
+// .container {
+//   max-width: 900px;
+//   margin: 0 auto; /* Center the container */
+// }
 
-h1.display-4 {
-  font-size: 3rem;
-  font-weight: 700;
-}
+// h1.display-4 {
+//   font-size: 3rem;
+//   font-weight: 700;
+// }
 
-h2 {
-  font-size: 2rem;
-  font-weight: 600;
-}
+// h2 {
+//   font-size: 2rem;
+//   font-weight: 600;
+// }
 
-.card {
-  border: 1px solid #e3e3e3;
-  border-radius: 10px;
-  transition: border-color 0.3s ease, transform 0.3s ease;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+// .card {
+//   border: 1px solid #e3e3e3;
+//   border-radius: 10px;
+//   transition: border-color 0.3s ease, transform 0.3s ease;
+//   padding: 20px;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+// }
 
-.card:hover {
-  border-color: #287a26 !important;
-  transform: scale(1.02);
-  background-color: #287a26; /* Change background color on hover */
-}
+// .card:hover {
+//   border-color: #287a26 !important;
+//   transform: scale(1.02);
+//   background-color: #287a26; /* Change background color on hover */
+// }
 
-.card-body {
-  padding: 30px;
-}
+// .card-body {
+//   padding: 30px;
+// }
 
-.card-title {
-  font-size: 1.75rem;
-  font-weight: 700;
-}
+// .card-title {
+//   font-size: 1.75rem;
+//   font-weight: 700;
+// }
 
-.card-text {
-  font-size: 1.25rem;
-}
+// .card-text {
+//   font-size: 1.25rem;
+// }
 
-.btn {
-  margin-right: 10px;
-}
+// .btn {
+//   margin-right: 10px;
+// }
 
-.btn-lg {
-  font-size: 1.25rem;
-  padding: 10px 20px;
-}
+// .btn-lg {
+//   font-size: 1.25rem;
+//   padding: 10px 20px;
+// }
 
-.btn-primary {
-  background-color: #287a26 !important;
-  border-color: #287a26 !important;
-  color: white; /* Ensure text is readable on the button */
-}
+// .btn-primary {
+//   background-color: #287a26 !important;
+//   border-color: #287a26 !important;
+//   color: white; /* Ensure text is readable on the button */
+// }
 
-.btn-primary:hover {
-  background-color: #1f5e1f !important; /* Darker shade for hover */
-  border-color: #1f5e1f !important;
-}
+// .btn-primary:hover {
+//   background-color: #1f5e1f !important; /* Darker shade for hover */
+//   border-color: #1f5e1f !important;
+// }
 
-.btn-primary:focus,
-.btn-primary:active {
-  background-color: #287a26 !important;
-  border-color: #287a26 !important;
-}
+// .btn-primary:focus,
+// .btn-primary:active {
+//   background-color: #287a26 !important;
+//   border-color: #287a26 !important;
+// }
 
-.btn-danger {
-  margin-left: 10px;
-}
+// .btn-danger {
+//   margin-left: 10px;
+// }

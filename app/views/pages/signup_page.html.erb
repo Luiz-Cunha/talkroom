@@ -1,7 +1,14 @@
-<div class="container text-center py-4" style="background-color: #f0f4f1; color: #28697E; font-family: 'Alegreya', serif;">
-  <h1>Choose what type of user you are:</h1>
-  <div class="d-flex justify-content-between py-4">
-    <%= link_to 'Pacient sign up', new_user_registration_path, class:"btn btn-success" %>
-    <%= link_to 'Counsellor sign up', new_counsellor_registration_path, class:"btn btn-success" %>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-4">
+      <div class="form-login text-center py-4" style="background-color: #ffffff; color: #28697E; font-family: 'Alegreya', serif;">
+        <h1>Who are you?</h1>
+        <div class="py-4">
+          <%= link_to 'Pacient', new_user_registration_path, class:"btn btn-success" %>
+          <%= link_to 'Counsellor', new_counsellor_registration_path, class:"btn btn-success" %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

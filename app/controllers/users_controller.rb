@@ -5,4 +5,11 @@ class UsersController < ApplicationController
     @user = current_user
     @appointments = @user.appointments
   end
+
+  def show
+    @user = current_user
+    @appointments = current_user.appointments
+    @counsellors = Counsellor.all
+  end
+
 end

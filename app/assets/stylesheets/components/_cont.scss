@@ -1,12 +1,12 @@
-// .container {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   top: -300px;
-//   bottom: -50px;
+.cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: -300px;
+  bottom: -50px;
 
-// }
+}
 
 .hero2 {
   font-family: "Alegreya", serif;
@@ -16,6 +16,7 @@
   color: #28697E;
   font-size: 4rem;
   top: 100px;
+  margin-left: 150px;
 }
 
 h1 {
@@ -26,6 +27,7 @@ h1 {
   color: #28697E;
   font-size: 3rem;
   top: 100px;
+  margin-left: 150px;
 }
 
 h2 {
@@ -36,6 +38,7 @@ h2 {
   color: #28697E;
   font-size: 2rem;
   top: 100px;
+  margin-left: 150px;
 }
 
 p {
@@ -46,6 +49,7 @@ p {
   color: #28697E;
   font-size: 1rem;
   top: 100px;
+  margin-left: 150px;
 }
 
 .map-container {

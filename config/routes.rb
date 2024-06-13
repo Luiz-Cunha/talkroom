@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       devise_for :supervisors, path: 'supervisors', controllers: {
         registrations: "supervisors/registrations",
         sessions: "supervisors/sessions",
- }
+        }
 
   resources :counsellors, only: :show do
     member do

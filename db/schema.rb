@@ -53,13 +53,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_155557) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "fullname"
-    t.float "latitude"
-    t.float "longitude"
-    t.string "address"
     t.date "birthdate"
     t.string "gender"
     t.string "location"
-
     t.string "university_name"
     t.string "university_id"
     t.string "degree_program"
@@ -69,6 +65,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_155557) do
     t.text "counseling_experience_description"
     t.boolean "consent"
     t.boolean "terms_conditions"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "address"
     t.integer "counsellor_id"
     t.index ["email"], name: "index_counsellors_on_email", unique: true
     t.index ["reset_password_token"], name: "index_counsellors_on_reset_password_token", unique: true

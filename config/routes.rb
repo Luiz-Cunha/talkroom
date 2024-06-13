@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :supervisors
   devise_for :counsellors
   devise_for :users
@@ -7,6 +8,22 @@ Rails.application.routes.draw do
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   get "up" => "rails/health#show", as: :rails_health_check
+  get "signup_page" => "pages#signup_page", as: :signup_page
+
+  devise_for :users, path: 'users', controllers: {
+    registrations: "users/registrations",
+    sessions: "users/sessions"
+    }
+
+    devise_for :counsellors, path: 'counsellors', controllers: {
+      registrations: "counsellors/registrations",
+      sessions: "counsellors/sessions",
+      }
+
+      devise_for :supervisors, path: 'supervisors', controllers: {
+        registrations: "supervisors/registrations",
+        sessions: "supervisors/sessions",
+ }
 
   resources :counsellors, only: :show do
     member do
@@ -21,4 +38,5 @@ Rails.application.routes.draw do
   end
 
   resources :appointments, only: [:new, :create, :edit, :update, :destroy, :show]
+
 end

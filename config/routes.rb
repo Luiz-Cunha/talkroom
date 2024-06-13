@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  devise_for :supervisors
-  devise_for :counsellors
-  devise_for :users
-
   root to: "pages#home"
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

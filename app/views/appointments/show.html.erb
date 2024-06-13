@@ -8,6 +8,10 @@
   <%= @appointment.symptom %>
 </p>
 <p>
+  <strong>Description:</strong>
+  <%= @appointment.description %>
+</p>
+<p>
   <strong>Counsellor:</strong>
   <% if @appointment.confirmation == true %>
   <%=@appointment.counsellor.email %>

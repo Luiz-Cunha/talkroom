@@ -9,10 +9,40 @@
           <%= link_to 'Sign In', signup_page_path, class: 'btn btn-pri' %>
           <%= link_to 'Get Started', '#', class: 'btn btn-sec' %>
         </div>
-      </div>
+        </div>
       <div class="right-side ms-3">
-        <%= image_tag 'logo.png', class: 'logo' %>
+        <%= image_tag 'logo-3.png', class: 'logo img-fluid' %>
       </div>
     </div>
   </section>
+    </div>
+  </div>
+</div>
+<div class="container mb-5">
+  <div class="row align-items-center">
+    <div class="col-md-6 mb-5">
+      <h1 class="hero2 me-5">TALK WITH US! No matter where you are around de <strong>World</strong>!</h1>
+      <h2>
+        <strong>Who we are</strong>
+      </h2>
+      <p class="mb-3">
+        <strong>TalkRoom</strong> is a nonprofit platform that connects people needing mental health support with psychology students who provide free counseling. It's designed to be easy to use, offering free access to mental health care while giving students practical experience under professional supervision. Whether you're looking for help or are a psychology student wanting hands-on experience, TalkRoom aims to make mental health care accessible to everyone, anywhere in the world.
+      </p>
+      <p class="mb-3">
+        <strong>Accessibility:</strong> Mental health care should be available to everyone. We break down financial barriers to ensure that help is within reach for those who need it most.
+      </p>
+      <p class="mb-3" >
+        <strong>Global Reach:</strong> No matter where you are in the world, TalkRoom is here to help. Our online platform allows us to connect clients and counselors across different time zones and geographical locations.
+      </p>
+      <p>
+        <strong> Our counsellors community around the world!</strong>
+      </p>
+    </div>
+    <div class="col-md-6 d-flex justify-content-center">
+      <div id="map" class="map-container rounded-circle" data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+  </div>
 </div>

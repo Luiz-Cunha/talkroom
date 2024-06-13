@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-
-  devise_for :supervisors
-  devise_for :counsellors
-  devise_for :users
+  get 'dashboard/show'
 
   root to: "pages#home"
 
@@ -23,7 +20,7 @@ Rails.application.routes.draw do
       devise_for :supervisors, path: 'supervisors', controllers: {
         registrations: "supervisors/registrations",
         sessions: "supervisors/sessions",
- }
+        }
 
   resources :counsellors, only: :show do
     member do
@@ -38,5 +35,9 @@ Rails.application.routes.draw do
   end
 
   resources :appointments, only: [:new, :create, :edit, :update, :destroy, :show]
+
+  authenticated :user do
+    get 'dashboard', to: 'dashboard#show', as: :user_dashboard
+  end
 
 end

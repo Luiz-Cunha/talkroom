@@ -1,11 +1,11 @@
 
+Message.destroy_all
+ClientChatroom.destroy_all
+CounsellorChatroom.destroy_all
+Appointment.destroy_all
 User.destroy_all
 Counsellor.destroy_all
 Supervisor.destroy_all
-Appointment.destroy_all
-CounsellorChatroom.destroy_all
-ClientChatroom.destroy_all
-Message.destroy_all
 
 supervisor1 = Supervisor.create!(
   email: "supervisor1@example.com",

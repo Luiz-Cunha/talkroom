@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'dashboard/show'
 
   root to: "pages#home"
 
@@ -34,10 +33,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :appointments, only: [:new, :create, :edit, :update, :destroy, :show]
+  resources :appointments, only: [:new, :create, :edit, :update, :show]
+  resources :appointments, only: :destroy
 
-  authenticated :user do
-    get 'dashboard', to: 'dashboard#show', as: :user_dashboard
-  end
+
 
 end

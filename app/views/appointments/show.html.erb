@@ -17,4 +17,4 @@
 </p>
 <%= link_to 'Edit', edit_appointment_path(@appointment), class: 'btn btn-primary' %> |
 <%= link_to 'Back', profile_user_path(current_user), class: 'btn btn-secondary' %> |
-<%= link_to 'Delete', @appointment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<%= link_to 'Delete', (@appointment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn  btn-sm'%>

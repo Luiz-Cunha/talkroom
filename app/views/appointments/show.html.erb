@@ -9,7 +9,9 @@
 </p>
 <p>
   <strong>Counsellor:</strong>
-  <%= @appointment.counsellor.email %>
+  <% if @appointment.confirmation == true %>
+  <%=@appointment.counsellor.email %>
+  <% end %>
 </p>
 <p>
   <strong>Confirmed:</strong>

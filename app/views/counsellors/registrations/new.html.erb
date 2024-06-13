@@ -20,11 +20,11 @@
                       required: true,
                       autofocus: true,
                       input_html: { autocomplete: "birthdate" }%>
-          <%= f.input :gender, collection: [['Male', 'male'], ['Female', 'female'], ['Other', 'other']] %>
-          <%= f.input :location,
+          <%= f.input :gender, prompt: "Select Gender", collection: [['Male', 'male'], ['Female', 'female'], ['Other', 'other']] %>
+          <%= f.input :address,
                       required: true,
                       autofocus: true,
-                      input_html: { autocomplete: "location" }%>
+                      input_html: { autocomplete: "address" }%>
           <%= f.input :university_name,
                       required: true %>
           <%= f.input :university_id, label: "University Student ID",

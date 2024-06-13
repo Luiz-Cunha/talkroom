@@ -1,49 +1,50 @@
-<div class="container">
+<div class="container" style="background-color: #f0f4f1; color: #28697E; font-family: 'Alegreya', serif;">
   <div class="row justify-content-center">
-    <div class="col-12 col-sm-4">
+    <div class="col-12 col-sm-6">
       <h2>Sign up Pacients</h2>
-        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= f.error_notification %>
-          <div class="form-inputs">
-            <%= f.input :email,
-                        required: true,
-                        autofocus: true,
-                        input_html: { autocomplete: "email" }%>
-            <%= f.input :fullname,
-                        required: true,
-                        autofocus: true,
-                        input_html: { autocomplete: "fullname" }%>
-            <%= f.input :birthdate, as: :date,
-                                        start_year: Date.today.year - 90,
-                                        end_year: Date.today.year - 14,
-                                        order: [:day, :month, :year],
-                        required: true,
-                        autofocus: true,
-                        input_html: { autocomplete: "birthdate" }%>
-            <%= f.input :gender, collection: [['Male', 'male'], ['Female', 'female'], ['Other', 'other']] %>
-            <%= f.input :location,
-                          required: true,
-                          autofocus: true,
-                          input_html: { autocomplete: "location" }%>
-            <%= f.input :received_counseling_before, as: :select, label: "Have you received counseling or therapy before?" %>
-            <%= f.input :received_counseling_description, as: :text, label: "If yes, please briefly describe your experience" %>
-            <%= f.input :issues_array, required: true, as: :check_boxes, include_blank: false, collection: [['Anxiety', 'anxiety'], ['Depression', 'depression'], ['Stress', 'stress'], ['Relationship Issues', 'relationship_issues'], ['Family Issues', 'family_issues'], ['Work/School Issues', 'work_school_issues'], ['Self-Esteem', 'self_esteem'], ['Grief/Loss', 'grief_loss'], ['Other', 'other']], label: "What are the main issues you are seeking help with? (Check all that apply)" %>
-            <%= f.input :other_issues, as: :text, label: "If you selected 'Other', please specify" %>
-            <%= f.input :consent, required: true, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: "Do you consent to receiving counseling services from a psychology student under supervision?" %>
-            <%= f.input :terms_conditions, required: true, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: "Do you agree to adhere to TalkRoom’s terms and conditions?" %>
-            <%= f.input :password,
-                          required: true,
-                          hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                          input_html: { autocomplete: "new-password" } %>
-            <%= f.input :password_confirmation,
-                          required: true,
-                          input_html: { autocomplete: "new-password" } %>
-          </div>
-          <div class="form-actions">
-            <%= f.button :submit, "Sign up" %>
-          </div>
-        <% end %>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "my-4" }) do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email", class: "form-control mb-3" }%>
+          <%= f.input :fullname,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "fullname", class: "form-control mb-3" }%>
+          <%= f.input :birthdate, as: :date,
+                                  start_year: Date.today.year - 90,
+                                  end_year: Date.today.year - 14,
+                                  order: [:day, :month, :year],
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "birthdate", class: "form-control mb-3" }%>
+          <%= f.input :gender, collection: [['Male', 'male'], ['Female', 'female'], ['Other', 'other']], prompt: "Select Gender", class: "form-control mb-3" %>
+          <%= f.input :location,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "location", class: "form-control mb-3" }%>
+          <%= f.input :received_counseling_before, as: :select, label: "Have you received counseling or therapy before?", prompt: "Select One", class: "form-control mb-3" %>
+          <%= f.input :received_counseling_description, as: :text, label: "If yes, please briefly describe your experience", input_html: { class: "form-control mb-3" } %>
+          <%= f.input :issues_array, required: true, as: :check_boxes, include_blank: false, collection: [['Anxiety', 'anxiety'], ['Depression', 'depression'], ['Stress', 'stress'], ['Relationship Issues', 'relationship_issues'], ['Family Issues', 'family_issues'], ['Work/School Issues', 'work_school_issues'], ['Self-Esteem', 'self_esteem'], ['Grief/Loss', 'grief_loss'], ['Other', 'other']], label: "What are the main issues you are seeking help with? (Check all that apply)", class: "mb-3" %>
+          <%= f.input :other_issues, as: :text, label: "If you selected 'Other', please specify", input_html: { class: "form-control mb-3" } %>
+          <%= f.input :consent, required: true, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: "Do you consent to receiving counseling services from a psychology student under supervision?", class: "mb-3" %>
+          <%= f.input :terms_conditions, required: true, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: "Do you agree to adhere to TalkRoom’s terms and conditions?", class: "mb-3" %>
+          <%= f.input :password,
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password", class: "form-control mb-3" } %>
+          <%= f.input :password_confirmation,
+                      required: true,
+                      input_html: { autocomplete: "new-password", class: "form-control mb-3" } %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
+
 <%= render "users/shared/links" %>

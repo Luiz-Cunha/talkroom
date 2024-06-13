@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_12_194305) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_13_152727) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_12_194305) do
     t.text "symptom"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
     t.index ["counsellor_id"], name: "index_appointments_on_counsellor_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
@@ -53,12 +54,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_12_194305) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "fullname"
-    t.date "birthdate"
-    t.string "gender"
-    t.string "location"
     t.float "latitude"
     t.float "longitude"
     t.string "address"
+    t.date "birthdate"
+    t.string "gender"
+    t.string "location"
     t.integer "counsellor_id"
     t.index ["email"], name: "index_counsellors_on_email", unique: true
     t.index ["reset_password_token"], name: "index_counsellors_on_reset_password_token", unique: true

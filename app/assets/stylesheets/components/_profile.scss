@@ -1,9 +1,6 @@
-/* app/assets/stylesheets/profile.scss */
-
 .container {
   max-width: 900px;
-  margin: 0 auto; /* Center the container */
-}
+  margin: 0 auto;
 
 h1.display-4 {
   font-size: 3rem;
@@ -26,7 +23,7 @@ h2 {
 .card:hover {
   border-color: #287a26 !important;
   transform: scale(1.02);
-  background-color: #287a26; /* Change background color on hover */
+  background-color: #287a26;
 }
 
 .card-body {
@@ -54,11 +51,11 @@ h2 {
 .btn-primary {
   background-color: #287a26 !important;
   border-color: #287a26 !important;
-  color: white; /* Ensure text is readable on the button */
+  color: white;
 }
 
 .btn-primary:hover {
-  background-color: #1f5e1f !important; /* Darker shade for hover */
+  background-color: #1f5e1f !important;
   border-color: #1f5e1f !important;
 }
 
@@ -70,4 +67,5 @@ h2 {
 
 .btn-danger {
   margin-left: 10px;
+}
 }

@@ -1,23 +1,17 @@
-<div class="container chatroom">
-  <h1>#Private</h1>
+<div class="container chatroom p-5" data-controller="counsellor-chatroom-subscription" data-counsellor-chatroom-subscription-chatroom-id-value="<%= @counsellor_chatroom.id %>">
+  <h1># Private Chat</h1>
 
-  <div class="messages">
+  <div class="messages" data-counsellor-chatroom-subscription-target="messages">
     <% @counsellor_chatroom.messages.each do |message| %>
-      <div id="message-<%= message.id %>">
-        <small>
-          <strong><%= message.sendable.email %></strong>
-          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-        </small>
-        <p><%= message.content %></p>
-      </div>
+      <%= render "messages/message", message: message %>
     <% end %>
   </div>
     <%= simple_form_for [@counsellor_chatroom, @message],
-    html: {class: "d-flex"} do |f|
+    html: { data: { action: "turbo:submit-end->counsellor-chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
   %>
     <%= f.input :content,
       label: false,
-      placeholder: "Message #Private",
+      placeholder: "Message #Private Chat",
       wrapper_html: {class: "flex-grow-1"}
     %>
     <%= f.submit "Send", class: "btn btn-primary mb-3" %>

@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  skip_before_action :authenticate_user!
   def create
     if params[:client_chatroom_id].present?
       @client_chatroom = ClientChatroom.find(params[:client_chatroom_id])
@@ -18,11 +19,12 @@ class MessagesController < ApplicationController
       @message = Message.new(message_params)
       @message.chatroomable = @counsellor_chatroom
       @message.sendable = current_supervisor || current_counsellor
-      if @message.save
-        redirect_to counsellor_chatroom_path(@counsellor_chatroom)
-      else
-        render "counsellor_chatrooms/show", status: :unprocessable_entity
-      end
+      @message.save
+      CounsellorChatroomChannel.broadcast_to(
+        @counsellor_chatroom,
+        render_to_string(partial: "message", locals: {message: @message})
+      )
+      head :ok
     end
   end
 

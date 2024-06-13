@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_12_194305) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_13_155557) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "counsellor_id"
+    t.bigint "counsellor_id", null: false
     t.datetime "schedule_time"
-    t.boolean "confirmation", default: false
+    t.boolean "confirmation"
     t.text "symptom"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -56,6 +56,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_12_194305) do
     t.date "birthdate"
     t.string "gender"
     t.string "location"
+    t.string "university_name"
+    t.string "university_id"
+    t.string "degree_program"
+    t.integer "year_of_study"
+    t.date "expected_graduation_date"
+    t.boolean "counseling_experience"
+    t.text "counseling_experience_description"
+    t.boolean "consent"
+    t.boolean "terms_conditions"
     t.index ["email"], name: "index_counsellors_on_email", unique: true
     t.index ["reset_password_token"], name: "index_counsellors_on_reset_password_token", unique: true
   end

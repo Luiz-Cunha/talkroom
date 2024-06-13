@@ -1,17 +1,36 @@
-<%= link_to 'Book an appointment', new_appointment_path, class: "btn btn-primary" %>
-<h1>Your Appointments</h1>
+<!-- app/views/users/profile.html.erb -->
 
-<% if @appointments.any? %>
-  <ul>
-    <% @appointments.each do |appointment| %>
-      <li>
-        <strong>With:</strong> <%= appointment.counsellor.email %><br>
-        <strong>Time:</strong> <%= appointment.schedule_time %><br>
-        <strong>Symptom:</strong> <%= appointment.symptom %><br>
-        <strong>Confirmed:</strong> <%= appointment.confirmation ? 'Yes' : 'No' %><br>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>You have no appointments.</p>
-<% end %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1 class="display-4 text-center mb-4">Profile</h1>
+      <% if @appointments.any? %>
+        <div class="card mb-4">
+          <div class="card-body">
+            <h2 class="card-title">Your Appointments</h2>
+            <ul class="list-unstyled">
+              <% @appointments.each do |appointment| %>
+                <li class="card mb-3">
+                  <div class="card-body">
+                    <p><strong>With:</strong> <%= appointment.counsellor.email %></p>
+                    <p><strong>Time:</strong> <%= appointment.schedule_time %></p>
+                    <p><strong>Symptom:</strong> <%= appointment.symptom %></p>
+                    <p><strong>Confirmed:</strong> <%= appointment.confirmation ? 'Yes' : 'No' %></p>
+                    <%= link_to 'Edit', edit_appointment_path(appointment), class: 'btn btn-primary' %>
+                    <%= link_to 'Delete', appointment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <% else %>
+        <p class="text-center">You have no appointments.</p>
+      <% end %>
+
+      <div class="text-center mt-4">
+        <%= link_to 'Book an appointment', new_appointment_path, class: "btn btn-primary btn-lg" %>
+      </div>
+    </div>
+  </div>
+</div>

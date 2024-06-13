@@ -1,13 +1,17 @@
 .navbar {
-  background-color: #F0F4F1;
-  box-shadow: 0px 8px 16px #287a26;
+  background-color: #f0f4f1;
+  box-shadow: 0px 8px 16px #28697E;
+  // position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
 
   .nav-link {
-    color: #287a26;
+    color: #28697E;
     font-family: "Alegreya", serif;
 
     &:hover {
-      color: darken(#287a26, 10%);
+      color: darken(#28697E, 10%);
     }
   }
 

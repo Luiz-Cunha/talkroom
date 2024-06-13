@@ -36,7 +36,7 @@
                       </div>
                       <div class="btn-group-vertical">
                         <%= link_to 'Edit', edit_appointment_path(appointment), class: 'btn  btn-sm' %>
-                        <%= link_to 'Delete', appointment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn  btn-sm' %>
+                        <%= link_to 'Delete', appointment_path(appointment), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn  btn-sm' %>
                       </div>
                     </div>
                   </li>

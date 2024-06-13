@@ -1,7 +1,7 @@
-<h1>Book a New Appointment</h1>
+<h1>Edit Appointment</h1>
 <%= simple_form_for @appointment do |f| %>
   <%= f.input :schedule_time, as: :datetime %>
   <%= f.input :symptom, as: :text %>
   <%= f.input :counsellor_id, collection: Counsellor.all.collect { |c| [c.email, c.id] }, prompt: 'Select a Counsellor' %>
-  <%= f.button :submit, 'Book Appointment' %>
+  <%= f.button :submit, 'Update Appointment' %>
 <% end %>

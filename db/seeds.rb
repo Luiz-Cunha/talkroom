@@ -115,7 +115,7 @@ appointment2 = Appointment.create!(
   symptom: "Feeling depressed"
 )
 
-# Create counsellor chatrooms
+
 counsellor_chatroom1 = CounsellorChatroom.create!(
   counsellor: counsellor1,
   supervisor: supervisor1
@@ -126,7 +126,6 @@ counsellor_chatroom2 = CounsellorChatroom.create!(
   supervisor: supervisor2
 )
 
-# Create messages in counsellor chatrooms
 Message.create!(
   content: "Initial supervision message",
   sendable: supervisor1,
@@ -139,7 +138,7 @@ Message.create!(
   chatroomable: counsellor_chatroom2
 )
 
-# Create client chatrooms
+
 client_chatroom1 = ClientChatroom.create!(
   user: user1,
   counsellor: counsellor1
@@ -150,7 +149,6 @@ client_chatroom2 = ClientChatroom.create!(
   counsellor: counsellor2
 )
 
-# Create messages in client chatrooms
 Message.create!(
   content: "Hello, I need help",
   sendable: user1,

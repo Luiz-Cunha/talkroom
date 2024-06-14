@@ -1,6 +1,5 @@
 <div class="wrap mt-5">
   <div class="row">
-    <!-- Counsellor Profile Section -->
     <div class="col-md-4">
       <div class="card card-profile mb-4">
         <div class="card-body">
@@ -19,23 +18,25 @@
         </div>
       </div>
     </div>
-
-    <!-- Dashboard Section -->
     <div class="col-md-8">
       <div class="card card-dashboard mb-4">
         <div class="card-body">
           <h1 class="mb-4 text-center">Counsellor Dashboard</h1>
-
           <% if @appointments.any? %>
             <% @appointments.each do |appointment| %>
               <div class="card mb-3">
                 <div class="card-body">
-                  <h5 class="card-title"><%= appointment.user.email %></h5>
+                  <h5 class="card-title"><%= appointment.user.fullname %></h5>
                   <p class="card-text"><%= appointment.symptom %></p>
                   <%= simple_form_for appointment do |f| %>
+                  <div>
+                <strong>Schedule Time:</strong><%= appointment.schedule_time.strftime("%B %d, %Y at %I:%M %p") %>
+                  <div class="ms-3">
                     <%= f.input :confirmation, as: :hidden, input_html: { value: true } %>
                     <%= f.input :counsellor_id, as: :hidden, input_html: { value: current_counsellor.id } %>
                     <%= f.submit 'Accept', class: 'btn btn-info' %>
+                  </div>
+                </div>
                   <% end %>
                 </div>
               </div>
@@ -45,8 +46,6 @@
           <% end %>
         </div>
       </div>
-
-      <!-- Ongoing Patients Section -->
       <div class="card card-dashboard mt-4">
         <div class="card-body">
           <h2 class="display-4 text-center mb-4">Ongoing Patients</h2>
@@ -63,6 +62,11 @@
                       <span class="font-weight-bold">Symptom:</span>
                       <span><%= patient.appointments[0].symptom %></span>
                     </div>
+                      <div>
+                      <span class="font-weight-bold">Schedule Time:</span>
+                      <span><%= patient.appointments[0].schedule_time.strftime("%B %d, %Y at %I:%M %p") if patient.appointments[0].present? %></span>
+                    </div>
+                    <%= link_to 'Your Chatroom', client_chatroom_path(@chatroom), class: "btn btn-lg" %>
                   </div>
                 </li>
               <% end %>

@@ -65,6 +65,29 @@ counsellor2 = Counsellor.create!(
   terms_conditions: true
 )
 
+# Created for the presentation
+counsellor3 = Counsellor.create!(
+  email: "luiz@test.com",
+  password: 'password',
+  password_confirmation: 'password',
+  fullname: "Luiz Cunha",
+  birthdate: Date.new(2002, 11, 23),
+  gender: "Male",
+  address: "456 Elm St, Los Angeles, CA",
+  latitude: 34.0522,
+  longitude: -118.2437,
+  location: "Los Angeles, CA",
+  university_name: "UCLA",
+  university_id: "UCLA98765",
+  degree_program: "Counseling Psychology",
+  year_of_study: 4,
+  expected_graduation_date: Date.new(2023, 12, 20),
+  counseling_experience: true,
+  counseling_experience_description: "Volunteer counselor at high school",
+  consent: true,
+  terms_conditions: true
+)
+
 # Create users
 user1 = User.create!(
   email: "user1@example.com",
@@ -99,6 +122,25 @@ user2 = User.create!(
   issues_array: ["Grief", "Relationship issues"],
   consultation_history: "Focused on coping strategies for grief."
 )
+
+# Created for the presentation
+user3 = User.create!(
+  email: "munick@test.com",
+  password: 'password',
+  password_confirmation: 'password',
+  fullname: "Munick Souza",
+  birthdate: Date.new(1985, 8, 22),
+  gender: "Female",
+  location: "Los Angeles, CA",
+  received_counseling_description: "Attended therapy sessions after a family loss.",
+  received_counseling_before: true,
+  other_issues: "Depression",
+  consent: true,
+  terms_conditions: true,
+  issues_array: ["Grief", "Relationship issues"],
+  consultation_history: "Focused on coping strategies for grief."
+)
+
 
 # Create appointments
 appointment1 = Appointment.create!(
@@ -148,6 +190,15 @@ client_chatroom2 = ClientChatroom.create!(
   user: user2,
   counsellor: counsellor2
 )
+
+
+# Created for the presentation
+client_chatroom3 = ClientChatroom.create!(
+  user: user3,
+  counsellor: counsellor3
+)
+
+# Create messages in client chatrooms
 
 Message.create!(
   content: "Hello, I need help",

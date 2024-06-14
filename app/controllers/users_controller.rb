@@ -4,12 +4,8 @@ class UsersController < ApplicationController
   def profile
     @user = current_user
     @appointments = @user.appointments
-  end
-
-  def show
-    @user = current_user
-    @appointments = current_user.appointments
-    @counsellors = Counsellor.all
+    # This chatroom it created for presentation
+    @chatroom = ClientChatroom.last
   end
 
 end

@@ -24,31 +24,58 @@ counsellor1 = Counsellor.create!(
   email: "counsellor1@example.com",
   password: 'password',
   password_confirmation: 'password',
+  fullname: "Emily Johnson",
+  birthdate: Date.new(1996, 2, 14),
+  gender: "Female",
   address: "San Francisco, CA",
-
+  year_of_study: 2002,
 )
 
 counsellor2 = Counsellor.create!(
   email: "counsellor2@example.com",
   password: 'password',
   password_confirmation: 'password',
+  fullname: "Dr. Michael Smith",
+  birthdate: Date.new(2000, 11, 23),
+  gender: "Male",
   address: "Los Angeles, CA",
-
+  year_of_study: 1998,
 )
 
 
 user1 = User.create!(
   email: "user1@example.com",
   password: 'password',
-  password_confirmation: 'password'
+  password_confirmation: 'password',
+  fullname: "John Doe",
+  birthdate: Date.new(1990, 5, 15),
+  gender: "Male",
+  location: "San Francisco, CA",
+  received_counseling_description: "Had counseling during college.",
+  received_counseling_before: true,
+  other_issues: "Anxiety",
+  consent: true,
+  terms_conditions: true,
+  issues_array: ["Stress", "Work-life balance"],
+  consultation_history: "Discussed stress management techniques."
 )
 
 user2 = User.create!(
   email: "user2@example.com",
   password: 'password',
-  password_confirmation: 'password'
+  password_confirmation: 'password',
+  fullname: "Jane Smith",
+  birthdate: Date.new(1985, 8, 22),
+  gender: "Female",
+  location: "Los Angeles, CA",
+  received_counseling_description: "Attended therapy sessions after a family loss.",
+  received_counseling_before: true,
+  other_issues: "Depression",
+  consent: true,
+  terms_conditions: true,
+  issues_array: ["Grief", "Relationship issues"],
+  consultation_history: "Focused on coping strategies for grief."
 )
-
 
 appointment1 = Appointment.create!(
   user: user1,

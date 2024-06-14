@@ -14,13 +14,21 @@
       </div>
     </div>
   <% end %>
-
-  <div class="mt-5">
-    <h1 class="display-4 text-center mb-4">ONGOING</h1>
+  <div class="container mt-5">
+    <h1 class="display-4 text-center mb-4">Ongoing Patients</h1>
     <ul class="list-group">
       <% @patients.each do |patient| %>
         <li class="list-group-item">
-          <%= patient.email %>
+          <div class="d-flex justify-content-between">
+            <div>
+              <span class="font-weight-bold">Patient name:</span>
+              <span><%= patient.fullname %></span>
+            </div>
+            <div>
+              <span class="font-weight-bold">Symptom:</span>
+              <span><%= patient.appointments[0].symptom %></span>
+            </div>
+          </div>
         </li>
       <% end %>
     </ul>

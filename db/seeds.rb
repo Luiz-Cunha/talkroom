@@ -1,4 +1,4 @@
-
+# Clear existing data
 Message.destroy_all
 ClientChatroom.destroy_all
 CounsellorChatroom.destroy_all
@@ -7,6 +7,7 @@ User.destroy_all
 Counsellor.destroy_all
 Supervisor.destroy_all
 
+# Create supervisors
 supervisor1 = Supervisor.create!(
   email: "supervisor1@example.com",
   password: 'password',
@@ -19,7 +20,7 @@ supervisor2 = Supervisor.create!(
   password_confirmation: 'password'
 )
 
-
+# Create counsellors
 counsellor1 = Counsellor.create!(
   email: "counsellor1@example.com",
   password: 'password',
@@ -27,8 +28,19 @@ counsellor1 = Counsellor.create!(
   fullname: "Emily Johnson",
   birthdate: Date.new(1996, 2, 14),
   gender: "Female",
-  address: "San Francisco, CA",
-  year_of_study: 2002,
+  address: "123 Main St, San Francisco, CA",
+  latitude: 37.7749,
+  longitude: -122.4194,
+  location: "San Francisco, CA",
+  university_name: "Stanford University",
+  university_id: "SU12345",
+  degree_program: "Clinical Psychology",
+  year_of_study: 3,
+  expected_graduation_date: Date.new(2024, 6, 15),
+  counseling_experience: true,
+  counseling_experience_description: "Internship at community mental health center",
+  consent: true,
+  terms_conditions: true
 )
 
 counsellor2 = Counsellor.create!(
@@ -38,11 +50,22 @@ counsellor2 = Counsellor.create!(
   fullname: "Dr. Michael Smith",
   birthdate: Date.new(2000, 11, 23),
   gender: "Male",
-  address: "Los Angeles, CA",
-  year_of_study: 1998,
+  address: "456 Elm St, Los Angeles, CA",
+  latitude: 34.0522,
+  longitude: -118.2437,
+  location: "Los Angeles, CA",
+  university_name: "UCLA",
+  university_id: "UCLA98765",
+  degree_program: "Counseling Psychology",
+  year_of_study: 4,
+  expected_graduation_date: Date.new(2023, 12, 20),
+  counseling_experience: true,
+  counseling_experience_description: "Volunteer counselor at high school",
+  consent: true,
+  terms_conditions: true
 )
 
-
+# Create users
 user1 = User.create!(
   email: "user1@example.com",
   password: 'password',
@@ -77,6 +100,7 @@ user2 = User.create!(
   consultation_history: "Focused on coping strategies for grief."
 )
 
+# Create appointments
 appointment1 = Appointment.create!(
   user: user1,
   counsellor: counsellor1,
@@ -91,6 +115,7 @@ appointment2 = Appointment.create!(
   symptom: "Feeling depressed"
 )
 
+# Create counsellor chatrooms
 counsellor_chatroom1 = CounsellorChatroom.create!(
   counsellor: counsellor1,
   supervisor: supervisor1
@@ -101,7 +126,7 @@ counsellor_chatroom2 = CounsellorChatroom.create!(
   supervisor: supervisor2
 )
 
-
+# Create messages in counsellor chatrooms
 Message.create!(
   content: "Initial supervision message",
   sendable: supervisor1,
@@ -114,7 +139,7 @@ Message.create!(
   chatroomable: counsellor_chatroom2
 )
 
-
+# Create client chatrooms
 client_chatroom1 = ClientChatroom.create!(
   user: user1,
   counsellor: counsellor1
@@ -125,7 +150,7 @@ client_chatroom2 = ClientChatroom.create!(
   counsellor: counsellor2
 )
 
-
+# Create messages in client chatrooms
 Message.create!(
   content: "Hello, I need help",
   sendable: user1,

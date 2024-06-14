@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to root_path, class: 'navbar-brand' do %>
       <%= image_tag 'logo-2.png', class: 'logo-nav ms-3' %>
@@ -33,3 +33,46 @@
   </div>
 </nav>
  <%= link_to "Log out", destroy_counsellor_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" alt="User avatar" />
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Profile", profile_user_path(current_user), class: "dropdown-item" %>
+              <%= link_to "Edit your account", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% elsif counsellor_signed_in? %>
+          <li class="nav-item dropdown">
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" alt="Counsellor avatar" />
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Profile", profile_counsellor_path(current_counsellor), class: "dropdown-item" %>
+              <%= link_to "Edit your account", edit_counsellor_registration_path, class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_counsellor_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% elsif supervisor_signed_in? %>
+          <li class="nav-item dropdown">
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" alt="Supervisor avatar" />
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Profile", profile_supervisor_path(current_supervisor), class: "dropdown-item" %>
+              <%= link_to "Edit your account", edit_supervisor_registration_path, class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_supervisor_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Login
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="loginDropdown">
+              <li><%= link_to "Login as User", new_user_session_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Login as Counsellor", new_counsellor_session_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Login as Supervisor", new_supervisor_session_path, class: "dropdown-item" %></li>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

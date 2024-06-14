@@ -7,7 +7,6 @@ class CounsellorsController < ApplicationController
   end
 
   private
-
   def check_user_type_counsellor
     current_counsellor && counsellor_signed_in?
   end

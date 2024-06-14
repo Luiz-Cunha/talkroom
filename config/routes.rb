@@ -31,7 +31,7 @@ Rails.application.routes.draw do
         sessions: "supervisors/sessions",
         }
 
-  resources :counsellors, only: :show do
+  resources :counsellors, only: [] do
     member do
       get 'profile', to: 'counsellors#profile', as: :profile
     end

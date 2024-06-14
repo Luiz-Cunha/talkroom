@@ -1,7 +1,13 @@
-<h1>Edit Appointment</h1>
-<%= simple_form_for @appointment do |f| %>
-  <%= f.input :schedule_time, as: :datetime %>
-  <%= f.input :symptom, as: :text %>
-  <%= f.input :description, as: :text %>
-  <%= f.button :submit, 'Save Appointment' %>
-<% end %>
+<div class="container my-2">
+  <h1>Edit Appointment</h1>
+  <%= simple_form_for @appointment do |f| %>
+    <%= f.input :schedule_time, as: :datetime %>
+    <%= f.input :symptom, as: :text %>
+    <% if counsellor_signed_in? %>
+      <% if current_counsellor == @appointment.counsellor %>
+        <%= f.input :description, as: :text %>
+      <% end %>
+    <% end %>
+    <%= f.button :submit, 'Save Appointment' %>
+  <% end %>
+</div>

@@ -1,36 +1,81 @@
-<div class="container mt-5">
-  <h1 class="mb-4 text-center">Counsellor Dashboard</h1>
-
-  <% @appointments.each do |appointment| %>
-    <div class="card mb-3">
-      <div class="card-body">
-        <h5 class="card-title"><%= appointment.user.email %></h5>
-        <p class="card-text"><%= appointment.symptom %></p>
-        <%= simple_form_for appointment do |f| %>
-          <%= f.input :confirmation, as: :hidden, input_html: { value: true } %>
-          <%= f.input :counsellor_id, as: :hidden, input_html: { value: current_counsellor.id } %>
-          <%= f.submit 'Accept', class: 'btn btn-info' %>
-        <% end %>
+<div class="wrap mt-5">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card card-profile mb-4">
+        <div class="card-body">
+          <h2 class="h2">Welcome</h2>
+          <p><strong>Email:</strong> <%= @counsellor.email %></p>
+          <p><strong>Full Name:</strong> <%= @counsellor.fullname %></p>
+          <p><strong>Gender:</strong> <%= @counsellor.gender %></p>
+          <p><strong>Location:</strong> <%= @counsellor.location %></p>
+          <p><strong>Date of Birth:</strong> <%= @counsellor.birthdate.strftime("%B %d, %Y") if @counsellor.birthdate %></p>
+          <p><strong>University Name:</strong> <%= @counsellor.university_name %></p>
+          <p><strong>University ID:</strong> <%= @counsellor.university_id %></p>
+          <p><strong>Degree Program:</strong> <%= @counsellor.degree_program %></p>
+          <p><strong>Year of Study:</strong> <%= @counsellor.year_of_study %></p>
+          <p><strong>Expected Graduation Date:</strong> <%= @counsellor.expected_graduation_date %></p>
+          <%= link_to 'Change Password', edit_user_registration_path, class: 'btn btn-sm btn-change-password' %>
+        </div>
       </div>
     </div>
-  <% end %>
-  <div class="container mt-5">
-    <h1 class="display-4 text-center mb-4">Ongoing Patients</h1>
-    <ul class="list-group">
-      <% @patients.each do |patient| %>
-        <li class="list-group-item">
-          <div class="d-flex justify-content-between">
-            <div>
-              <span class="font-weight-bold">Patient name:</span>
-              <span><%= patient.fullname %></span>
-            </div>
-            <div>
-              <span class="font-weight-bold">Symptom:</span>
-              <span><%= patient.appointments[0].symptom %></span>
-            </div>
-          </div>
-        </li>
-      <% end %>
-    </ul>
+    <div class="col-md-8">
+      <div class="card card-dashboard mb-4">
+        <div class="card-body">
+          <h1 class="mb-4 text-center">Counsellor Dashboard</h1>
+          <% if @appointments.any? %>
+            <% @appointments.each do |appointment| %>
+              <div class="card mb-3">
+                <div class="card-body">
+                  <h5 class="card-title"><%= appointment.user.fullname %></h5>
+                  <p class="card-text"><%= appointment.symptom %></p>
+                  <%= simple_form_for appointment do |f| %>
+                  <div>
+                <strong>Schedule Time:</strong><%= appointment.schedule_time.strftime("%B %d, %Y at %I:%M %p") %>
+                  <div class="ms-3">
+                    <%= f.input :confirmation, as: :hidden, input_html: { value: true } %>
+                    <%= f.input :counsellor_id, as: :hidden, input_html: { value: current_counsellor.id } %>
+                    <%= f.submit 'Accept', class: 'btn btn-info' %>
+                  </div>
+                </div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <p class="text-center">You have no appointments.</p>
+          <% end %>
+        </div>
+      </div>
+      <div class="card card-dashboard mt-4">
+        <div class="card-body">
+          <h2 class="display-4 text-center mb-4">Ongoing Patients</h2>
+          <% if @patients.any? %>
+            <ul class="list-group">
+              <% @patients.each do |patient| %>
+                <li class="list-group-item">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <span class="font-weight-bold">Patient name:</span>
+                      <span><%= patient.fullname %></span>
+                    </div>
+                    <div>
+                      <span class="font-weight-bold">Symptom:</span>
+                      <span><%= patient.appointments[0].symptom %></span>
+                    </div>
+                      <div>
+                      <span class="font-weight-bold">Schedule Time:</span>
+                      <span><%= patient.appointments[0].schedule_time.strftime("%B %d, %Y at %I:%M %p") if patient.appointments[0].present? %></span>
+                    </div>
+                    <%= link_to 'Your Chatroom', client_chatroom_path(@chatroom), class: "btn btn-lg" %>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p class="text-center">No ongoing patients.</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

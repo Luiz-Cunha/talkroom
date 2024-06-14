@@ -1,6 +1,8 @@
-<h1>Book a New Appointment</h1>
-<%= simple_form_for @appointment do |f| %>
-  <%= f.input :schedule_time, as: :datetime %>
-  <%= f.input :symptom, as: :text %>
-  <%= f.button :submit, 'Book Appointment' %>
-<% end %>
+<div class="container my-2">
+  <h1>Book a New Appointment</h1>
+  <%= simple_form_for @appointment do |f| %>
+    <%= f.input :schedule_time, as: :datetime %>
+    <%= f.input :symptom, as: :text %>
+    <%= f.button :submit, 'Book Appointment' %>
+  <% end %>
+</div>

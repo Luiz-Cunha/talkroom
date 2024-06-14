@@ -9,22 +9,27 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item me-3">
-          <%= link_to 'How Does It Work', '#', class: 'nav-link' %>
+          <%= link_to 'How Does It Work', how_does_it_work_path, class: 'nav-link' %>
         </li>
         <li class="nav-item me-3">
-          <%= link_to 'Contact', '#', class: 'nav-link' %>
+          <%= link_to 'Contact', contacts_create_path, class: 'nav-link' %>
         </li>
         <li class="nav-item me-3">
-          <%= link_to 'About Us', '#', class: 'nav-link' %>
+          <%= link_to 'About Us', about_us_path, class: 'nav-link' %>
         </li>
         <li class="nav-item me-3">
-          <%= link_to 'Why talk room?', '#', class: 'nav-link' %>
+          <%= link_to 'Why TalkRoom?', why_talkroom_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Login', new_user_session_path, class: 'nav-link ms-5' %>
+          <% if user_signed_in? %>
+            <%= link_to "Log out", destroy_counsellor_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+          <% else %>
+            <%= link_to 'Login', new_user_session_path, class: 'nav-link' %>
+          <% end %>
+
         </li>
       </ul>
     </div>
   </div>
 </nav>
-<%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+ <%= link_to "Log out", destroy_counsellor_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>

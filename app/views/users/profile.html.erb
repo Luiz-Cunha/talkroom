@@ -1,6 +1,5 @@
 <div class="wrap mt-5">
   <div class="row">
-    <!-- Informações do Perfil (lado esquerdo) -->
     <div class="col-md-4">
       <div class="card card-profile mb-4">
         <div class="card-body">
@@ -17,12 +16,10 @@
         </div>
       </div>
     </div>
-    <!-- Dashboard (lado direito) -->
     <div class="col-md-8">
       <div class="card card-dashboard mb-4">
         <div class="card-body">
           <h1 class="display-4 mb-4 text-center">Pending Appointments</h1>
-          <!-- Seção de Consultas -->
           <% if @appointments.any? %>
             <div class="mb-4">
               <ul class="list-group">
@@ -48,14 +45,13 @@
           <% end %>
         </div>
       </div>
-
-      <!-- Botão para Agendar Consulta -->
       <div class="text-center mt-4">
         <%= link_to 'Book an appointment', new_appointment_path, class: " btn  btn-lg" %>
       </div>
     </div>
   </div>
 </div>
-
-<%= link_to 'Back to Home', root_path, class: 'btn btn-sm mt-5' %>
-<%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'btn btn-danger btn-sm' %>
+<div class="d-flex justify-content-between px-5 mt-5" style="margin-bottom: 50px;">
+<%= link_to 'Back to Home', root_path, class: 'btn btn-sm'  %>
+<%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: ' btn btn-sm' %>
+</div>

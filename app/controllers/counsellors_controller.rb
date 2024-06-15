@@ -4,8 +4,6 @@ class CounsellorsController < ApplicationController
     @counsellor = Counsellor.find(params[:id])
     @patients = @counsellor.users
     @appointments = Appointment.where(confirmation: false)
-    # This chatroom it created for presentation
-    @chatroom = ClientChatroom.last
   end
 
   private

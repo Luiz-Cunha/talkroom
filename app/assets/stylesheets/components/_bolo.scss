@@ -1,0 +1,23 @@
+.bolo {
+  display: flex;
+  align-items: center;
+}
+
+.text-column {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.image-column {
+  flex-shrink: 0;
+}
+
+.img-40 {
+  object-fit: auto;
+  object-position: center;
+  width: 80%;
+  height: auto;
+  flex-grow: 1;
+  margin-left: 5%;
+  margin-top: 70px;
+}

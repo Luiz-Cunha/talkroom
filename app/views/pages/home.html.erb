@@ -1,46 +1,150 @@
-<div class="main-content w-100">
-  <section class="hero w-100">
-    <div class="hero-content d-flex justify-content-around align-items-baseline align-self-center mt-3">
-      <div class="left-side">
-        <h1 class="ms-5">DO YOU NEED TO TALK?</h1>
-          <p class="subtitle ms-5">A safe space for a free meeting with Psychology Students</p>
-          <p class="phrase">We are here for you!</p>
-            <div class="buttons">
-              <%= link_to 'Sign In', signup_page_path, class: 'btn btn-pri' %>
-              <%= link_to 'Get Started', signup_page_path, class: 'btn btn-sec' %>
-            </div>
-      </div>
-      <div class="right-side ms-3">
-        <%= image_tag 'logo-3.png', class: 'logo img-fluid' %>
-      </div>
-    </div>
-  </section>
-</div>
-<div class="cont mb-5">
-  <div class="row align-items-center">
-    <div class="col-md-6 mb-5">
-      <h1 class="hero2 me-5">TALK WITH US! No matter where you are around de <strong>World</strong>!</h1>
-      <h2>
-      <strong>Who we are</strong>
-      </h2>
-      <p class="mb-3">
-        <strong>TalkRoom</strong> is a nonprofit platform that connects people needing mental health support with psychology students who provide free counseling. It's designed to be easy to use, offering free access to mental health care while giving students practical experience under professional supervision. Whether you're looking for help or are a psychology student wanting hands-on experience, TalkRoom aims to make mental health care accessible to everyone, anywhere in the world.
-      </p>
-      <p class="mb-3">
-        <strong>Accessibility:</strong> Mental health care should be available to everyone. We break down financial barriers to ensure that help is within reach for those who need it most.
-      </p>
-      <p class="mb-3" >
-        <strong>Global Reach:</strong> No matter where you are in the world, TalkRoom is here to help. Our online platform allows us to connect clients and counselors across different time zones and geographical locations.
-      </p>
-      <p>
-        <strong> Our counsellors community around the world!</strong>
-      </p>
-    </div>
-      <div class="col-md-6 d-flex justify-content-center">
-        <div id="map" class="map-container rounded-circle" data-controller="map"
-          data-map-markers-value="<%= @markers.to_json %>"
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+<div class="home w-100">
+<div class="div">
+  <div class="div-2">
+    <div class="div-3">
+      <div class="div-6">
+        <div class="div-7">
         </div>
       </div>
+    </div>
+    <div class="bolo">
+  <div class="text-column">
+    <div class="div-14">
+      Healthy Minds, Happy Lives
+      <span style="color: rgba(236, 116, 74, 1)">Mental Health</span>
+      Consultancy
+    </div>
+    <div class="div-15">Do you need to talk? We are here for you?</div>
+    <div class="div-16">Get started</div>
   </div>
+  <div class="image-column">
+    <%= image_tag 'home1.png', loading: 'lazy', class: 'img-40' %>
+  </div>
+</div>
+
+  <div class="div-17">
+    <div class="div-18">
+      <%= image_tag 'home8.png', loading: 'lazy', class: 'img-2'%>
+      <div class="div-19 w-100">
+        You are not alone. In times of difficulty, remember that there are
+        people who care about you. Friends, family, and mental health
+        professionals are here to support you.
+      </div>
+    </div>
+  <%= image_tag 'home7.png', loading: 'lazy', class: 'img-3'%>
+  </div>
+  <div class="div-20">Why Talkroom?</div>
+  <div class="div-21">
+    Why Our Mental Health Consultants are the Best Choice
+  </div>
+  <div class="div-22 p-2 flex-fill">
+    <div class="div-23">
+      <div class="column">
+        <div class="div-24">
+          <%= image_tag 'home3.png', loading: 'lazy', class: 'img-4' %>
+          <div class="div-25">Holistic approach</div>
+          <div class="div-26">
+            Free Counselling: We offer free counselling services to anyone
+            seeking help. Our platform is designed to be user-friendly, making
+            it easy for individuals to find and connect with a counsellor who
+            suits their needs.
+          </div>
+        </div>
+      </div>
+      <div class="column-2">
+        <div class="div-27">
+        <%= image_tag 'home4.png', loading: 'lazy', class: 'img-5' %>
+          <div class="div-28">Expertise Team</div>
+          <div class="div-29">
+            By working with real patients, our student counsellors gain the
+            hands-on experience they need to grow and excel in their future
+            careers.
+          </div>
+        </div>
+      </div>
+      <div class="column-3">
+        <div class="div-30">
+          <%= image_tag 'home5.png', loading: 'lazy', class: 'img-6' %>
+          <div class="div-31">Accessibility</div>
+          <div class="div-32">
+            Mental health care should be available to everyone. We break down
+            financial barriers to ensure that help is within reach for those who
+            need it most.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="div-33">
+    <div class="div-34">
+      <div class="column-4">
+        <%= image_tag 'home2.png', loading: 'lazy', class: 'img-7' %>
+      </div>
+      <div class="column-5">
+        <div class="div-35">
+          <div class="div-36">About Us</div>
+          <div class="div-37">
+            Discover the Faces Behind Our Mental Health Consultancy
+          </div>
+          <div class="carousel">
+          <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="d-flex">
+          <div class="column-6">
+            <%= image_tag 'home6.png', loading: 'lazy', class: 'img-8' %>
+          </div>
+          <div class="column-7">
+            <%= image_tag 'home6.png', loading: 'lazy', class: 'img-9' %>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="d-flex">
+          <div class="column-6">
+            <%= image_tag 'home7.png', loading: 'lazy', class: 'img-8' %>
+          </div>
+          <div class="column-7">
+            <%= image_tag 'home5.png', loading: 'lazy', class: 'img-9' %>
+          </div>
+        </div>
+      </div>
+      <!-- Add more carousel items here -->
+      <div class="carousel-item">
+        <div class="d-flex">
+          <div class="column-6">
+            <%= image_tag 'home2.png', loading: 'lazy', class: 'img-8' %>
+          </div>
+          <div class="column-7">
+            <%= image_tag 'logo-2.png', loading: 'lazy', class: 'img-9' %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="div-40">
+    <div class="div-41">Maps</div>
+    <div class="div-42">Mapping Out Mental Health Consulting Strategies</div>
+      <div class="map-container rounded-circle justify-content-center">
+            <div id="map" data-controller="map"
+              data-map-markers-value="<%= @markers.to_json %>"
+              data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+            </div>
+          </div>
+  </div>
+</div>
 </div>

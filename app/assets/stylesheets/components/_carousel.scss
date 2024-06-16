@@ -1,0 +1,19 @@
+.carousel {
+  .carousel-item .column-6, .carousel-item .column-7 {
+    flex: 1;
+  }
+  .img-8, .img-9 {
+    max-width: 100%;
+    height: auto;
+  }
+  .carousel-control-prev, .carousel-control-next {
+    width: auto;
+  }
+  .carousel-control-prev-icon, .carousel-control-next-icon {
+    display: inline-block;
+    margin-right: 10px; /* Adjust as needed */
+  }
+  .carousel-control-prev span, .carousel-control-next span {
+    vertical-align: middle;
+  }
+}

@@ -1,26 +1,70 @@
 .navbar {
-  background-color: #f0f4f1;
-  box-shadow: 0px 8px 16px #28697E;
-  // position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
+  background-color: #FCF8F4;
+  padding: 10px 0;
+
+  .navbar-brand {
+    justify-content: space-between;
+    align-self: stretch;
+    display: flex;
+    width: 100%;
+    gap: 20px;
+  }
+  @media (max-width: 991px) {
+    .navbar-brand {
+      max-width: 100%;
+      flex-wrap: wrap;
+    }
+  }
+  .navbar-nav {
+    display: flex;
+    gap: 15px;
+    font-size: 28px;
+    color: var(--txt, #1a1a1a);
+    font-weight: 700;
+    white-space: nowrap;
+    margin: auto 0;
+  }
+  @media (max-width: 991px) {
+    .navbar-nav {
+      white-space: initial;
+    }
+  }
+  .img {
+    aspect-ratio: 1.14;
+    object-fit: auto;
+    object-position: center;
+    width: 57px;
+    mix-blend-mode: darken;
+
+  }
+  @media (max-width: 991px) {
+    .avatar-dropdown-toggle  {
+      white-space: initial;
+      padding: 0 20px;
+    }
+  }
+
 
   .nav-link {
-    color: #28697E;
-    font-family: "Alegreya", serif;
+    color: black;
+    font-family: "poppins", sans-serif;
+    font-size: 18px;
 
     &:hover {
-      color: darken(#28697E, 10%);
+      color: darken(#EC744A, 10%);
     }
   }
 
   .navbar-brand .logo {
-    max-height: 70px;
+    max-height: 30px;
     width: auto;
   }
 
   .nav-item {
     margin-right: 1rem;
+  }
+  .logo-nav {
+    width: 50px;
+    height: auto;
   }
 }

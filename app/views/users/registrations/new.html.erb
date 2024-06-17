@@ -31,6 +31,7 @@
           <%= f.input :other_issues, as: :text, label: "If you selected 'Other', please specify", input_html: { class: "form-control mb-3" } %>
           <%= f.input :consent, required: true, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: "Do you consent to receiving counseling services from a psychology student under supervision?", class: "mb-3" %>
           <%= f.input :terms_conditions, required: true, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: "Do you agree to adhere to TalkRoom’s terms and conditions?", class: "mb-3" %>
+          <%= f.input :photo, as: :file %>
           <%= f.input :password,
                       required: true,
                       hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),

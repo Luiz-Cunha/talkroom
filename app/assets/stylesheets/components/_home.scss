@@ -151,20 +151,20 @@
       border-radius: 30px;
       background-color: #ec744a;
       color: #fff;
-      justify-content: center; /* Somente se estiver dentro de um elemento flexível */
-      margin: 50px 0 0 16px; /* Margem superior 50px, sem margem direita, sem margem inferior, margem esquerda 16px */
-      padding: 15px 50px; /* Preenchimento de 15px na parte superior e inferior, 50px na esquerda e direita */
+      justify-content: center;
+      margin: 50px 0 0 16px;
+      padding: 15px 50px;
       font: 700 22px Manrope, sans-serif;
-      display: inline-block; /* Para garantir que o botão ocupe apenas o espaço necessário */
-      text-align: center; /* Alinha o texto centralmente dentro do botão */
-      line-height: 1; /* Garante que a altura da linha seja igual à altura do botão */
-      cursor: pointer; /* Mostra que o elemento é clicável */
+      display: inline-block;
+      text-align: center;
+      line-height: 1;
+      cursor: pointer;
       text-decoration: none;
       transition: background-color 0.3s ease;
   }
 
     .div-16:hover {
-      background-color: #d1562c; /* Cor de fundo diferente ao passar o mouse */
+      background-color: #d1562c; 
     }
 
   }

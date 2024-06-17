@@ -1,55 +1,152 @@
-<div class="wrap mt-5">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card card-profile mb-4">
-        <div class="card-body">
-          <h2 class="h2">Welcome</h2>
-          <p><strong>Email:</strong> <%= @user.email %></p>
-          <p><strong>Full Name:</strong> <%= @user.fullname %></p>
-          <p><strong>Gender:</strong> <%= @user.gender %></p>
-          <p><strong>Location:</strong> <%= @user.location %></p>
-          <p><strong>Date of Birth:</strong> <%= @user.birthdate.strftime("%B %d, %Y") if @user.birthdate %></p>
-          <p><strong>Issues:</strong> <%= @user.other_issues %></p>
-          <p><strong>Consultation History:</strong></p>
-          <p><%= @user.consultation_history %></p>
-          <%= link_to 'Change Password', edit_user_registration_path, class: 'btn btn- btn-sm btn-change-password' %>
+<div class="wrap w-100">
+  <div class="wrap-2">
+    <div class="wrap-3">
+      <div class="wrap-4">
+        <div class="wrap-5"></div>
+        <div class="wrap-6">
+          <div class="wrap-7">Welcome</div>
+          <div class="wrap-8">
+            Hello and welcome to TalkRoom, your platform for accessible and free psychological support. We are delighted to have you here and want to ensure that you receive all the support necessary to take care of your mental health.
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-md-8">
-      <div class="card card-dashboard mb-4">
-        <div class="card-body">
-          <h1 class="display-4 mb-4 text-center">Pending Appointments</h1>
-          <% if @appointments.any? %>
-            <div class="mb-4">
-              <ul class="list-group">
-                <% @appointments.each do |appointment| %>
-                  <li class="list-group-item">
-                    <div class="d-flex justify-content-between align-items-center">
-                      <div>
-                        <p><strong>Time:</strong> <%= appointment.schedule_time.strftime("%B %d, %Y at %I:%M %p") %></p>
-                        <p><strong>Symptom:</strong> <%= appointment.symptom %></p>
-                        <p><strong>Confirmed:</strong> <%= appointment.confirmation ? 'Yes' : 'No' %></p>
-                        <% if appointment.confirmation == true %>
-                          <%= link_to 'Your Chatroom', client_chatroom_path(@chatroom), class: "btn btn-lg" %>
-                        <% end %>
-                      </div>
-                      <div class="btn-group-vertical">
-                        <%= link_to 'Edit', edit_appointment_path(appointment), class: 'btn  btn-sm' %>
-                        <%= link_to 'Delete', appointment_path(appointment), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn  btn-sm' %>
-                      </div>
-                    </div>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-          <% else %>
-            <p class="text-center">You have no appointments.</p>
-          <% end %>
+  </div>
+  <div class="wrap-9">
+    <div class="wrap-10 d-flex">
+      <div class="wrap-11">
+        <div class="colum">
+          <%= image_tag 'patient1.png', loading: 'lazy', class: 'imga-1' %>
+        </div>
+        <div class="colum-2">
+          <div class="wrap-12">
+            <p><strong>Email:</strong> <%= @user.email %></p>
+            <p><strong>Full Name:</strong> <%= @user.fullname %></p>
+            <p><strong>Gender:</strong> <%= @user.gender %></p>
+            <p><strong>Location:</strong> <%= @user.location %></p>
+            <p><strong>Date of Birth:</strong> <%= @user.birthdate.strftime("%B %d, %Y") if @user.birthdate %></p>
+            <p><strong>Issues:</strong> <%= @user.other_issues %></p>
+            <p><strong>Consultation History:</strong></p>
+            <p><%= @user.consultation_history %></p>
+            <%= link_to 'Change Password', edit_user_registration_path, class: 'btn-wrap' %>
+          </div>
         </div>
       </div>
-      <div class="text-center mt-4">
-        <%= link_to 'Book an appointment', new_appointment_path, class: "btn btn-lg" %>
+    </div>
+    <div class="wrap-34">
+      <span style="color: rgba(255, 255, 255, 1)"></span>
+      <%= link_to 'Book an appointment', new_appointment_path, class: "btn-wrap" %>
+    </div>
+
+
+<div class="wrap-13">Appointments</div>
+<% if @appointments.any? %>
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <% @appointments.each_slice(3).with_index do |appointment_group, index| %>
+        <div class="carousel-item <%= 'active' if index == 0 %>">
+          <div class="row">
+            <% appointment_group.each do |appointment| %>
+              <div class="col-md-4 mb-4">
+                <div class="card bg-light appointment-card">
+                  <div class="card-body">
+                    <p class="card-text"><strong>Time:</strong> <%= appointment.schedule_time.strftime("%B %d, %Y at %I:%M %p") %></p>
+                    <p class="card-text"><strong>Symptom:</strong> <%= appointment.symptom %></p>
+                    <p class="card-text"><strong>Confirmed:</strong> <%= appointment.confirmation ? 'Yes' : 'No' %></p>
+                    <% if appointment.confirmation == true %>
+                      <%= link_to 'Your Talkroom', client_chatroom_path(@chatroom), class: "btn-wrap mt-2" %>
+                    <% end %>
+                  </div>
+                  <div class="card-footer d-flex justify-content-between">
+                    <%= link_to 'Edit', edit_appointment_path(appointment), class: 'btn-wrap' %>
+                    <%= link_to 'Delete', appointment_path(appointment), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn-wrap', style: 'margin-left: 5px;' %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+<% else %>
+  <p class="text-center w-100">You have no appointments.</p>
+<% end %>
+
+
+    <div class="wrap-35">
+      <div class="wrap-36">
+        <%= image_tag 'home8.png', loading: 'lazy', class: 'imga-5' %>
+        <div class="wrap-37">
+          <div class="wrap-38">Taking care of your mental health is essential for your overall well-being</div>
+          <%= image_tag 'home7.png', loading: 'lazy', class: 'imga-6' %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="wrap-39">Previous Appointments</div>
+    <div class="wrap-40">
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="card">
+              <%= image_tag 'Patient2.png', loading: 'lazy', class: 'card-img-top' %>
+              <div class="card-body">
+                <h5 class="card-title">Counsellor name: fulano</h5>
+                <p class="card-text">
+                  Schedule time: <br />
+                  Symptom:
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="card">
+              <%= image_tag 'patient1.png', loading: 'lazy', class: 'card-img-top' %>
+              <div class="card-body">
+                <h5 class="card-title">Counsellor name:</h5>
+                <p class="card-text">
+                  Schedule time:<br />
+                  Symptom:
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="card">
+              <%= image_tag 'Patient2.png', loading: 'lazy', class: 'card-img-top' %>
+              <div class="card-body">
+                <h5 class="card-title">Counsellor name:</h5>
+                <p class="card-text">
+                  Schedule time:<br />
+                  Symptom:
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
     </div>
   </div>

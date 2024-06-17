@@ -25,7 +25,7 @@
         </li>
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
-            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.photo.key %>" alt="User avatar" />
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : asset_path('patient1.png') %>" alt="User avatar" />
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "User Profile", profile_user_path(current_user), class: "dropdown-item" %>
               <%= link_to "Edit your account", edit_user_registration_path, class: "dropdown-item" %>
@@ -34,7 +34,7 @@
           </li>
         <% elsif counsellor_signed_in? %>
           <li class="nav-item dropdown">
-            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_counsellor.photo.key %>" alt="Counsellor avatar" />
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= current_counsellor.photo.attached? ? cl_image_path(current_counsellor.photo.key) : asset_path('patient1.png') %>" alt="Counsellor avatar" />
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Counsellor Profile", profile_counsellor_path(current_counsellor), class: "dropdown-item" %>
               <%= link_to "Edit your account", edit_counsellor_registration_path, class: "dropdown-item" %>
@@ -61,7 +61,7 @@
               <li><%= link_to "Login as Supervisor", new_supervisor_session_path, class: "dropdown-item" %></li>
             </ul>
           </li>
-        <% end %> 
+        <% end %>
       </ul>
     </div>
   </div>

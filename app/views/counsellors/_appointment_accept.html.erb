@@ -1,0 +1,16 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title"><%= appointment.user.fullname %></h5>
+    <p class="card-text"><%= appointment.symptom %></p>
+    <%= simple_form_for appointment do |f| %>
+      <div>
+        <strong>Schedule Time:</strong>
+        <%= appointment.schedule_time.strftime("%B %d, %Y at %I:%M %p") %>
+        <div class="ms-3">
+          <%= f.input :confirmation, as: :hidden, input_html: { value: true } %>
+          <%= f.submit 'Accept', class: 'btn btn-info' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

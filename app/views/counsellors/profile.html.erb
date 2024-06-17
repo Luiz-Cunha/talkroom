@@ -22,29 +22,17 @@
       <div class="card card-dashboard mb-4">
         <div class="card-body">
           <h1 class="mb-4 text-center">Counsellor Dashboard</h1>
-          <% if @appointments.any? %>
-            <% @appointments.each do |appointment| %>
-              <div class="card mb-3">
-                <div class="card-body">
-                  <h5 class="card-title"><%= appointment.user.fullname %></h5>
-                  <p class="card-text"><%= appointment.symptom %></p>
-                  <%= simple_form_for appointment do |f| %>
-                    <div>
-                      <strong>Schedule Time:</strong>
-                      <%= appointment.schedule_time.strftime("%B %d, %Y at %I:%M %p") %>
-                      <div class="ms-3">
-                        <%= f.input :confirmation, as: :hidden, input_html: { value: true } %>
-                        <%= f.input :counsellor_id, as: :hidden, input_html: { value: current_counsellor.id } %>
-                        <%= f.submit 'Accept', class: 'btn btn-info' %>
-                      </div>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>
-          <% else %>
-            <p class="text-center">You have no appointments.</p>
-          <% end %>
+          <div data-controller="appointments">
+            <div data-appointments-target="appointments">
+              <% if @appointments.any? %>
+                <% @appointments.order(created_at: :desc).each do |appointment| %>
+                  <%= render "appointment_accept", appointment: appointment %>
+                <% end %>
+              <% else %>
+                <p class="text-center">You have no appointments.</p>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
       <div class="card card-dashboard mt-4">

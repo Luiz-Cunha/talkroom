@@ -11,7 +11,8 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
     @appointment.user = current_user
     if @appointment.save
-      redirect_to profile_user_path(current_user), notice: 'Appointment was successfully created.'
+      ActionCable.server.broadcast("appointments_channel", render_to_string(partial: "counsellors/appointment_accept", locals: {appointment: @appointment}))
+      #redirect_to profile_user_path(current_user), notice: 'Appointment was successfully created.'
     else
       render :new
     end
@@ -27,6 +28,7 @@ class AppointmentsController < ApplicationController
 
   def update
     @appointment = Appointment.find(params[:id])
+    @appointment.counsellor = current_counsellor
     if @appointment.update(appointment_params)
       redirect_correct_page
     else
@@ -47,7 +49,7 @@ class AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:schedule_time, :symptom, :confirmation, :counsellor_id, :description)
+    params.require(:appointment).permit(:schedule_time, :symptom, :confirmation, :description)
   end
 
   def redirect_correct_page

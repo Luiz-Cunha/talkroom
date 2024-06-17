@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :signup_page ]
+  skip_before_action :authenticate_user!, only: [ :home, :signup_page, :about_us, :how_does_it_work, :why_talkroom]
   before_action :redirect_if_logged_in, only: [:home]
 
   def home

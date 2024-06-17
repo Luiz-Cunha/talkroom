@@ -12,10 +12,11 @@
       </div>
     </div>
   </div>
+
   <div class="wrap-9">
     <div class="wrap-10 d-flex">
       <div class="wrap-11">
-        <div class="colum">
+        <div class="imga-3"><img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : asset_path('patient1.png') %>" />
           <%# <%= image_tag @user.photo.variant(resize: "100x100"), class: 'rounded-circle imga-1' if @user.photo.attached? %>
         </div>
         <div class="colum-2">
@@ -35,7 +36,7 @@
     </div>
     <div data-controller="toggle" data-toggle-value="<%= user_signed_in? %>">
       <div class="wrap-34">
-        <span style="color: rgba(255, 255, 255, 1)"></span>
+        <span style="color: #ec744a"></span>
         <button class="btn-wrap" data-action="click->toggle#fire">Book an appointment</button>
       </div>
         <div class="container my-2 <%= 'd-none' unless @appointment.errors.any?%>" data-toggle-target="formToggle" data-patients-target="hideForm">
@@ -47,6 +48,7 @@
         </div>
     </div>
   </div>
+
 <div class="wrap-13">Appointments</div>
 <% if @appointments.any? %>
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -54,7 +56,7 @@
       <% @appointments.order(created_at: :desc).each_slice(3).with_index do |appointment_group, index| %>
         <div class="carousel-item <%= 'active' if index == 0 %>">
           <div class="row">
-            <div>
+            <div class="">
               <div data-patients-target="patientsAppointments">
                 <% appointment_group.each do |appointment| %>
                   <%= render "users/appointment_user", appointment: appointment %>

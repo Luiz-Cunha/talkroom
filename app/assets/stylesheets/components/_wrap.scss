@@ -64,7 +64,7 @@
   }
 
   .row {
-    margin-top: 150px;
+  margin-top: 150px;
   }
   .card {
     max-width: 300px;
@@ -186,7 +186,7 @@
     }
   }
   .wrap-10 {
-    align-self: auto;
+    align-self: center;
   }
   @media (max-width: 991px) {
     .wrap-10 {
@@ -383,6 +383,7 @@
     justify-content: center;
     padding: 7px 23px;
     text-decoration: none;
+    border:none;
   }
   @media (max-width: 991px) {
     .wrap-20 {
@@ -614,6 +615,7 @@
     background-color: #ec744a;
     align-self: center;
     margin-top: 100px;
+    margin-left: 350px;
     width: 1000px;
     max-width: 100%;
     color: #fff;
@@ -621,6 +623,7 @@
     justify-content: center;
     padding: 15px 60px 15px 50px;
     font: 400 60px Poppins, sans-serif;
+    text-decoration: none;
   }
   @media (max-width: 991px) {
     .wrap-34 {

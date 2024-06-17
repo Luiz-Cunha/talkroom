@@ -2,10 +2,9 @@ class CounsellorsController < ApplicationController
   skip_before_action :authenticate_user!, if: :check_user_type_counsellor
   def profile
     @counsellor = Counsellor.find(params[:id])
-    @patients = @counsellor.users
+    #@patients = @counsellor.users
+    @appointments_confirmed = @counsellor.appointments.where(confirmation: true)
     @appointments = Appointment.where(confirmation: false)
-    # This chatroom it created for presentation
-    @chatroom = ClientChatroom.last
   end
 
   private

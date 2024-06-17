@@ -38,6 +38,7 @@
           <%= f.input :counseling_experience_description, as: :text, label: "If yes, please briefly describe your experience" %>
           <%= f.input :consent, required: true, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: "Do you agree to provide counseling services under the supervision of a licensed psychologist and adhere to TalkRoom’s guidelines?" %>
           <%= f.input :terms_conditions, required: true, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: "Do you agree to adhere to TalkRoom’s terms and conditions?" %>
+          <%= f.input :photo, as: :file %>
           <%= f.input :password,
                       required: true,
                       hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),

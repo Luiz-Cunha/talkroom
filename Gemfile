@@ -44,7 +44,7 @@ gem "bootsnap", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
-
+gem 'cloudinary'
 gem "bootstrap", "~> 5.2"
 gem "devise"
 gem "autoprefixer-rails"
@@ -67,7 +67,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-  
+
 
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 end

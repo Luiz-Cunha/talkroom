@@ -11,8 +11,12 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
     @appointment.user = current_user
     if @appointment.save
+<<<<<<< HEAD
       ActionCable.server.broadcast("appointments_channel", render_to_string(partial: "counsellors/appointment_accept", locals: {appointment: @appointment}))
       #redirect_to profile_user_path(current_user), notice: 'Appointment was successfully created.'
+=======
+      redirect_to profile_user_path(current_user, anchor: 'carouselExampleControls'), notice: 'Appointment was successfully created.'
+>>>>>>> master
     else
       render :new
     end
@@ -49,7 +53,11 @@ class AppointmentsController < ApplicationController
   end
 
   def appointment_params
+<<<<<<< HEAD
     params.require(:appointment).permit(:schedule_time, :symptom, :confirmation, :description)
+=======
+    params.require(:appointment).permit(:schedule_time, :symptom, :confirmation, :counsellor_id, :description, :counsellor_fullname)
+>>>>>>> master
   end
 
   def redirect_correct_page

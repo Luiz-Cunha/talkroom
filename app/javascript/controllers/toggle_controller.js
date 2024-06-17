@@ -8,9 +8,8 @@ export default class extends Controller {
   }
 
   fire () {
-    console.log(this.data.get("value"));
-      if (this.data.get("value") === "true"){
-        this.formToggleTarget.classList.toggle("d-none");
-      }
+    if (this.data.get("value") === "true"){
+      this.formToggleTarget.classList.toggle("d-none");
+    }
   }
 }

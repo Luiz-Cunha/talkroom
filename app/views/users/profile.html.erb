@@ -1,4 +1,4 @@
-<div class="wrap w-100">
+<div class="wrap w-100" data-controller="patients" data-patients-userid-value="<%= current_user.id %>">
   <div class="wrap-2">
     <div class="wrap-3">
       <div class="wrap-4">
@@ -38,27 +38,24 @@
         <span style="color: rgba(255, 255, 255, 1)"></span>
         <button class="btn-wrap" data-action="click->toggle#fire">Book an appointment</button>
       </div>
-        <div class="container my-2 <%= 'd-none' unless @appointment.errors.any?%>" data-toggle-target="formToggle">
-          <%= simple_form_for @appointment do |f| %>
+        <div class="container my-2 <%= 'd-none' unless @appointment.errors.any?%>" data-toggle-target="formToggle" data-patients-target="hideForm">
+          <%= simple_form_for @appointment, html: { data: { action: "turbo:submit-end->patients#resetForm" }} do |f| %>
             <%= f.input :schedule_time, as: :datetime %>
             <%= f.input :symptom, as: :text %>
             <%= f.button :submit, 'Book Appointment' %>
           <% end %>
         </div>
     </div>
-
-
-
-
+  </div>
 <div class="wrap-13">Appointments</div>
 <% if @appointments.any? %>
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-      <% @appointments.each_slice(3).with_index do |appointment_group, index| %>
+      <% @appointments.order(created_at: :desc).each_slice(3).with_index do |appointment_group, index| %>
         <div class="carousel-item <%= 'active' if index == 0 %>">
           <div class="row">
-            <div data-controller="patients" data-patients-userid-value="<%= current_user.id %>">
-              <div data-patient-target="patientsAppointments">
+            <div>
+              <div data-patients-target="patientsAppointments">
                 <% appointment_group.each do |appointment| %>
                   <%= render "users/appointment_user", appointment: appointment %>
                 <% end %>
@@ -80,6 +77,7 @@
 <% else %>
   <p class="text-center w-100">You have no appointments.</p>
 <% end %>
+
 
 
     <div class="wrap-35">
@@ -127,4 +125,5 @@
     </button>
   </div>
 </div>
+
 </div>

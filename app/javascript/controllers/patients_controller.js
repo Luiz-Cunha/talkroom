@@ -3,14 +3,18 @@ import { createConsumer } from "@rails/actioncable"
 
 // Connects to data-controller="patients"
 export default class extends Controller {
-  static targets = ["patientsAppointments"]
+  static targets = ["patientsAppointments", "hideForm"]
   static values = { userid: Number }
   connect() {
     this.subscription = createConsumer().subscriptions.create({ channel: "PatientChannel", id: this.useridValue }, {
       received: (data) => {
-        console.log(data);
-        //this.patientsAppointmentsTarget.insertAdjacentHTML('afterbegin', data)
+        this.patientsAppointmentsTarget.insertAdjacentHTML('afterbegin', data)
       }
     })
+  }
+
+  resetForm(event){
+    event.target.reset()
+    this.hideFormTarget.classList.toggle("d-none")
   }
 }

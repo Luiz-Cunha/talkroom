@@ -16,7 +16,7 @@
     <div class="wrap-10 d-flex">
       <div class="wrap-11">
         <div class="colum">
-          <%= image_tag @user.photo.variant(resize: "100x100"), class: 'rounded-circle imga-1' if @user.photo.attached? %>
+          <%# <%= image_tag @user.photo.variant(resize: "100x100"), class: 'rounded-circle imga-1' if @user.photo.attached? %> 
         </div>
         <div class="colum-2">
           <div class="wrap-12">
@@ -105,7 +105,7 @@
       <% @previous_appointments.each_with_index do |appointment, index| %>
         <div class="carousel-item <%= 'active' if index.zero? %>">
           <div class="card">
-            <%= image_tag appointment.counsellor.photo, loading: 'lazy', class: 'card-img-top' if appointment.counsellor.photo.present? %>
+            <%# <%= image_tag appointment.counsellor.photo, loading: 'lazy', class: 'card-img-top' if appointment.counsellor.photo.present? %>
             <div class="card-body">
               <h5 class="card-title">Counsellor name: <%= appointment.counsellor.fullname if appointment.counsellor  %></h5>
               <p class="card-text">

@@ -1,0 +1,74 @@
+.btn-homepage {
+  margin-top: 50px;
+  border-radius: 20px;
+  font-family: Poppins, sans-serif;
+  align-items: start;
+  color: white;
+  background-color: #ec744a;
+  padding: 5px 20px;
+  text-decoration: none;
+  transition: background-color 0.3s eas;
+  width: 300px;
+  font-size: 20px;
+  margin-left: 80px;
+}
+
+.card-homepage-top {
+  color: var(--txt, #1A1A1A);
+  font-family: Manrope;
+  font-size: 68px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  width: 628px;
+}
+
+.subtitle-card-homepage-top {
+  color: var(--txt, #1A1A1A);
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.text-in-greenbanner-quotes {
+  color: var(--txt, #FFF);
+  font-family: Manrope;
+  text-align: center;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.before-cards-banner-flex-text {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.text-with-size-h2 {
+color: #000;
+text-align: center;
+font-family: Manrope;
+font-size: 22px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.text-with-size-h6 {
+font-family: Manrope;
+font-size: 22px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.map-display-text {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}

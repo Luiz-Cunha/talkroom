@@ -15,7 +15,7 @@ supervisor1 = Supervisor.create!(
 )
 
 # Adicionar foto para supervisor1
-supervisor1.photo.attach(io: File.open('path/to/photo.jpg'), filename: 'photo.jpg', content_type: 'image/jpg')
+
 
 supervisor2 = Supervisor.create!(
   email: "supervisor2@example.com",
@@ -24,7 +24,7 @@ supervisor2 = Supervisor.create!(
 )
 
 # Adicionar foto para supervisor2
-supervisor2.photo.attach(io: File.open('path/to/photo.jpg'), filename: 'photo.jpg', content_type: 'image/jpg')
+
 
 # Criação de conselheiros
 counsellor1 = Counsellor.create!(
@@ -50,7 +50,7 @@ counsellor1 = Counsellor.create!(
 )
 
 # Adicionar foto para counsellor1
-counsellor1.photo.attach(io: File.open('path/to/photo.jpg'), filename: 'photo.jpg', content_type: 'image/jpg')
+
 
 counsellor2 = Counsellor.create!(
   email: "counsellor2@example.com",
@@ -75,7 +75,7 @@ counsellor2 = Counsellor.create!(
 )
 
 # Adicionar foto para counsellor2
-counsellor2.photo.attach(io: File.open('path/to/photo.jpg'), filename: 'photo.jpg', content_type: 'image/jpg')
+
 
 # Criação de usuários
 user1 = User.create!(
@@ -96,7 +96,7 @@ user1 = User.create!(
 )
 
 # Adicionar foto para user1
-user1.photo.attach(io: File.open('path/to/photo.jpg'), filename: 'photo.jpg', content_type: 'image/jpg')
+
 
 user2 = User.create!(
   email: "user2@example.com",
@@ -116,6 +116,6 @@ user2 = User.create!(
 )
 
 # Adicionar foto para user2
-user2.photo.attach(io: File.open('path/to/photo.jpg'), filename: 'photo.jpg', content_type: 'image/jpg')
+
 
 puts "Seed data created successfully with photos!"

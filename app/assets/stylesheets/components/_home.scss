@@ -16,7 +16,6 @@
     width: 100%;
     flex-direction: column;
     align-items: start;
-    padding: 0 33px;
   }
   @media (max-width: 991px) {
     .div-2 {
@@ -124,8 +123,8 @@
   }
   .div-14 {
     color: var(--2, #ec744a);
-    width: 628px;
-    margin: 85px 0 0 16px;
+    width: 800px;
+    margin: 95px 70px 16px;
     font: 800 68px Manrope, sans-serif;
   }
   @media (max-width: 991px) {
@@ -138,6 +137,7 @@
   .div-15 {
     color: var(--txt, #1a1a1a);
     margin: 50px 0 0 16px;
+    margin-left: 80px;
     font: 400 18px Poppins, sans-serif;
   }
   @media (max-width: 991px) {
@@ -147,24 +147,23 @@
     }
   }
   .div-16 {
+    margin-top: 50px;
+    border-radius: 20px;
+    font-family: Poppins, sans-serif;
+    align-items: start;
+    color: white;
+    background-color: #ec744a;
+    padding: 5px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s eas;
+    width: 300px;
+    font-size: 20px;
+    margin-left: 80px;
 
-      border-radius: 30px;
-      background-color: #ec744a;
-      color: #fff;
-      justify-content: center;
-      margin: 50px 0 0 16px;
-      padding: 15px 50px;
-      font: 700 22px Manrope, sans-serif;
-      display: inline-block;
-      text-align: center;
-      line-height: 1;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
   }
 
     .div-16:hover {
-      background-color: #d1562c; 
+      background-color: #d1562c;
     }
 
   }
@@ -178,13 +177,14 @@
     background: linear-gradient(270deg, #007d6e 0%, #5eb47c 100%);
     display: flex;
     margin-top: 150px;
-    width: 100%;
+    width:100;
     flex-direction: column;
     font-size: 30px;
     color: var(--txt, #fff);
     font-weight: 700;
     text-align: center;
     padding: 74px 0;
+
   }
   @media (max-width: 991px) {
     .div-17 {
@@ -486,7 +486,7 @@
     display: flex;
     flex-direction: column;
     line-height: normal;
-    width: 50%;
+    width: 40%;
     margin-left: 20px;
   }
   @media (max-width: 991px) {
@@ -696,10 +696,12 @@
       .div-16 {
         border-radius: 30px;
         background-color: var(--2, #ec744a);
-        color: var(--txt, #fff);
+        color:  #fff;
         justify-content: center;
         margin: 50px 0 0 16px;
         padding: 15px 50px;
+        align-content: center;
+        text-decoration: none;
         font: 700 22px Manrope, sans-serif;
       }
       @media (max-width: 991px) {
@@ -1100,7 +1102,7 @@
         flex-direction: column;
         line-height: normal;
         width: 50%;
-        margin-left: 20px;
+        margin-left: 500px;
       }
       @media (max-width: 991px) {
         .column-7 {
@@ -1123,12 +1125,12 @@
         align-self: center;
         display: flex;
         margin-top: 338px;
-        width: 100%;
         max-width: 981px;
         flex-direction: column;
         color: #000;
         font-weight: 700;
         text-align: center;
+        margin-left: 500px;
       }
       @media (max-width: 991px) {
         .div-40 {
@@ -1136,14 +1138,37 @@
           margin-top: 40px;
         }
       }
+
+      // .map-container {
+      //   width: 100%;
+      //   display: flex;
+      //   justify-content: center;
+      //   align-items: center;
+      //   margin-top: 50px;
+      //   margin-bottom: 50px;
+      //   height: 600px;
+      // }
+
+      // #map {
+      //   width: 600px;
+      //   height: 600px;
+      //   border-radius: 50%;
+      //   overflow: hidden;
+      // }
+
+      .column-8 {
+        display: flex;
+        margin-left: 500px;
+      }
       .div-41 {
         align-self: center;
         font: 22px Manrope, sans-serif;
       }
       .div-42 {
-        align-self: start;
+        align-self: center;
         margin-top: 20px;
         font: 54px Manrope, sans-serif;
+        margin-left: 500px;
       }
       @media (max-width: 991px) {
         .div-42 {
@@ -1282,16 +1307,20 @@
     color: #000;
     font-weight: 700;
     text-align: center;
+    margin-left: 450px;
   }
   @media (max-width: 991px) {
     .div-40 {
       max-width: 100%;
       margin-top: 40px;
+
     }
   }
   .div-41 {
     align-self: center;
     font: 22px Manrope, sans-serif;
+    margin-right: 30px;
+
   }
   .div-42 {
     align-self: start;

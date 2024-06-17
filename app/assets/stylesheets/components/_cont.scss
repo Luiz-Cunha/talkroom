@@ -79,10 +79,14 @@ p {
   justify-content: center;
   align-items: center;
   margin-top: 50px;
-  bottom: 50px;
+  margin-bottom: 50px;
+  height: 600px; /* Definir uma altura para o container, se necessário */
 }
 
 #map {
   width: 600px;
   height: 600px;
+  border-radius: 50%; /* Transforma em um círculo */
+  overflow: hidden; /* Evita que conteúdo ultrapasse os limites do círculo */
 }
+

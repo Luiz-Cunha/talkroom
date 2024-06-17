@@ -47,7 +47,7 @@ class AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:schedule_time, :symptom, :confirmation, :counsellor_id, :description)
+    params.require(:appointment).permit(:schedule_time, :symptom, :confirmation, :counsellor_id, :description, :counsellor_fullname)
   end
 
   def redirect_correct_page

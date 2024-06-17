@@ -16,7 +16,7 @@
     <div class="wrap-10 d-flex">
       <div class="wrap-11">
         <div class="colum">
-          <%= image_tag 'patient1.png', loading: 'lazy', class: 'imga-1' %>
+          <%= image_tag @user.photo.variant(resize: "100x100"), class: 'rounded-circle imga-1' if @user.photo.attached? %>
         </div>
         <div class="colum-2">
           <div class="wrap-12">
@@ -94,60 +94,37 @@
 
 
     <div class="wrap-39">Previous Appointments</div>
-    <div class="wrap-40">
-      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="card">
-              <%= image_tag 'Patient2.png', loading: 'lazy', class: 'card-img-top' %>
-              <div class="card-body">
-                <h5 class="card-title">Counsellor name: fulano</h5>
-                <p class="card-text">
-                  Schedule time: <br />
-                  Symptom:
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="card">
-              <%= image_tag 'patient1.png', loading: 'lazy', class: 'card-img-top' %>
-              <div class="card-body">
-                <h5 class="card-title">Counsellor name:</h5>
-                <p class="card-text">
-                  Schedule time:<br />
-                  Symptom:
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="card">
-              <%= image_tag 'Patient2.png', loading: 'lazy', class: 'card-img-top' %>
-              <div class="card-body">
-                <h5 class="card-title">Counsellor name:</h5>
-                <p class="card-text">
-                  Schedule time:<br />
-                  Symptom:
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
+<div class="wrap-40">
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <% @previous_appointments.each_with_index do |appointment, index| %>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" <%= 'class="active" aria-current="true"' if index.zero? %> aria-label="Slide <%= index + 1 %>"></button>
+      <% end %>
     </div>
+    <div class="carousel-inner">
+      <% @previous_appointments.each_with_index do |appointment, index| %>
+        <div class="carousel-item <%= 'active' if index.zero? %>">
+          <div class="card">
+            <%= image_tag appointment.counsellor.photo, loading: 'lazy', class: 'card-img-top' if appointment.counsellor.photo.present? %>
+            <div class="card-body">
+              <h5 class="card-title">Counsellor name: <%= appointment.counsellor.fullname if appointment.counsellor  %></h5>
+              <p class="card-text">
+                Schedule time: <%= appointment.schedule_time.strftime("%B %d, %Y at %I:%M %p") %><br />
+                Symptom: <%= appointment.symptom %>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
+</div>
 </div>

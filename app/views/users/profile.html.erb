@@ -16,7 +16,7 @@
     <div class="wrap-10 d-flex">
       <div class="wrap-11">
         <div class="colum">
-          <%# <%= image_tag @user.photo.variant(resize: "100x100"), class: 'rounded-circle imga-1' if @user.photo.attached? %> 
+          <%# <%= image_tag @user.photo.variant(resize: "100x100"), class: 'rounded-circle imga-1' if @user.photo.attached? %>
         </div>
         <div class="colum-2">
           <div class="wrap-12">
@@ -33,10 +33,21 @@
         </div>
       </div>
     </div>
-    <div class="wrap-34">
-      <span style="color: rgba(255, 255, 255, 1)"></span>
-      <%= link_to 'Book an appointment', new_appointment_path, class: "btn-wrap" %>
+    <div data-controller="toggle" data-toggle-value="<%= user_signed_in? %>">
+      <div class="wrap-34">
+        <span style="color: rgba(255, 255, 255, 1)"></span>
+        <button class="btn-wrap" data-action="click->toggle#fire">Book an appointment</button>
+      </div>
+        <div class="container my-2 <%= 'd-none' unless @appointment.errors.any?%>" data-toggle-target="formToggle">
+          <%= simple_form_for @appointment do |f| %>
+            <%= f.input :schedule_time, as: :datetime %>
+            <%= f.input :symptom, as: :text %>
+            <%= f.button :submit, 'Book Appointment' %>
+          <% end %>
+        </div>
     </div>
+
+
 
 
 <div class="wrap-13">Appointments</div>
@@ -46,29 +57,13 @@
       <% @appointments.each_slice(3).with_index do |appointment_group, index| %>
         <div class="carousel-item <%= 'active' if index == 0 %>">
           <div class="row">
-            <% appointment_group.each do |appointment| %>
-              <div class="col-md-4 mb-4">
-                <div class="card bg-light appointment-card">
-                  <div class="card-body">
-                    <p class="card-text"><strong>Time:</strong> <%= appointment.schedule_time.strftime("%B %d, %Y at %I:%M %p") %></p>
-                    <p class="card-text"><strong>Symptom:</strong> <%= appointment.symptom %></p>
-                    <p class="card-text"><strong>Confirmed:</strong> <%= appointment.confirmation ? 'Yes' : 'No' %></p>
-                        <% if appointment.confirmation == true %>
-                            <% chatroom = ClientChatroom.find_by(user_id: appointment.user_id, counsellor_id: appointment.counsellor_id) %>
-                          <% if chatroom.present? %>
-                            <%= link_to 'Your Chatroom', client_chatroom_path(chatroom), class: "btn btn-lg" %>
-                          <% else %>
-                            <%= button_to 'Create Chatroom', client_chatrooms_path(user_id: appointment.user_id, counsellor_id: appointment.counsellor_id), method: :post, class: "btn btn-lg" %>
-                          <% end %>
-                        <% end %>
-                  </div>
-                  <div class="card-footer d-flex justify-content-between">
-                    <%= link_to 'Edit', edit_appointment_path(appointment), class: 'btn-wrap' %>
-                    <%= link_to 'Delete', appointment_path(appointment), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn-wrap', style: 'margin-left: 5px;' %>
-                  </div>
-                </div>
+            <div data-controller="patients" data-patients-userid-value="<%= current_user.id %>">
+              <div data-patient-target="patientsAppointments">
+                <% appointment_group.each do |appointment| %>
+                  <%= render "users/appointment_user", appointment: appointment %>
+                <% end %>
               </div>
-            <% end %>
+            </div>
           </div>
         </div>
       <% end %>

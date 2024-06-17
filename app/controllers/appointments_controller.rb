@@ -3,22 +3,23 @@ class AppointmentsController < ApplicationController
   skip_before_action :authenticate_user!, if: :check_user_type_counsellor
 
   def new
-    @appointment = Appointment.new
-    @appointment.user = current_user
+    # @appointment = Appointment.new
+    # @appointment.user = current_user
   end
 
   def create
+    @user = current_user
+    @appointments = @user.appointments
+    @previous_appointments = @user.appointments.where("schedule_time < ?", Time.now)
     @appointment = Appointment.new(appointment_params)
     @appointment.user = current_user
     if @appointment.save
-<<<<<<< HEAD
       ActionCable.server.broadcast("appointments_channel", render_to_string(partial: "counsellors/appointment_accept", locals: {appointment: @appointment}))
+      PatientChannel.broadcast_to(@user, render_to_string(partial: "users/appointment_user", locals: {appointment: @appointment}))
       #redirect_to profile_user_path(current_user), notice: 'Appointment was successfully created.'
-=======
-      redirect_to profile_user_path(current_user, anchor: 'carouselExampleControls'), notice: 'Appointment was successfully created.'
->>>>>>> master
+      # redirect_to profile_user_path(current_user, anchor: 'carouselExampleControls'), notice: 'Appointment was successfully created.'
     else
-      render :new
+      render 'users/profile', status: :unprocessable_entity
     end
   end
 
@@ -53,11 +54,7 @@ class AppointmentsController < ApplicationController
   end
 
   def appointment_params
-<<<<<<< HEAD
-    params.require(:appointment).permit(:schedule_time, :symptom, :confirmation, :description)
-=======
-    params.require(:appointment).permit(:schedule_time, :symptom, :confirmation, :counsellor_id, :description, :counsellor_fullname)
->>>>>>> master
+    params.require(:appointment).permit(:schedule_time, :symptom, :confirmation, :description, :counsellor_fullname)
   end
 
   def redirect_correct_page

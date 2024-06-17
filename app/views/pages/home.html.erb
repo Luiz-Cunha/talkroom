@@ -1,6 +1,6 @@
 <div class="home w-100">
 <div class="div">
-  <div class="div-2">
+  <div class="div-2 w-100">
     <div class="div-3">
       <div class="div-6">
         <div class="div-7">
@@ -9,16 +9,16 @@
     </div>
     <div class="bolo">
   <div class="text-column">
-    <div class="div-14">
+    <div class="div-14 ">
       Healthy Minds, Happy Lives
       <span style="color: rgba(236, 116, 74, 1)">Mental Health</span>
       Consultancy
     </div>
     <div class="div-15">Do you need to talk? We are here for you?</div>
-    <div class="div-16">Get started</div>
+    <div><%= link_to 'Get Starded', signup_page_path, class: "div-16 btn"%></div>
   </div>
   <div class="image-column">
-    <%= image_tag 'home1.png', loading: 'lazy', class: 'img-40' %>
+    <%= image_tag 'home1.png', loading: 'lazy', class: 'img-1' %>
   </div>
 </div>
 
@@ -33,6 +33,7 @@
     </div>
   <%= image_tag 'home7.png', loading: 'lazy', class: 'img-3'%>
   </div>
+
   <div class="div-20">Why Talkroom?</div>
   <div class="div-21">
     Why Our Mental Health Consultants are the Best Choice
@@ -80,62 +81,53 @@
       <div class="column-4">
         <%= image_tag 'home2.png', loading: 'lazy', class: 'img-7' %>
       </div>
-      <div class="column-5">
-        <div class="div-35">
-          <div class="div-36">About Us</div>
-          <div class="div-37">
-            Discover the Faces Behind Our Mental Health Consultancy
-          </div>
-          <div class="carousel">
-          <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="d-flex">
-          <div class="column-6">
-            <%= image_tag 'home6.png', loading: 'lazy', class: 'img-8' %>
-          </div>
-          <div class="column-7">
-            <%= image_tag 'home6.png', loading: 'lazy', class: 'img-9' %>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="d-flex">
-          <div class="column-6">
-            <%= image_tag 'home7.png', loading: 'lazy', class: 'img-8' %>
-          </div>
-          <div class="column-7">
-            <%= image_tag 'home5.png', loading: 'lazy', class: 'img-9' %>
-          </div>
-        </div>
-      </div>
-      <!-- Add more carousel items here -->
-      <div class="carousel-item">
-        <div class="d-flex">
-          <div class="column-6">
-            <%= image_tag 'home2.png', loading: 'lazy', class: 'img-8' %>
-          </div>
-          <div class="column-7">
-            <%= image_tag 'logo-2.png', loading: 'lazy', class: 'img-9' %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-  </div>
 
+  <div class="column-5">
+  <div class="div-35">
+    <div class="div-36">About Us</div>
+    <div class="div-37">
+      Discover the Faces Behind Our Mental Health Consultancy
+    </div>
+    <div class="carousel">
+      <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <% @counsellors.each_with_index do |counsellor, index| %>
+            <div class="carousel-item <%= 'active' if index == 0 %>">
+              <div class="d-flex">
+                <div class="column-6">
+                  <% if current_counsellor.present? && current_counsellor.photo.present? %>
+                    <%= image_tag cl_image_path(current_counsellor&.photo&.key), class: 'avatar img-fluid', alt: 'Counsellor avatar' %>
+                  <% else %>
+                    <p>No photo available</p>
+                  <% end %>
+
+                </div>
+                <div class="column-7">
+                  <% if current_counsellor.present? && current_counsellor.photo.present? %>
+                    <%= image_tag cl_image_path(current_counsellor&.photo&.key), class: 'avatar img-fluid', alt: 'Counsellor avatar' %>
+                  <% else %>
+                    <p>No photo available</p>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
     </div>
   </div>
+</div>
+</div>
+
+
   <div class="div-40">
     <div class="div-41">Maps</div>
     <div class="div-42">Mapping Out Mental Health Consulting Strategies</div>
@@ -144,7 +136,9 @@
               data-map-markers-value="<%= @markers.to_json %>"
               data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
             </div>
-          </div>
+      </div>
   </div>
+  </div>
+</div>
 </div>
 </div>

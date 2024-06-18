@@ -28,106 +28,102 @@
 <!-- Text Before Three Cards -->
 <div class="before-cards-banner-flex-text w-100 mt-5">
   <div style="color: #000;" class="text-with-size-h6">Why Talkroom?</div>
-  <div class="text-with-size-h2">
+  <div class="text-with-size-h2" style="font-size: 54px;">
     Why Our Mental Health Consultants are the Best Choice
   </div>
 </div>
 
 <!-- Three Cards -->
-<div class="div-22">
-  <div class="div-23">
-    <div class="column">
-      <div class="div-24">
-        <%= image_tag 'home3.png', loading: 'lazy', class: 'img-4' %>
-        <div class="div-25">Holistic approach</div>
-        <div class="div-26">
-          Free Counselling: We offer free counselling services to anyone
-          seeking help. Our platform is designed to be user-friendly, making
-          it easy for individuals to find and connect with a counsellor who
-          suits their needs.
-        </div>
+<div class="d-flex justify-content-center mt-5">
+  <div class="left-card">
+    <div class="inside-left-card">
+      <%= image_tag 'home3.png', loading: 'lazy', class: 'img-4' %>
+      <div class="text-with-size-h5">Holistic approach</div>
+      <div>
+        Free Counselling: We offer free counselling services to anyone
+        seeking help. Our platform is designed to be user-friendly, making
+        it easy for individuals to find and connect with a counsellor who
+        suits their needs.
       </div>
     </div>
-    <div class="column-2">
-      <div class="div-27">
-        <%= image_tag 'home4.png', loading: 'lazy', class: 'img-5' %>
-        <div class="div-28">Expertise Team</div>
-        <div class="div-29">
-          By working with real patients, our student counsellors gain the
-          hands-on experience they need to grow and excel in their future
-          careers.
-        </div>
+  </div>
+  <div class="middle-card">
+    <div class="inside-middle-card">
+      <%= image_tag 'home4.png', loading: 'lazy', class: 'img-5' %>
+      <div class="text-with-size-h4" style="color: var(--txt, #FFF);">Expertise Team</div>
+      <div style="color: var(--txt, #FFF);">
+        By working with real patients, our student counsellors gain the
+        hands-on experience they need to grow and excel in their future
+        careers.
       </div>
     </div>
-    <div class="column-3">
-      <div class="div-30">
-        <%= image_tag 'home5.png', loading: 'lazy', class: 'img-6' %>
-        <div class="div-31">Accessibility</div>
-        <div class="div-32">
-          Mental health care should be available to everyone. We break down
-          financial barriers to ensure that help is within reach for those who
-          need it most.
-        </div>
+  </div>
+  <div class="right-card">
+    <div class="inside-right-card">
+      <%= image_tag 'home5.png', loading: 'lazy', class: 'img-6' %>
+      <div class="text-with-size-h5">Accessibility</div>
+      <div>
+        Mental health care should be available to everyone. We break down
+        financial barriers to ensure that help is within reach for those who
+        need it most.
       </div>
     </div>
   </div>
 </div>
 
 <!-- About Us -->
-<div class="div-33">
-  <div class="div-34">
-    <div class="column-4">
-      <%= image_tag 'home2.png', loading: 'lazy', class: 'img-7' %>
+
+<div class="d-flex justify-content-center my-5">
+  <div>
+    <%= image_tag 'home2.png', loading: 'lazy', class: 'img-7' %>
+  </div>
+  <div>
+    <div>About Us</div>
+    <div>
+      Discover the Faces Behind Our Mental Health Consultancy
     </div>
-    <div class="column-5">
-      <div class="div-35">
-        <div class="div-36">About Us</div>
-        <div class="div-37">
-          Discover the Faces Behind Our Mental Health Consultancy
-        </div>
-        <div class="carousel">
-          <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <% @counsellors.each_with_index do |counsellor, index| %>
-                <div class="carousel-item <%= 'active' if index == 0 %>">
-                  <div class="d-flex">
-                    <div class="column-6">
-                      <% if current_counsellor.present? && current_counsellor.photo.present? %>
-                        <%= image_tag cl_image_path(current_counsellor&.photo&.key), class: 'avatar img-fluid', alt: 'Counsellor avatar' %>
-                      <% else %>
-                        <p>No photo available</p>
-                      <% end %>
-                    </div>
-                    <div class="column-7">
-                      <% if current_counsellor.present? && current_counsellor.photo.present? %>
-                        <%= image_tag cl_image_path(current_counsellor&.photo&.key), class: 'avatar img-fluid', alt: 'Counsellor avatar' %>
-                      <% else %>
-                        <p>No photo available</p>
-                      <% end %>
-                    </div>
-                  </div>
+    <div class="carousel">
+      <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <% @counsellors.each_with_index do |counsellor, index| %>
+            <div class="carousel-item <%= 'active' if index == 0 %>">
+              <div class="d-flex">
+                <div>
+                  <% if current_counsellor.present? && current_counsellor.photo.present? %>
+                    <%= image_tag cl_image_path(current_counsellor&.photo&.key), class: 'avatar img-fluid', alt: 'Counsellor avatar' %>
+                  <% else %>
+                    <p>No photo available</p>
+                  <% end %>
                 </div>
-              <% end %>
+                <div>
+                  <% if current_counsellor.present? && current_counsellor.photo.present? %>
+                    <%= image_tag cl_image_path(current_counsellor&.photo&.key), class: 'avatar img-fluid', alt: 'Counsellor avatar' %>
+                  <% else %>
+                    <p>No photo available</p>
+                  <% end %>
+                </div>
+              </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
+          <% end %>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
     </div>
   </div>
+
 </div>
 
 <!-- Map -->
 <div class="map-display-text w-100">
   <div class="text-with-size-h6">Maps</div>
-  <div class="text-with-size-h2">Mapping Out Mental Health Consulting Strategies</div>
+  <div class="text-with-size-h2" style="font-size:54px;">Mapping Out Mental Health Consulting Strategies</div>
 </div>
 <div class="map-container rounded-circle justify-content-center">
   <div id="map" data-controller="map"

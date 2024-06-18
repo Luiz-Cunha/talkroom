@@ -1,131 +1,116 @@
 <div class="wrap w-100" data-controller="patients" data-patients-userid-value="<%= current_user.id %>">
   <div class="wrap-2">
-    <div class="wrap-3">
-      <div class="wrap-4">
-        <div class="wrap-5"></div>
-        <div class="wrap-6">
-          <div class="wrap-7">Welcome</div>
-          <div class="wrap-8">
-            Hello and welcome to TalkRoom, your platform for accessible and free psychological support. We are delighted to have you here and want to ensure that you receive all the support necessary to take care of your mental health.
-          </div>
-        </div>
-      </div>
+    <div class="wrap-3"></div>
+    <div class="wrap-7">Welcome</div>
+    <div class="wrap-8">
+      Hello and welcome to TalkRoom, your platform for accessible and free psychological support. We are delighted to have you here and want to ensure that you receive all the support necessary to take care of your mental health.
     </div>
   </div>
 
-  <div class="wrap-9">
-    <div class="wrap-10 d-flex">
-      <div class="wrap-11">
-        <div class="imga-3"><img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : asset_path('patient1.png') %>" />
-          <%# <%= image_tag @user.photo.variant(resize: "100x100"), class: 'rounded-circle imga-1' if @user.photo.attached? %>
-        </div>
-        <div class="colum-2">
-          <div class="wrap-12">
-            <p><strong>Email:</strong> <%= @user.email %></p>
-            <p><strong>Full Name:</strong> <%= @user.fullname %></p>
-            <p><strong>Gender:</strong> <%= @user.gender %></p>
-            <p><strong>Location:</strong> <%= @user.location %></p>
-            <p><strong>Date of Birth:</strong> <%= @user.birthdate.strftime("%B %d, %Y") if @user.birthdate %></p>
-            <p><strong>Issues:</strong> <%= @user.other_issues %></p>
-            <p><strong>Consultation History:</strong></p>
-            <p><%= @user.consultation_history %></p>
-            <%= link_to 'Change Password', edit_user_registration_path, class: 'btn-wrap' %>
-          </div>
-        </div>
-      </div>
+  <div class="wrap-10 d-flex">
+    <div class="imga-3">
+      <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : asset_path('patient1.png') %>"
+      alt="Perfil"
+       class="profile-image">
+      <%# <%= image_tag @user.photo.variant(resize: "100x100"), class: 'rounded-circle imga-1' if @user.photo.attached? %>
     </div>
-    <div data-controller="toggle" data-toggle-value="<%= user_signed_in? %>">
-      <div class="wrap-34">
-        <span style="color: #ec744a"></span>
-        <button class="btn-wrap" data-action="click->toggle#fire">Book an appointment</button>
-      </div>
-        <div class="container my-2 <%= 'd-none' unless @appointment.errors.any?%>" data-toggle-target="formToggle" data-patients-target="hideForm">
-          <%= simple_form_for @appointment, html: { data: { action: "turbo:submit-end->patients#resetForm" }} do |f| %>
-            <%= f.input :schedule_time, as: :datetime %>
-            <%= f.input :symptom, as: :text %>
-            <%= f.button :submit, 'Book Appointment' %>
-          <% end %>
-        </div>
+    <div class="wrap-12">
+      <p><strong>Email:</strong> <%= @user.email %></p>
+      <p><strong>Full Name:</strong> <%= @user.fullname %></p>
+      <p><strong>Gender:</strong> <%= @user.gender %></p>
+      <p><strong>Location:</strong> <%= @user.location %></p>
+      <p><strong>Date of Birth:</strong> <%= @user.birthdate.strftime("%B %d, %Y") if @user.birthdate %></p>
+      <p><strong>Issues:</strong> <%= @user.other_issues %></p>
+      <p><strong>Consultation History:</strong></p>
+      <p><%= @user.consultation_history %></p>
+      <%= link_to 'Change Password', edit_user_registration_path, class: 'btn-wrap' %>
     </div>
   </div>
 
-<div class="wrap-13">Appointments</div>
-<% if @appointments.any? %>
-  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <% @appointments.order(created_at: :desc).each_slice(3).with_index do |appointment_group, index| %>
-        <div class="carousel-item <%= 'active' if index == 0 %>">
-          <div class="row">
-            <div class="">
-              <div data-patients-target="patientsAppointments">
-                <% appointment_group.each do |appointment| %>
+  <div data-controller="toggle" data-toggle-value="<%= user_signed_in? %>">
+    <div class="container my-2 <%= 'd-none' unless @appointment.errors.any? %>" data-toggle-target="formToggle" data-patients-target="hideForm">
+      <%= simple_form_for @appointment, html: { data: { action: "turbo:submit-end->patients#resetForm" }} do |f| %>
+        <%= f.input :schedule_time, as: :datetime %>
+        <%= f.input :symptom, as: :text %>
+        <%= f.button :submit, 'Book Appointment' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="wrap-13">Appointments</div>
+  <% if @appointments.any? %>
+    <div id="carouselAppointments" class="carousel slide " data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <% @appointments.order(created_at: :desc).each_slice(3).with_index do |appointment_group, index| %>
+          <div class="carousel-item <%= 'active' if index == 0 %>">
+            <div class="row">
+              <% appointment_group.each do |appointment| %>
+                <div class="col-md-6 d-flex justify-content-center" >
                   <%= render "users/appointment_user", appointment: appointment %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselAppointments" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselAppointments" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  <% else %>
+    <p class="text-center w-100">You have no appointments.</p>
+  <% end %>
+<div>
+      <button class="btn-wrap1" data-action="click->toggle#fire">
+        <%= link_to 'Book an appointment', new_appointment_path(@appointment), class: 'btn-wrap' %></button>
+    </div>
+  <div class="wrap-35">
+    <%= image_tag 'home8.png', loading: 'lazy', class: 'imga-5' %>
+    <div class="wrap-37">
+      <div class="wrap-38">Taking care of your mental health is essential for your overall well-being</div>
+      <%= image_tag 'home7.png', loading: 'lazy', class: 'imga-6' %>
+    </div>
+  </div>
+
+  <div class="wrap-39">Previous Appointments</div>
+<div class="wrap-40">
+  <div id="carouselPreviousAppointments" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <% @previous_appointments.each_with_index do |appointment, index| %>
+        <div class="carousel-item <%= 'active' if index.zero? %>">
+          <div class="card">
+            <div class="card-body d-flex align-items-center">
+              <% if appointment.counsellor %>
+                <% if appointment.counsellor.photo.attached? %>
+                  <img src="<%= cl_image_path(appointment.counsellor.photo.key) %>" alt="Counsellor Photo" class="profile-image">
+                <% else %>
+                  <img src="<%= asset_path('default_profile.png') %>" alt="Default Profile Photo" class="profile-image">
                 <% end %>
+              <% end %>
+              <div>
+                <h5 class="card-title">Counsellor name: <%= appointment.counsellor&.fullname %></h5>
+                <p class="card-text">
+                  Schedule time: <%= appointment.schedule_time.strftime("%B %d, %Y at %I:%M %p") %><br />
+                  Symptom: <%= appointment.symptom %>
+                </p>
               </div>
             </div>
           </div>
         </div>
       <% end %>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselPreviousAppointments" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselPreviousAppointments" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-<% else %>
-  <p class="text-center w-100">You have no appointments.</p>
-<% end %>
-
-
-
-    <div class="wrap-35">
-      <div class="wrap-36">
-        <%= image_tag 'home8.png', loading: 'lazy', class: 'imga-5' %>
-        <div class="wrap-37">
-          <div class="wrap-38">Taking care of your mental health is essential for your overall well-being</div>
-          <%= image_tag 'home7.png', loading: 'lazy', class: 'imga-6' %>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="wrap-39">Previous Appointments</div>
-<div class="wrap-40">
-  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <% @previous_appointments.each_with_index do |appointment, index| %>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" <%= 'class="active" aria-current="true"' if index.zero? %> aria-label="Slide <%= index + 1 %>"></button>
-      <% end %>
-    </div>
-    <div class="carousel-inner">
-      <% @previous_appointments.each_with_index do |appointment, index| %>
-        <div class="carousel-item <%= 'active' if index.zero? %>">
-          <div class="card">
-            <%# <%= image_tag appointment.counsellor.photo, loading: 'lazy', class: 'card-img-top' if appointment.counsellor.photo.present? %>
-            <div class="card-body">
-              <h5 class="card-title">Counsellor name: <%= appointment.counsellor.fullname if appointment.counsellor  %></h5>
-              <p class="card-text">
-                Schedule time: <%= appointment.schedule_time.strftime("%B %d, %Y at %I:%M %p") %><br />
-                Symptom: <%= appointment.symptom %>
-              </p>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</div>
-
 </div>

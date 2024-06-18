@@ -50,7 +50,6 @@
 }
 .text-with-size-h2 {
   color: #000;
-  text-align: center;
   font-family: Manrope;
   font-size: 22px;
   font-style: normal;
@@ -82,6 +81,15 @@
   line-height: normal;
 }
 
+.body-light-text {
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+}
+
 .map-display-text {
   display: inline-flex;
   flex-direction: column;
@@ -93,7 +101,9 @@
   width: 394.825px;
   height: 379px;
   border-radius: 30px 0px 0px 30px;
-  border: 1px solid #000;
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  border-bottom: 1px solid #000;
   flex-shrink: 0;
 }
 
@@ -102,7 +112,7 @@
   height: 352px;
   flex-direction: column;
   align-items: center;
-  gap: 25px;
+  gap: 15px;
   flex-shrink: 0;
 }
 
@@ -120,7 +130,7 @@
   height: 391px;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
+  gap: 35px;
   flex-shrink: 0;
 }
 
@@ -129,12 +139,20 @@
   height: 383px;
   flex-shrink: 0;
   border-radius: 0px 30px 30px 0px;
-  border: 1px solid #000;
+  border-top: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
 }
 
 .inside-right-card {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
+  gap: 35px;
+}
+
+.homepage-avatar {
+  width: 300px;
+  height: 300px;
+  flex-shrink: 0;
 }

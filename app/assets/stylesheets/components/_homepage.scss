@@ -8,9 +8,9 @@
   padding: 5px 20px;
   text-decoration: none;
   transition: background-color 0.3s eas;
-  width: 300px;
+  width: 220px;
   font-size: 20px;
-  margin-left: 80px;
+  margin-left: 0;
 }
 
 .card-homepage-top {
@@ -43,11 +43,12 @@
 }
 
 .before-cards-banner-flex-text {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 }
+
 .text-with-size-h2 {
   color: #000;
   font-family: Manrope;
@@ -91,11 +92,13 @@
 }
 
 .map-display-text {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 }
+
+// Three Cards CSS
 
 .left-card {
   width: 394.825px;
@@ -108,11 +111,11 @@
 }
 
 .inside-left-card {
-  display: inline-flex;
+  display: flex;
   height: 352px;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
   flex-shrink: 0;
 }
 
@@ -130,7 +133,7 @@
   height: 391px;
   flex-direction: column;
   align-items: center;
-  gap: 35px;
+  gap: 30px;
   flex-shrink: 0;
 }
 
@@ -145,11 +148,13 @@
 }
 
 .inside-right-card {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   gap: 35px;
 }
+
+// Avatar in About Us
 
 .homepage-avatar {
   width: 300px;

@@ -1,18 +1,18 @@
 <div class="wrap w-100" data-controller="patients" data-patients-userid-value="<%= current_user.id %>">
-  <div class="wrap-2">
-    <div class="wrap-3"></div>
-    <div class="wrap-7">Welcome</div>
-    <div class="wrap-8">
-      Hello and welcome to TalkRoom, your platform for accessible and free psychological support. We are delighted to have you here and want to ensure that you receive all the support necessary to take care of your mental health.
-    </div>
+<div class="wrap-2">
+  <div class="wrap-3"></div>
+  <div class="wrap-7">Welcome</div>
+  <div class="wrap-8">
+    Hello and welcome to TalkRoom, your platform for accessible and free psychological support. We are delighted to have you here and want to ensure that you receive all the support necessary to take care of your mental health.
   </div>
+</div>
 
-  <div class="wrap-10 d-flex">
-    <div class="imga-3">
+<div class="wrap-10 d-flex justify-content-center">
+  <div class="d-flex align-items-center py-4">
+    <div class="imga-3 me-4">
       <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : asset_path('patient1.png') %>"
       alt="Perfil"
-       class="profile-image">
-      <%# <%= image_tag @user.photo.variant(resize: "100x100"), class: 'rounded-circle imga-1' if @user.photo.attached? %>
+      class="profile-image">
     </div>
     <div class="wrap-12">
       <p><strong>Email:</strong> <%= @user.email %></p>
@@ -26,6 +26,8 @@
       <%= link_to 'Change Password', edit_user_registration_path, class: 'btn-wrap' %>
     </div>
   </div>
+</div>
+
 
   <div data-controller="toggle" data-toggle-value="<%= user_signed_in? %>">
     <div class="container my-2 <%= 'd-none' unless @appointment.errors.any? %>" data-toggle-target="formToggle" data-patients-target="hideForm">

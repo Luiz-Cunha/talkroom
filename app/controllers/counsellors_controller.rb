@@ -1,5 +1,6 @@
 class CounsellorsController < ApplicationController
   skip_before_action :authenticate_user!, if: :check_user_type_counsellor
+  before_action :authenticate_counsellor!
   before_action :set_counsellor, only: [:show, :dashboard]
   def profile
     @counsellor = Counsellor.find(params[:id])

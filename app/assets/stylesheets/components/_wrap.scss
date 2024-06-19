@@ -1,6 +1,6 @@
 .profile-background {
   background: linear-gradient(270deg, #007d6e 0%, #5eb47c 100%);
-  padding: 80px 60px;
+  padding: 100px 80px;
 
 }
 
@@ -26,13 +26,13 @@
   margin-top: 100px;
 
   p {
-  font-size: 20px;
+  font-size: 30px;
   }
 
   .profile-image {
     vertical-align: middle;
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
     border-radius: 50%;
     margin-right: 200px;
     }
@@ -46,49 +46,203 @@
     font: 700 80px Manrope, sans-serif;
     margin-bottom: 150px;
   }
+}
 
-  .side-image {
-    width: 500px;
-    height: 500px;
+.container-appointments {
+margin-top: 200px;
+}
+
+.card-appointments {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  .appointment-card-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: Manrope, sans-serif;
+  }
+  p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
   }
 
-  .carousel-item .row .col-md-6 {
-    width: 50%;
+  .card-appointments p i {
+    margin-right: 10px;
+  }
+
+
+  .image-1 {
+    vertical-align: middle;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+}
+
+.btn-custom {
+  display: flex;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background-color: #ec744a;
+  color: #fff;
+  text-decoration: none;
+  font: 700 22px Manrope, sans-serif;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn {
+  margin-top: 150px;
+
+}
+
+.btn-custom:hover {
+  background-color: #d65c33;
+}
+
+.btn-lg {
+  align-items: center;
+  border-radius: 30px;
+  background-color:  #ec744a;
+  align-self: center;
+  margin-top: 200px;
+  width: 1000px;
+  max-width: 100%;
+  color: #fff;
+  text-align: center;
+  justify-content: center;
+  padding: 15px 60px 15px 50px;
+  font-family: Poppins, sans-serif;
+  font-size: 30px;
+  margin-left: 43px;
+  text-decoration: none;
+  border: none;
+}
+.card-footer .btn-custom {
+  margin: 10px;
+}
+
+.card-appointments.active {
+  background: linear-gradient(270deg, #007d6e 0%, #5eb47c 100%);
+  transform: scale(1);
+}
+
+.big-tag {
+  background: linear-gradient(270deg, #007d6e 0%, #5eb47c 100%);
+  display: flex;
+  margin-top: 240px;
+  width: 100%;
+  align-items: center;
+  font-size: 54px;
+  color: var(--txt, #fff);
+  font-weight: 700;
+  text-align: center;
+  justify-content: center;
+  padding: 80px 60px;
+
+
+    h1 {
+      align-self: center;
+      display: flex;
+      margin-top: 18px;
+      width: 100%;
+      max-width: 1411px;
+      flex-direction: column;
+      font-family: Manrope, sans-serif;
+      font-size: 54px;
 
   }
 
-  .d-flex.align-items-center {
-    gap: 1.5rem;
-  }
-
-  .side-image {
-    width: 600px;
-  }
-
-  .carousel-item {
-    height: 0;
-    padding-bottom: 100%;
-  }
-
-  .carousel-item img {
-    position: absolute;
-    top: 0;
-    left: 0;
+  .big-tag2 {
+    display: flex;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 1566px;
+    flex-direction: column;
+    margin: 84px 0 52px;
   }
 
-  .card-body {
-    background: linear-gradient(270deg, #007d6e 0%, #5eb47c 100%);
-
+  .imag1 {
+    aspect-ratio: 1.14;
+    object-fit: auto;
+    object-position: start;
+    width: 92px;
+    align-self: start;
+    fill: rgba(255, 255, 255, 0.2);
   }
 
-  .card-footer {
-    margin-top: auto;
+  .imag2 {
+    aspect-ratio: 1.14;
+    object-fit: auto;
+    object-position: center;
+    width: 92px;
+    fill: rgba(255, 255, 255, 0.2);
+    align-self: end;
   }
+}
 
-  .card-footer a {
-    color: white;
-  }
+.container.previous-appointments {
+  padding: 20px;
+  margin-bottom: 100px;
+}
+
+.previous-title {
+  text-align: center;
+  margin-bottom:100px;
+  margin-top: 100px;
+  font-family: Manrope, sans-serif;
+  font-size: 54px;
+}
+
+.card-previous-appointments {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.appointment-card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.image-1 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.card-appointments p i {
+  margin-right: 10px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  background-color: #d65c33;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  color: white;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: #d65c33;
 }

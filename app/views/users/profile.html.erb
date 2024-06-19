@@ -83,7 +83,7 @@
   </div>
   <div class="row justify-content-center mt-3">
     <div class="col-md-6">
-      <button class="btn-lg" data-action="click->toggle#fire">
+      <button class="btn-lg ms-auto" data-action="click->toggle#fire">
         <%= link_to 'Book an appointment', new_appointment_path(@appointment), class: 'btn-lg text-center' %>
       </button>
     </div>
@@ -102,19 +102,21 @@
 
 
 <div class="previous-title">
-    Previous Appointments
+  Previous Appointments
+</div>
+
+<div class="container previous-appointments d-flex justify-content-center">
+  <div class="col-md-4 mb-4">
+  <img src="/assets/profile6.png" class="img-fluid">
   </div>
-
-<div class='container previous-appointments d-flex justify-content-center'>
-
-  <div id="carouselPreviousAppointments" class="carousel slide">
+  <div id="carouselPreviousAppointments" class="carousel slide col-md-8">
     <div class="carousel-inner">
       <% @appointments.order(created_at: :desc).each_slice(3).with_index do |appointment_group, index| %>
         <div class="carousel-item <%= 'active' if index == 0 %>">
           <div class="row justify-content-center">
             <% appointment_group.each do |appointment| %>
               <div class="col-md-4 mb-4">
-                <div class="card-previous-appointments">
+                <div class="card-previous-appointments d-flex align-items-center">
                   <div class="appointment-card-header d-flex align-items-center">
                     <% if appointment.counsellor %>
                       <% if appointment.counsellor.photo.attached? %>

@@ -5,7 +5,7 @@ class CounsellorsController < ApplicationController
   def profile
     @counsellor = Counsellor.find(params[:id])
     @appointments_confirmed = @counsellor.appointments.where(confirmation: true)
-    @appointments = @counsellor.appointments.where(confirmation: false)
+    @appointments = Appointment.where(confirmation: false)
   end
 
   def index

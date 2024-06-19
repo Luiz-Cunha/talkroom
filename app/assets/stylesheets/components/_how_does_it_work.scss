@@ -1,0 +1,16 @@
+.card-how-does-it-work {
+  width: 399px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  background: linear-gradient(270deg, #007D6E 0%, #5EB47C 100%);
+  width: 598px;
+  height: 398px;
+}
+
+.card-how-does-it-work-inside-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}

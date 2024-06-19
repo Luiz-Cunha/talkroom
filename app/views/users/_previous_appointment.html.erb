@@ -12,7 +12,9 @@
         <p><i class="fa-solid fa-user-doctor"></i> <%= appointment.counsellor&.fullname %></p>
         <p><i class="fa-solid fa-calendar-days"></i> <%= appointment.schedule_time.strftime("%B %d, %Y at %I:%M %p") %><br /></p>
         <p><i class="fa-solid fa-head-side-virus"></i> <%= appointment.symptom %></p>
-        <%= link_to 'Delete', appointment_path(appointment), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn-custom text-center' %>
+        <%= link_to appointment_path(appointment), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+      <i class="fa-sharp fa-solid fa-trash"></i>
+      <% end %>
       </div>
     </div>
   </div>

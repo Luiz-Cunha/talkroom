@@ -1,15 +1,13 @@
-
-
 <div class="col-md-4 mb-4">
-  <div class="card-previous-appointments">
-    <div class="appointment-card-header flex-column">
+  <div class="card-previous-appointments card-height <%= 'active' if appointment.confirmation %>" >
+    <div class="appointment-card-header flex-column h-100">
       <img src="https://randomuser.me/api/portraits/women/30.jpg" alt="" class="image-1">
       <% if appointment.confirmation %>
-        <p class="appointment-card-header">Confirmed</p>
+        <p>Confirmed</p>
       <% else %>
-        <p class="appointment-card-header">Pending</p>
+        <p>Pending</p>
       <% end %>
-      <div class="card-appointments">
+      <div class="card-appointments flex-grow-1">
         <p><i class="fa-solid fa-calendar-days"></i> <%= appointment.schedule_time.strftime("%B %d, %Y at %I:%M %p") %><br /></p>
         <p><i class="fa-solid fa-head-side-virus"></i> <%= appointment.symptom %></p>
         <% if appointment.confirmation %>
@@ -22,9 +20,13 @@
         <p class="text-center">You have no appointments.</p>
       <% end %>
     <% end %>
-    <div class="d-flex">
-      <%= link_to 'Edit', edit_appointment_path(appointment), class: 'btn-custom text-center' %>
-      <%= link_to 'Delete', appointment_path(appointment), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn-custom text-center mb-2' %>
+    <div class="d-flex gap-3">
+      <%= link_to edit_appointment_path(appointment) do %>
+      <i class="fa-solid fa-pen-to-square"></i>
+      <% end %>
+      <%= link_to appointment_path(appointment), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+      <i class="fa-sharp fa-solid fa-trash"></i>
+      <% end %>
     </div>
       </div>
     </div>

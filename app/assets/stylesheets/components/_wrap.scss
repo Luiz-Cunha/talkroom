@@ -107,7 +107,7 @@ margin-top: 200px;
   cursor: pointer;
 }
 
-.btn {
+.btn-margin {
   margin-top: 150px;
 
 }
@@ -116,7 +116,7 @@ margin-top: 200px;
   background-color: #d65c33;
 }
 
-.btn-lg {
+.btn-lg-booking {
   align-items: center;
   border-radius: 30px;
   background-color:  #ec744a;
@@ -134,13 +134,18 @@ margin-top: 200px;
   text-decoration: none;
   border: none;
 }
+
 .card-footer .btn-custom {
   margin: 10px;
 }
 
-.card-appointments.active {
+.card-previous-appointments.active {
   background: linear-gradient(270deg, #007d6e 0%, #5eb47c 100%);
   transform: scale(1);
+
+  .card-appointments {
+    background: linear-gradient(270deg, #007d6e 0%, #5eb47c 100%);
+  }
 }
 
 .big-tag {
@@ -218,6 +223,10 @@ margin-top: 200px;
   margin-bottom: 20px;
 }
 
+.card-height {
+  height: 380px;
+}
+
 .appointment-card-header {
   display: flex;
   align-items: center;
@@ -225,10 +234,9 @@ margin-top: 200px;
 }
 
 .image-1 {
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  margin-right: 15px;
 }
 
 .img-fluid {

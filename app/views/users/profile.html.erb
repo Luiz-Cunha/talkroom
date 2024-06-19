@@ -1,3 +1,5 @@
+<div data-controller="patients" data-patients-userid-value="<%= current_user.id %>">
+
 <div class="profile-background">
   <div class= "container profile-border">
     <h1>Welcome</h1>
@@ -25,67 +27,45 @@
   </div>
 </div>
 
-<div data-controller="toggle" data-toggle-value="<%= user_signed_in? %>">
-  <div class="container my-2 <%= 'd-none' unless @appointment.errors.any? %>" data-toggle-target="formToggle" data-patients-target="hideForm">
-    <%= simple_form_for @appointment, html: { data: { action: "turbo:submit-end->patients#resetForm" }} do |f| %>
-      <%= f.input :schedule_time, as: :datetime %>
-      <%= f.input :symptom, as: :text %>
-      <%= f.button :submit, 'Book Appointment' %>
-    <% end %>
-  </div>
+
 
 <div class="container-appointments">
-  <div id="carouselAppointments" class="carousel slide">
-    <div class="carousel-inner">
-      <% @appointments.order(created_at: :desc).each_slice(3).with_index do |appointment_group, index| %>
-        <div class="carousel-item <%= 'active' if index == 0 %>">
-          <div class="d-flex justify-content-center">
-            <% appointment_group.each do |appointment| %>
-              <div class="card-appointments <%= 'active' if appointment.confirmation %>">
-                <img src="https://randomuser.me/api/portraits/women/30.jpg" alt="" class="image-1">
-                <% if appointment.confirmation %>
-                  <p class="appointment-card-header">Confirmed</p>
-                <% else %>
-                  <p class="appointment-card-header">Pending</p>
+  <div class="container">
+    <div id="carouselAppointments" class="carousel slide">
+      <div class="carousel-inner">
+        <% @appointments.order(created_at: :desc).each_slice(3).with_index do |appointment_group, index| %>
+          <div class="carousel-item <%= 'active' if index == 0 %>">
+            <div class="d-flex justify-content-center" data-patients-target="patientsAppointments">
+                <% appointment_group.each do |appointment| %>
+                  <%= render "appointment_booking", appointment: appointment %>
                 <% end %>
-                <p><i class="fa-solid fa-calendar-days"></i> <%= appointment.schedule_time %></p>
-                <p><i class="fa-solid fa-head-side-virus"></i> <%= appointment.symptom %></p>
-                <div class="card-footer d-flex justify-content-between">
-                  <% if appointment.confirmation %>
-                    <% chatroom = ClientChatroom.find_by(user_id: appointment.user_id, counsellor_id: appointment.counsellor_id) %>
-                    <% if chatroom.present? %>
-                      <%= link_to 'Your Chatroom', client_chatroom_path(chatroom), class: 'btn-custom text-center mb-2' %>
-                    <% elsif %>
-                      <%= button_to 'Create Talkroom', client_chatrooms_path(user_id: appointment.user_id, counsellor_id: appointment.counsellor_id), method: :post, class: 'btn-custom text-center mb-2' %>
-                    <% else %>
-                      <p class="text-center">You have no appointments.</p>
-                    <% end %>
-                  <% end %>
-                  <div class="d-flex">
-                    <%= link_to 'Edit', edit_appointment_path(appointment), class: 'btn-custom text-center' %>
-                    <%= link_to 'Delete', appointment_path(appointment), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn-custom text-center mb-2' %>
-                  </div>
-                </div>
-              </div>
-            <% end %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselAppointments" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselAppointments" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselAppointments" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselAppointments" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
   </div>
   <div class="row justify-content-center mt-3">
     <div class="col-md-6">
-      <button class="btn-lg ms-auto" data-action="click->toggle#fire">
-        <%= link_to 'Book an appointment', new_appointment_path(@appointment), class: 'btn-lg text-center' %>
-      </button>
+      <div data-controller="toggle" data-toggle-value="<%= user_signed_in? %>">
+        <button class="btn-lg-booking ms-auto" data-action="click->toggle#fire">
+          <%= link_to 'Book an appointment', new_appointment_path(@appointment), class: 'btn-lg-booking text-center' %>
+        </button>
+        <div class="container my-2 <%= 'd-none' unless @appointment.errors.any? %>" data-toggle-target="formToggle" data-patients-target="hideForm">
+          <%= simple_form_for @appointment, html: { data: { action: "turbo:submit-end->patients#resetForm" }} do |f| %>
+            <%= f.input :schedule_time, as: :datetime %>
+            <%= f.input :symptom, as: :text %>
+            <%= f.button :submit, 'Book Appointment' %>
+          <% end %>
+        </div>
     </div>
   </div>
 </div>
@@ -115,39 +95,23 @@
         <div class="carousel-item <%= 'active' if index == 0 %>">
           <div class="row justify-content-center">
             <% appointment_group.each do |appointment| %>
-              <div class="col-md-4 mb-4">
-                <div class="card-previous-appointments d-flex align-items-center">
-                  <div class="appointment-card-header d-flex align-items-center">
-                    <% if appointment.counsellor %>
-                      <% if appointment.counsellor.photo.attached? %>
-                        <%= image_tag cl_image_path(appointment.counsellor.photo.key), alt: 'Counsellor Photo', class: 'image-1' %>
-                      <% else %>
-                        <%= image_tag asset_path('default_profile.png'), alt: 'Default Profile Photo', class: 'image-1' %>
-                      <% end %>
-                    <% end %>
-                    <div class="card-appointments">
-                      <p><i class="fa-solid fa-user-doctor"></i> <%= appointment.counsellor&.fullname %></p>
-                      <p><i class="fa-solid fa-calendar-days"></i> <%= appointment.schedule_time.strftime("%B %d, %Y at %I:%M %p") %><br /></p>
-                      <p><i class="fa-solid fa-head-side-virus"></i> <%= appointment.symptom %></p>
-                      <%= link_to 'Delete', appointment_path(appointment), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn-custom text-center' %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <% end %>
+              <%= render 'users/previous_appointment', appointment: appointment %>
+              <% end %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselPreviousAppointments" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselPreviousAppointments" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselPreviousAppointments" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselPreviousAppointments" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+  </div>
   </div>
 </div>

@@ -7,7 +7,8 @@ export default class extends Controller {
     console.log("Working");
   }
 
-  fire () {
+  fire (event) {
+    event.preventDefault();
     if (this.data.get("value") === "true"){
       this.formToggleTarget.classList.toggle("d-none");
     }

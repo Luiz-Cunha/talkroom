@@ -1,0 +1,26 @@
+<div class="card-appointments <%= 'active' if appointment.confirmation %>">
+  <img src="https://randomuser.me/api/portraits/women/30.jpg" alt="" class="image-1">
+  <% if appointment.confirmation %>
+    <p class="appointment-card-header">Confirmed</p>
+  <% else %>
+    <p class="appointment-card-header">Pending</p>
+  <% end %>
+  <p><i class="fa-solid fa-calendar-days"></i> <%= appointment.schedule_time %></p>
+  <p><i class="fa-solid fa-head-side-virus"></i> <%= appointment.symptom %></p>
+  <div class="card-footer d-flex justify-content-between">
+    <% if appointment.confirmation %>
+      <% chatroom = ClientChatroom.find_by(user_id: appointment.user_id, counsellor_id: appointment.counsellor_id) %>
+      <% if chatroom.present? %>
+        <%= link_to 'Your Chatroom', client_chatroom_path(chatroom), class: 'btn-custom text-center mb-2' %>
+      <% elsif %>
+        <%= button_to 'Create Talkroom', client_chatrooms_path(user_id: appointment.user_id, counsellor_id: appointment.counsellor_id), method: :post, class: 'btn-custom text-center mb-2' %>
+      <% else %>
+        <p class="text-center">You have no appointments.</p>
+      <% end %>
+    <% end %>
+    <div class="d-flex">
+      <%= link_to 'Edit', edit_appointment_path(appointment), class: 'btn-custom text-center' %>
+      <%= link_to 'Delete', appointment_path(appointment), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn-custom text-center mb-2' %>
+    </div>
+  </div>
+</div>

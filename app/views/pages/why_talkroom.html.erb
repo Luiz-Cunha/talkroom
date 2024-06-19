@@ -1,18 +1,50 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-md-6">
-      <h1 class="mb-4">Why TalkRoom?</h1>
-      <p>At TalkRoom, we are committed to revolutionizing access to mental health support worldwide. Our platform bridges the gap between individuals seeking counseling and psychology students eager to apply their knowledge.</p>
-      <p>Here’s why TalkRoom stands out:</p>
-      <ul>
-        <li><strong>Accessibility:</strong> Mental health care should be available to everyone. We break down financial barriers to ensure that help is within reach for those who need it most.</li>
-        <li><strong>Quality and Supervision:</strong> Although our counselors are students, they are committed to providing high-quality care. They are guided by licensed psychologists who oversee their work, ensuring that clients receive effective and professional support.</li>
-        <li><strong>Global Reach:</strong> No matter where you are in the world, TalkRoom is here to help. Our online platform allows us to connect clients and counselors across different time zones and geographical locations.</li>
-        <li><strong>Community and Support:</strong> At TalkRoom, we foster a community of support and growth. Clients receive the help they need, while student counselors learn and develop in a real-world setting. This community-focused approach creates a supportive environment for all involved.</li>
-      </ul>
-    </div>
-    <div class="col-md-6  mt-5 mb-5 text-center">
-      <div class="image md-6" style="background-image: url('<%= asset_path('image2.png') %>'); background-size: cover; background-position: right center; height: 400px;"></div>
+<div class="banner mb-5" style="background: linear-gradient(270deg, #007D6E 0%, #5EB47C 100%)">
+  <div class="container">
+    <div style="border-left: 3px solid white;
+          padding-left: 30px;
+          margin-left: 60px;">
+      <h1>Why TalkRoom?</h1>
+      <p class="mt-3">Our platform recruits the finest students from globally acclaimed universities, thus providing you methodologies updated with modern industry standards, and a touch of relatibility.</p>
     </div>
   </div>
+</div>
+
+<div class="d-flex mb-5" style="width: 90%;">
+  <!-- Left Text -->
+  <div class="d-flex flex-column justify-content-center px-5" style="width: 322px;">
+    <p class="text-with-size-h6">Testimonials</p>
+    <p class="text-with-size-h5">Healing words<br> from a few of our<br> users </p>
+  </div>
+  <!-- Card -->
+  <div class="middle-card p-3 mx-auto">
+    <div class="inside-middle-card">
+      <%= image_tag "Patient2.png", loading: 'lazy', class: 'rounded-circle' %>
+        <p class="body-light-text" style="color: var(--txt, #FFF);">
+          By working with real patients, our student counsellors gain the
+          hands-on experience they need to grow and excel in their future
+          careers.
+        </p>
+      <p class="text-with-size-h4" style="color: var(--txt, #FFF);">Victor Abdalla - Client</p>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex mb-5" style="width: 90%;">
+  <!-- Left Text -->
+  <div class="d-flex flex-column justify-content-center px-5" style="width: 322px;">
+    <p class="text-with-size-h5">We cant wait to put you on here!</p>
+  </div>
+  <!-- Card -->
+  <div class="middle-card p-3 mx-auto">
+    <div class="inside-middle-card">
+      <%= image_tag "Patient2.png", loading: 'lazy', class: 'rounded-circle' %>
+          <p class="body-light-text" style="color: var(--txt, #FFF);">
+            By working with real patients, our student counsellors gain the
+            hands-on experience they need to grow and excel in their future
+            careers.
+          </p>
+        <p class="text-with-size-h4" style="color: var(--txt, #FFF); font-size: 34px;">Leo Cotello - Client</p>
+    </div>
+  </div>
+
 </div>

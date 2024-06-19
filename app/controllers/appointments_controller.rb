@@ -3,8 +3,8 @@ class AppointmentsController < ApplicationController
   skip_before_action :authenticate_user!, if: :check_user_type_counsellor
 
   def new
-    # @appointment = Appointment.new
-    # @appointment.user = current_user
+    @appointment = Appointment.new
+    @appointment.user = current_user
   end
 
   def create
@@ -15,7 +15,7 @@ class AppointmentsController < ApplicationController
     @appointment.user = current_user
     if @appointment.save
       ActionCable.server.broadcast("appointments_channel", render_to_string(partial: "counsellors/appointment_accept", locals: {appointment: @appointment}))
-      PatientChannel.broadcast_to(@user, render_to_string(partial: "users/appointment_user", locals: {appointment: @appointment}))
+      PatientChannel.broadcast_to(@user, render_to_string(partial: "users/appointment_booking", locals: {appointment: @appointment}))
       # redirect_to profile_user_path(current_user), notice: 'Appointment was successfully created.'
       # redirect_to profile_user_path(current_user, anchor: 'carouselExampleControls'), notice: 'Appointment was successfully created.'
     else

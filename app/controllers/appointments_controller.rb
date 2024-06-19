@@ -3,8 +3,8 @@ class AppointmentsController < ApplicationController
   skip_before_action :authenticate_user!, if: :check_user_type_counsellor
 
   def new
-    @appointment = Appointment.new
-    @appointment.user = current_user
+    # @appointment = Appointment.new
+    # @appointment.user = current_user
   end
 
   def create

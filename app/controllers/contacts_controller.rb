@@ -13,9 +13,8 @@ class ContactsController < ApplicationController
     end
   end
 
-
+  private
   def contact_params
       params.permit(:name, :email, :message)
   end
-
 end

@@ -1,3 +1,4 @@
+// The orange btn in the website
 .btn-homepage {
   margin-top: 50px;
   border-radius: 20px;
@@ -7,12 +8,18 @@
   background-color: #ec744a;
   padding: 5px 20px;
   text-decoration: none;
-  transition: background-color 0.3s eas;
+  transition: background-color 0.3s ease;
   width: 220px;
   font-size: 20px;
   margin-left: 0;
 }
 
+.btn-homepage:hover {
+  background-color: #dd8666;
+  transform: scale(1.05);
+}
+
+// The very first page CSS
 .card-homepage-top {
   color: var(--txt, #1A1A1A);
   font-family: Manrope;
@@ -32,6 +39,7 @@
   line-height: normal;
 }
 
+// Green banner CSS
 .text-in-greenbanner-quotes {
   color: var(--txt, #FFF);
   font-family: Manrope;
@@ -49,6 +57,7 @@
   gap: 20px;
 }
 
+// Font-family in the homepage
 .text-with-size-h2 {
   color: #000;
   font-family: Manrope;
@@ -102,7 +111,6 @@
 
 .left-card {
   width: 394.825px;
-  //height: 379px;
   border-radius: 30px 0px 0px 30px;
   border-top: 1px solid #000;
   border-left: 1px solid #000;
@@ -112,7 +120,6 @@
 
 .inside-left-card {
   display: flex;
-  //height: 352px;
   flex-direction: column;
   align-items: center;
   gap: 10px;
@@ -121,7 +128,6 @@
 
 .middle-card {
   width: 399px;
-  //height: 450px;
   flex-shrink: 0;
   border-radius: 30px;
   background: linear-gradient(270deg, #007D6E 0%, #5EB47C 100%);
@@ -129,8 +135,6 @@
 
 .inside-middle-card {
   display: flex;
-  //width: 406px;
-  //height: 391px;
   flex-direction: column;
   align-items: center;
   gap: 30px;
@@ -139,7 +143,6 @@
 
 .right-card {
   width: 394px;
-  // height: 383px;
   flex-shrink: 0;
   border-radius: 0px 30px 30px 0px;
   border-top: 1px solid #000;

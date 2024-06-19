@@ -13,4 +13,9 @@ export default class extends Controller {
       }
     })
   }
+
+  disconnect() {
+    console.log("Unsubscribed from the update controller")
+    this.subscription.unsubscribe()
+  }
 }

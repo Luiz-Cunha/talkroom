@@ -1,14 +1,18 @@
-<div class="card-appointments <%= 'active' if appointment.confirmation %>">
-  <img src="https://randomuser.me/api/portraits/women/30.jpg" alt="" class="image-1">
-  <% if appointment.confirmation %>
-    <p class="appointment-card-header">Confirmed</p>
-  <% else %>
-    <p class="appointment-card-header">Pending</p>
-  <% end %>
-  <p><i class="fa-solid fa-calendar-days"></i> <%= appointment.schedule_time %></p>
-  <p><i class="fa-solid fa-head-side-virus"></i> <%= appointment.symptom %></p>
-  <div class="card-footer d-flex justify-content-between">
-    <% if appointment.confirmation %>
+
+
+<div class="col-md-4 mb-4">
+  <div class="card-previous-appointments">
+    <div class="appointment-card-header flex-column">
+      <img src="https://randomuser.me/api/portraits/women/30.jpg" alt="" class="image-1">
+      <% if appointment.confirmation %>
+        <p class="appointment-card-header">Confirmed</p>
+      <% else %>
+        <p class="appointment-card-header">Pending</p>
+      <% end %>
+      <div class="card-appointments">
+        <p><i class="fa-solid fa-calendar-days"></i> <%= appointment.schedule_time.strftime("%B %d, %Y at %I:%M %p") %><br /></p>
+        <p><i class="fa-solid fa-head-side-virus"></i> <%= appointment.symptom %></p>
+        <% if appointment.confirmation %>
       <% chatroom = ClientChatroom.find_by(user_id: appointment.user_id, counsellor_id: appointment.counsellor_id) %>
       <% if chatroom.present? %>
         <%= link_to 'Your Chatroom', client_chatroom_path(chatroom), class: 'btn-custom text-center mb-2' %>
@@ -21,6 +25,8 @@
     <div class="d-flex">
       <%= link_to 'Edit', edit_appointment_path(appointment), class: 'btn-custom text-center' %>
       <%= link_to 'Delete', appointment_path(appointment), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn-custom text-center mb-2' %>
+    </div>
+      </div>
     </div>
   </div>
 </div>

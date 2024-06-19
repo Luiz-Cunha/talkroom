@@ -34,12 +34,10 @@
     <div class="carousel-inner">
       <% @appointments.order(created_at: :desc).each_slice(3).with_index do |appointment_group, index| %>
         <div class="carousel-item <%= 'active' if index == 0 %>">
-          <div class="d-flex justify-content-center">
-            <div data-patients-target="patientsAppointments">
+          <div class="d-flex justify-content-center" data-patients-target="patientsAppointments">
               <% appointment_group.each do |appointment| %>
                 <%= render "appointment_booking", appointment: appointment %>
               <% end %>
-            </div>
           </div>
         </div>
       <% end %>

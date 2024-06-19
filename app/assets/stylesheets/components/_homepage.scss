@@ -1,0 +1,166 @@
+// The orange btn in the website
+.btn-homepage {
+  margin-top: 50px;
+  border-radius: 20px;
+  font-family: Poppins, sans-serif;
+  align-items: start;
+  color: white;
+  background-color: #ec744a;
+  padding: 5px 20px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  width: 220px;
+  font-size: 20px;
+  margin-left: 0;
+}
+
+.btn-homepage:hover {
+  background-color: #dd8666;
+  transform: scale(1.05);
+}
+
+// The very first page CSS
+.card-homepage-top {
+  color: var(--txt, #1A1A1A);
+  font-family: Manrope;
+  font-size: 68px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  width: 628px;
+}
+
+.subtitle-card-homepage-top {
+  color: var(--txt, #1A1A1A);
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+// Green banner CSS
+.text-in-greenbanner-quotes {
+  color: var(--txt, #FFF);
+  font-family: Manrope;
+  text-align: center;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.before-cards-banner-flex-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+// Font-family in the homepage
+.text-with-size-h2 {
+  color: #000;
+  font-family: Manrope;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.text-with-size-h4 {
+  font-family: Manrope;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.text-with-size-h5 {
+  font-family: Manrope;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.text-with-size-h6 {
+  font-family: Manrope;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.body-light-text {
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+}
+
+.map-display-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+// Three Cards CSS
+
+.left-card {
+  width: 394.825px;
+  border-radius: 30px 0px 0px 30px;
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  border-bottom: 1px solid #000;
+  flex-shrink: 0;
+}
+
+.inside-left-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.middle-card {
+  width: 399px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  background: linear-gradient(270deg, #007D6E 0%, #5EB47C 100%);
+}
+
+.inside-middle-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  flex-shrink: 0;
+}
+
+.right-card {
+  width: 394px;
+  flex-shrink: 0;
+  border-radius: 0px 30px 30px 0px;
+  border-top: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.inside-right-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
+}
+
+// Avatar in About Us
+
+.homepage-avatar {
+  width: 300px;
+  height: 300px;
+  flex-shrink: 0;
+}

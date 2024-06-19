@@ -1,3 +1,5 @@
+require 'open-uri'
+
 # Clear existing data
 Message.destroy_all
 ClientChatroom.destroy_all
@@ -7,27 +9,32 @@ User.destroy_all
 Counsellor.destroy_all
 Supervisor.destroy_all
 
+fileprof1 = URI.open("https://blog.polipet.com.br/wp-content/uploads/2024/01/pato-445x445.jpeg")
+fileprof2 = URI.open("https://blog.polipet.com.br/wp-content/uploads/2024/01/pato-445x445.jpeg")
+fileprof3 = URI.open("https://blog.polipet.com.br/wp-content/uploads/2024/01/pato-445x445.jpeg")
+fileprof4 = URI.open("https://blog.polipet.com.br/wp-content/uploads/2024/01/pato-445x445.jpeg")
+fileprof5 = URI.open("https://blog.polipet.com.br/wp-content/uploads/2024/01/pato-445x445.jpeg")
+fileprof6 = URI.open("https://blog.polipet.com.br/wp-content/uploads/2024/01/pato-445x445.jpeg")
+
 # Criação de supervisores
-supervisor1 = Supervisor.create!(
+supervisor1 = Supervisor.new(
   email: "supervisor1@example.com",
   password: 'password',
   password_confirmation: 'password'
 )
+supervisor1.photo.attach(io: fileprof1, filename: "supervisor1_profile_pic.png", content_type: "image/png")
+supervisor1.save!
 
-# Adicionar foto para supervisor1
-
-
-supervisor2 = Supervisor.create!(
+supervisor2 = Supervisor.new(
   email: "supervisor2@example.com",
   password: 'password',
   password_confirmation: 'password'
 )
-
-# Adicionar foto para supervisor2
-
+supervisor2.photo.attach(io: fileprof2, filename: "supervisor2_profile_pic.png", content_type: "image/png")
+supervisor2.save!
 
 # Criação de conselheiros
-counsellor1 = Counsellor.create!(
+counsellor1 = Counsellor.new(
   email: "counsellor1@example.com",
   password: 'password',
   password_confirmation: 'password',
@@ -48,11 +55,10 @@ counsellor1 = Counsellor.create!(
   consent: true,
   terms_conditions: true
 )
+counsellor1.photo.attach(io: fileprof3, filename: "counsellor1_profile_pic.png", content_type: "image/png")
+counsellor1.save!
 
-# Adicionar foto para counsellor1
-
-
-counsellor2 = Counsellor.create!(
+counsellor2 = Counsellor.new(
   email: "counsellor2@example.com",
   password: 'password',
   password_confirmation: 'password',
@@ -73,12 +79,11 @@ counsellor2 = Counsellor.create!(
   consent: true,
   terms_conditions: true
 )
-
-# Adicionar foto para counsellor2
-
+counsellor2.photo.attach(io: fileprof4, filename: "counsellor2_profile_pic.png", content_type: "image/png")
+counsellor2.save!
 
 # Criação de usuários
-user1 = User.create!(
+user1 = User.new(
   email: "user1@example.com",
   password: 'password',
   password_confirmation: 'password',
@@ -94,11 +99,10 @@ user1 = User.create!(
   issues_array: ["Stress", "Work-life balance"],
   consultation_history: "Discussed stress management techniques."
 )
+user1.photo.attach(io: fileprof5, filename: "user1_profile_pic.png", content_type: "image/png")
+user1.save!
 
-# Adicionar foto para user1
-
-
-user2 = User.create!(
+user2 = User.new(
   email: "user2@example.com",
   password: 'password',
   password_confirmation: 'password',
@@ -114,8 +118,7 @@ user2 = User.create!(
   issues_array: ["Grief", "Relationship issues"],
   consultation_history: "Focused on coping strategies for grief."
 )
-
-# Adicionar foto para user2
-
+user2.photo.attach(io: fileprof6, filename: "user2_profile_pic.png", content_type: "image/png")
+user2.save!
 
 puts "Seed data created successfully with photos!"

@@ -14,7 +14,7 @@
           <% end %>
     </div>
     <div class="card-footer d-flex justify-content-between">
-      <%= link_to 'Edit', edit_appointment_path(appointment), class: 'btn-wrap' %>
+      <%= link_to 'Edit', edit_appointment_path(appointment) %>
       <%= link_to 'Delete', appointment_path(appointment), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn-wrap', style: 'margin-left: 5px;' %>
     </div>
   </div>

@@ -16,7 +16,7 @@ class AppointmentsController < ApplicationController
     if @appointment.save
       ActionCable.server.broadcast("appointments_channel", render_to_string(partial: "counsellors/appointment_accept", locals: {appointment: @appointment}))
       PatientChannel.broadcast_to(@user, render_to_string(partial: "users/appointment_user", locals: {appointment: @appointment}))
-      #redirect_to profile_user_path(current_user), notice: 'Appointment was successfully created.'
+      # redirect_to profile_user_path(current_user), notice: 'Appointment was successfully created.'
       # redirect_to profile_user_path(current_user, anchor: 'carouselExampleControls'), notice: 'Appointment was successfully created.'
     else
       render 'users/profile', status: :unprocessable_entity

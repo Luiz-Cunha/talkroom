@@ -29,11 +29,13 @@
 
   <div class="container-appointments">
     <div class="container">
-      <div id="carouselAppointments" class="carousel slide">
-        <div class="carousel-inner" data-patients-target="patientsAppointments" data-controller="update-appointment" data-update-appointment-userid-value="<%= current_user.id %>">
+      <div id="" class="">
+        <div class="" data-controller="update-appointment" data-update-appointment-userid-value="<%= current_user.id %>">
+          <div class="row justify-content-center" data-patients-target="patientsAppointments" >
           <% @appointments.order(created_at: :desc).each_with_index do |appointment, index| %>
                 <%= render "appointment_booking", appointment: appointment, index: index %>
           <% end %>
+          </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselAppointments" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -45,7 +47,7 @@
         </button>
       </div>
     </div>
-    
+
     <div class="row justify-content-center mt-3">
       <div class="col-md-6">
         <div class="d-flex flex-column align-content-center justify-content-center" data-controller="toggle" data-toggle-value="<%= user_signed_in? %>">

@@ -11,7 +11,7 @@
     <div class="container justify-content-center">
       <div class="row align-items-center py-4">
         <div class="col-md-4 text-center">
-          <img src="<%= current_counsellor.photo.attached? ? cl_image_path(current_counsellor.photo.key) : asset_path('patient1.png') %>" alt="Profile" class="counsellor-image">
+          <img src="<%= current_counsellor.photo.attached? ? cl_image_path(current_counsellor.photo.key) : asset_path('counsellor2.png') %>" alt="Profile" class="counsellor-image">
         </div>
       <div class="col-md-8">
         <p><strong>Email:</strong> <%= @counsellor.email %></p>
@@ -31,33 +31,34 @@
 </div>
 </div>
 
-
-
-<div class="container previous-appointments d-flex justify-content-center">
-  <div class="col-md-4 mb-4">
-    <img src="/assets/counsellor2.png" class="img-fluid">
+<div class="container-previous-appointments-margin-top d-flex justify-content-center">
+  <div class="col-md-4 mb-6">
+    <img src="/assets/profile7.png" class="img-fluid">
   </div>
 
-  <div id="carouselPendingAppointments" class="carousel slide col-md-8" >
+  <div id="carouselPendingAppointments" class="carousel slide col-md-8">
     <div class="carousel-inner">
       <% @appointments.order(created_at: :desc).each_with_index do |appointment, index| %>
-
         <div class="carousel-item <%= 'active' if index == 0 %>">
           <div class="row justify-content-center">
             <div class="col-md-6 mb-4">
               <div class="card-previous-appointments">
-                <div class="appointment-card-details">
-                  <% if appointment.user.photo.attached? %>
-                    <%= image_tag cl_image_path(appointment.user.photo.key), alt: 'Profile Photo', class: 'img-fluid img-counsellor' %>
-                  <% else %>
-                    <%= image_tag asset_path('patient1.png'), alt: 'Default Profile Photo', class: 'img-fluid img-counsellor' %>
-                  <% end %>
-                  <%= render 'appointment_accept', appointment: appointment %>
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <div class="card-appointments flex-grow-1">
+                      <% if appointment.user.photo.attached? %>
+                        <%= image_tag cl_image_path(appointment.user.photo.key), alt: 'Profile Photo', class: 'img-fluid img-counsellor' %>
+                      <% else %>
+                        <%= image_tag asset_path('counsellor.png'), alt: 'Default Profile Photo', class: 'img-fluid img-counsellor' %>
+                      <% end %>
+                      <%= render 'appointment_accept', appointment: appointment %>
                       <% if appointment.counsellor_id == current_counsellor.id %>
                         <% chatroom = ClientChatroom.find_by(user_id: appointment.user_id, counsellor_id: appointment.counsellor_id) %>
-                        <% end %>
+                      <% end %>
                     </div>
-                  </div>
+                  </li>
+                </ul>
+                <div class="appointment-card-details">
                 </div>
               </div>
             </div>
@@ -65,11 +66,13 @@
         </div>
       <% end %>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselPendingAppointments" data-bs-slide="prev">
+
+
+    <button class="carousel-control-prev-counsellor" type="button" data-bs-target="#carouselPendingAppointments" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselPendingAppointments" data-bs-slide="next">
+    <button class="carousel-control-next-counsellor" type="button" data-bs-target="#carouselPendingAppointments" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
@@ -85,76 +88,68 @@
   </div>
 </div>
 
+
 <div class="previous-title">
   On-going Appointments
 </div>
 
-<div class="container previous-appointments d-flex justify-content-center">
-  <div class="col-md-4 mb-4">
-    <% if current_user && current_user.photo.attached? %>
-      <%= image_tag cl_image_path(current_user.photo.key), alt: 'Profile Photo', class: 'img-fluid' %>
-    <% else %>
-      <%= image_tag asset_path('patient1.png'), alt: 'Default Profile Photo', class: 'img-fluid' %>
-    <% end %>
+
+<div class="container-previous-appointments-margin-top d-flex justify-content-center">
+  <div class="col-md-4 mb-6">
+    <%= image_tag asset_path('counsellor2.png'), alt: 'Default Profile Photo', class: 'img-counsell' %>
   </div>
 
-  <div id="carouselOnGoingAppointments" class="carousel slide col-md-8" data-bs-ride="carousel">
+  <div id="carouselOnGoingAppointments" class="carousel slide col-md-8">
     <div class="carousel-inner">
-      <% @appointments_confirmed.each_slice(3).with_index do |appointment_group, index| %>
+      <% @appointments_confirmed.order(created_at: :desc).each_with_index do |appointment, index| %>
         <div class="carousel-item <%= 'active' if index == 0 %>">
           <div class="row justify-content-center">
-            <% appointment_group.each do |appointmentC| %>
-              <div class="col-md-4 mb-4">
-                <div class="card-previous-appointments">
-                  <ul class="list-group">
-                    <li class="list-group-item">
-                      <div class="card-appointments flex-grow-1">
-                        <div>
-                          <span class="font-weight-bold">Patient name:</span>
-                          <span><%= appointmentC.user.fullname %></span>
-                        </div>
-                        <div>
-                          <span class="font-weight-bold">Symptom:</span>
-                          <span><%= appointmentC.symptom %></span>
-                        </div>
-                        <div>
-                          <span class="font-weight-bold">Schedule Time:</span>
-                          <span><%= appointmentC.schedule_time.strftime("%B %d, %Y at %I:%M %p") if appointmentC.present? %></span>
-                        </div>
-                        <div>
-                          <% if appointmentC.user && appointmentC.user.photo.attached? %>
-                            <%= image_tag cl_image_path(appointmentC.user.photo.key), alt: 'Profile Photo', class: 'img-counsellor' %>
-                          <% else %>
-                            <%= image_tag asset_path('patient1.png'), alt: 'Default Profile Photo', class: 'img-counsellor' %>
-                          <% end %>
-                        </div>
-                        <div>
-                          <% if appointmentC.counsellor_id == current_counsellor.id %>
-                            <% chatroom = ClientChatroom.find_by(user_id: appointmentC.user_id, counsellor_id: appointmentC.counsellor_id) %>
-                            <% if chatroom.present? %>
-                              <%= link_to 'Your Chatroom', client_chatroom_path(chatroom), class: "btn btn-primary btn-sm" %>
-                            <% else %>
-                              <%= button_to 'Create Chatroom', client_chatrooms_path(user_id: appointmentC.user_id, counsellor_id: appointmentC.counsellor_id), method: :post, class: "btn btn-primary btn-sm" %>
-                            <% end %>
-                          <% end %>
-                          <%= button_to 'Delete', appointment_path(appointmentC), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm ms-2' %>
+            <div class="col-md-6 mb-4">
+              <div class="card-previous-appointments">
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <div class="card-appointments flex-grow-1">
+                      <% if appointment.user.photo.attached? %>
+                        <%= image_tag cl_image_path(appointment.user.photo.key), alt: 'Profile Photo', class: 'img-fluid img-counsellor' %>
+                      <% else %>
+                        <%= image_tag asset_path('counsellor.png'), alt: 'Default Profile Photo', class: 'img-fluid img-counsellor' %>
+                      <% end %>
+                      <div class="card-previous-appointments d-flex justify-content-center">
+                        <div class="card-body-counsellor">
+                          <h5 class="card-title"><strong><%= appointment.user.fullname %></h5>
+                          <p class="card-text"><strong><%= appointment.symptom %></strong></p>
+                          <strong>Schedule Time:</strong>
+                          <%= appointment.schedule_time.strftime("%B %d, %Y at %I:%M %p") %>
                         </div>
                       </div>
-                    </li>
-                  </ul>
+
+                      <% if appointment.counsellor_id == current_counsellor.id %>
+                        <% chatroom = ClientChatroom.find_by(user_id: appointment.user_id, counsellor_id: appointment.counsellor_id) %>
+                        <% if chatroom.present? %>
+                          <%= link_to 'Your Chatroom', client_chatroom_path(chatroom), class: "btn-accept" %>
+                        <% else %>
+                          <%= button_to 'Create Chatroom', client_chatrooms_path(user_id: appointment.user_id, counsellor_id: appointment.counsellor_id), method: :post, class: "btn-accept" %>
+                        <% end %>
+                      <% end %>
+                      <%= button_to 'Delete', appointment_path(appointment), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn-accept' %>
+                    </div>
+                  </li>
+                </ul>
+                <div class="appointment-card-details">
                 </div>
               </div>
-            <% end %>
+            </div>
           </div>
         </div>
       <% end %>
     </div>
 
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselOnGoingAppointments" data-bs-slide="prev">
+
+    <button class="carousel-control-prev-counsellor" type="button" data-bs-target="#carouselOnGoingAppointments" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselOnGoingAppointments" data-bs-slide="next">
+    <button class="carousel-control-next-counsellor" type="button" data-bs-target="#carouselOnGoingAppointments" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>

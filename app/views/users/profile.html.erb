@@ -11,7 +11,7 @@
 <div class="profile-data">
   <div class="container justify-content-center ">
     <div class="d-flex justify-content-center py-4">
-      <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : asset_path('patient1.png') %>" alt="Profile" class="profile-image">
+      <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : asset_path('counsellor2.png') %>" alt="Profile" class="profile-image">
       <div>
         <p><strong><i class="fa-solid fa-envelope"></i></strong> <%= @user.email %></p>
         <p><strong><i class="fa-solid fa-user"></i></strong> <%= @user.fullname %></p>
@@ -93,7 +93,7 @@
   <div id="carouselPreviousAppointments" class="carousel slide col-md-8">
     <div class="carousel-inner">
       <% @appointments.order(created_at: :desc).each_slice(1).with_index do |appointment_group, index| %>
-      
+
         <div class="carousel-item <%= 'active' if index == 0 %>">
           <div class="row justify-content-center">
             <% appointment_group.each do |appointment| %>

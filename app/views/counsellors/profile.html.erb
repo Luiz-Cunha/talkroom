@@ -36,12 +36,13 @@
     <img src="/assets/profile7.png" class="img-fluid">
   </div>
 
-  <div data-controller="appointments" id="carouselPendingAppointments" class="carousel slide col-md-8">
-    <div class="carousel-inner" data-appointments-target="appointments">
+  <div data-controller="appointments" id="" class="col-md-8">
+    <div class="row justify-content-center" data-appointments-target="appointments">
       <% @appointments.order(created_at: :desc).each_with_index do |appointment, index| %>
         <%= render "pending_appointments", appointment: appointment, index: index %>
       <% end %>
     </div>
+  </div>
 
 
     <button class="carousel-control-prev-counsellor" type="button" data-bs-target="#carouselOnGoingAppointments" data-bs-slide="prev">
@@ -92,7 +93,7 @@
                       <% end %>
                       <div class="card-previous-appointments d-flex justify-content-center">
                         <div class="card-body-counsellor">
-                          <h5 class="card-title"><strong><%= appointment.user.fullname %></h5>
+                          <h5 class="card-title"><strong><%= appointment.user.fullname %></strong></h5>
                           <p class="card-text"><strong><%= appointment.symptom %></strong></p>
                           <strong>Schedule Time:</strong>
                           <%= appointment.schedule_time.strftime("%B %d, %Y at %I:%M %p") %>

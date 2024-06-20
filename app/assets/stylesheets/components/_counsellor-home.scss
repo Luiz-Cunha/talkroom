@@ -1,0 +1,126 @@
+.counsellor-data {
+  padding: 20px;
+  border-radius: 10px;
+  justify-content: center;
+  margin-left: 200px;
+  margin-top: 150px;
+
+  p {
+  font-size: 25px;
+  margin-bottom: 5px;
+  font-family: Manrope, sans-serif;
+  }
+
+}
+.counsellor-image {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%
+}
+
+.btn-change-password {
+  padding: 10px 20px;
+  border-radius: 30px;
+  background-color: #ec744a;
+  color: #fff;
+  text-decoration: none;
+  font-family: Manrope, sans-serif;
+  margin-top: 50px;
+}
+
+.container-counsellor {
+  padding: 20px;
+  margin-bottom: 100px;
+  margin-top: 200px;
+}
+
+
+.img-counsellor {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 20px;
+}
+
+.btn-accept {
+  padding: 10px 10px;
+  border-radius: 30px;
+  background-color: #ec744a;
+  color: #fff;
+  text-decoration: none;
+  font-family: Manrope, sans-serif;
+  margin-top: 20px;
+  border: none;
+  align-items: center;
+}
+
+
+.image-counsellor {
+  width: 300px;
+  height: 300px;
+}
+
+.card-text {
+  font-family: Manrope, sans-serif;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.card-title {
+  font-family: Manrope, sans-serif;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+}
+// .carousel-indicators {
+//   margin-right: 0px;
+// }
+
+// .carousel-indicators li {
+//   margin: 0;
+//   padding: 0;
+// }
+
+.carousel-control-prev-counsellor,
+.carousel-control-next-counsellor {
+  background-color: black;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  color: white;
+  margin-top: 10px;
+}
+
+.carousel-control-prev-counsellor:hover,
+.carousel-control-next-counsellor:hover {
+  background-color: #333;
+}
+.container-previous-appointments-margin-top {
+  margin-top: 150px;
+}
+
+
+.carousel-control-next-counsellor {
+  position: absolute;
+  top: -70px;
+  right: 46%;
+}
+
+.carousel-control-prev-counsellor {
+  position: absolute;
+  top: -70px;
+  left: 47%;
+}
+
+.card-body-counsellor-heigth {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 186px;
+}

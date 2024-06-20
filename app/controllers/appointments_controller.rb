@@ -14,8 +14,8 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
     @appointment.user = current_user
     if @appointment.save
-      ActionCable.server.broadcast("appointments_channel", render_to_string(partial: "counsellors/appointment_accept", locals: {appointment: @appointment}))
-      PatientChannel.broadcast_to(@user, render_to_string(partial: "users/appointment_booking", locals: {appointment: @appointment}))
+      ActionCable.server.broadcast("appointments_channel", render_to_string(partial: "counsellors/pending_appointments", locals: {appointment: @appointment, index: 0 }))
+      PatientChannel.broadcast_to(@user, render_to_string(partial: "users/appointment_booking", locals: {appointment: @appointment, index: 0 }))
       # redirect_to profile_user_path(current_user), notice: 'Appointment was successfully created.'
       # redirect_to profile_user_path(current_user, anchor: 'carouselExampleControls'), notice: 'Appointment was successfully created.'
     else
@@ -36,7 +36,7 @@ class AppointmentsController < ApplicationController
     @user = @appointment.user
     @appointment.counsellor = current_counsellor
     if @appointment.update(appointment_params)
-      UpdateAppointmentChannel.broadcast_to(@user, { appointmentHtml: render_to_string(partial: "users/appointment_booking", locals: {appointment: @appointment}), appointmentId: @appointment.id })
+      UpdateAppointmentChannel.broadcast_to(@user, { appointmentHtml: render_to_string(partial: "users/appointment_booking", locals: {appointment: @appointment, index: 1}), appointmentId: @appointment.id })
       redirect_correct_page
     else
       render :edit
@@ -46,8 +46,9 @@ class AppointmentsController < ApplicationController
   def destroy
     @appointment = Appointment.find(params[:id])
     @appointment.destroy
-    redirect_to profile_user_path(current_user), notice: 'Appointment was successfully deleted.'
+    redirect_to profile_path, notice: 'Appointment was successfully deleted.'
   end
+
 
   private
 
@@ -68,6 +69,16 @@ class AppointmentsController < ApplicationController
       if current_user.instance_of?(User)
         redirect_to profile_user_path(current_user), notice: 'Appointment was successfully updated.'
       end
+    end
+  end
+
+  def profile_path
+    if current_user
+      profile_user_path(current_user)
+    elsif current_counsellor
+      profile_counsellor_path(current_counsellor)
+    else
+      root_path
     end
   end
 end

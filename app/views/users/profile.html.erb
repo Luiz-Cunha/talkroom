@@ -12,7 +12,7 @@
   <div class="profile-data">
     <div class="container justify-content-center">
       <div class="d-flex justify-content-center py-4">
-        <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : asset_path('patient1.png') %>" alt="Profile" class="profile-image">
+        <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : asset_path('white-hands.png') %>" alt="Profile" class="profile-image">
         <div>
           <p><strong><i class="fa-solid fa-envelope"></i></strong> <%= @user.email %></p>
           <p><strong><i class="fa-solid fa-user"></i></strong> <%= @user.fullname %></p>
@@ -29,28 +29,17 @@
 
   <div class="container-appointments">
     <div class="container">
-      <div id="carouselAppointments" class="carousel slide">
-        <div class="carousel-inner" data-controller="update-appointment" data-update-appointment-userid-value="<%= current_user.id %>">
-          <% @appointments.order(created_at: :desc).each_slice(3).with_index do |appointment_group, index| %>
-            <div class="carousel-item <%= 'active' if index == 0 %>">
-              <div class="d-flex justify-content-center" data-patients-target="patientsAppointments">
-                <% appointment_group.each do |appointment| %>
-                  <%= render "appointment_booking", appointment: appointment %>
-                <% end %>
-              </div>
-            </div>
+      <div id="" class="">
+        <div class="" data-controller="update-appointment" data-update-appointment-userid-value="<%= current_user.id %>">
+          <div class="row justify-content-center" data-patients-target="patientsAppointments" >
+          <% @appointments.order(created_at: :desc).each_with_index do |appointment, index| %>
+                <%= render "appointment_booking", appointment: appointment, index: index %>
           <% end %>
+          </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselAppointments" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselAppointments" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
     </div>
+
     <div class="row justify-content-center mt-3">
       <div class="col-md-6">
         <div class="d-flex flex-column align-content-center justify-content-center" data-controller="toggle" data-toggle-value="<%= user_signed_in? %>">
@@ -81,16 +70,14 @@
 
   <div class="container previous-appointments d-flex justify-content-center">
     <div class="col-md-4 mb-4">
-      <img src="/assets/profile6.png" class="img-fluid">
+      <%= image_tag 'profile6.png', loading: 'lazy', class: 'img-fluid' %>
     </div>
     <div id="carouselPreviousAppointments" class="carousel slide col-md-8">
       <div class="carousel-inner">
-        <% @appointments.order(created_at: :desc).each_slice(3).with_index do |appointment_group, index| %>
+        <% @appointments.order(created_at: :desc).each_with_index do |appointment, index| %>
           <div class="carousel-item <%= 'active' if index == 0 %>">
             <div class="row justify-content-center">
-              <% appointment_group.each do |appointment| %>
                 <%= render 'users/previous_appointment', appointment: appointment %>
-              <% end %>
             </div>
           </div>
         <% end %>

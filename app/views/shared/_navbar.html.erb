@@ -23,7 +23,7 @@
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <%# <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> %>
-            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : asset_path('patient1.png') %>" />
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : asset_path('white-hands.png') %>" />
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "User Profile", profile_user_path(current_user), class: "dropdown-item" %>
               <%= link_to "Edit your account", edit_user_registration_path, class: "dropdown-item" %>
@@ -32,7 +32,7 @@
           </li>
         <% elsif counsellor_signed_in? %>
           <li class="nav-item dropdown">
-            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= current_counsellor.photo.attached? ? cl_image_path(current_counsellor.photo.key) : asset_path('patient1.png') %>" />
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= current_counsellor.photo.attached? ? cl_image_path(current_counsellor.photo.key) : asset_path('white-hands.png') %>" />
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Counsellor Profile", profile_counsellor_path(current_counsellor), class: "dropdown-item" %>
               <%= link_to "Edit your account", edit_counsellor_registration_path, class: "dropdown-item" %>
@@ -41,7 +41,7 @@
           </li>
         <% elsif supervisor_signed_in? %>
           <li class="nav-item dropdown">
-            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= current_supervisor.photo.attached? ? cl_image_path(current_supervisor.photo.key) : asset_path('patient1.png') %>" />
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= current_supervisor.photo.attached? ? cl_image_path(current_supervisor.photo.key) : asset_path('white-hands.png') %>" />
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Supervisor Profile", profile_user_path(current_supervisor), class: "dropdown-item" %>
               <%= link_to "Edit your account", edit_supervisor_registration_path, class: "dropdown-item" %>

@@ -1,12 +1,16 @@
 <div id="message-<%= message.id %>">
-  <small>
-    <% if message.sendable.is_a? (Counsellor)%>
-      <%= image_tag cl_image_path(message.sendable.photo.key), alt: 'Counsellor Photo', class: 'icon-chatroom mb-2' %>
-    <% elsif message.sendable.is_a? (User) %>
-      <%= image_tag cl_image_path(message.sendable.photo.key), alt: 'User Photo', class: 'icon-chatroom mb-2' %>
-    <% end %>
-    <strong><%= message.sendable.fullname %></strong>
-    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-  </small>
-  <p><%= message.content %></p>
+  <div class="message-row d-flex <%= message.sender?(message.sendable) ? 'justify-content-end' : 'justify-content-start' %>">
+    <div>
+      <small>
+        <% if message.sendable.is_a? (Counsellor)%>
+          <%= image_tag cl_image_path(message.sendable.photo.key), alt: 'Counsellor Photo', class: 'icon-chatroom mb-2' %>
+        <% elsif message.sendable.is_a? (User) %>
+          <%= image_tag cl_image_path(message.sendable.photo.key), alt: 'User Photo', class: 'icon-chatroom mb-2' %>
+        <% end %>
+        <strong><%= message.sendable.fullname %></strong>
+        <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+      </small>
+      <p><%= message.content %></p>
+    </div>
+  </div>
 </div>

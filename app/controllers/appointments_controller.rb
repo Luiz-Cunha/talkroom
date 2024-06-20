@@ -14,7 +14,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
     @appointment.user = current_user
     if @appointment.save
-      ActionCable.server.broadcast("appointments_channel", render_to_string(partial: "counsellors/appointment_accept", locals: {appointment: @appointment}))
+      ActionCable.server.broadcast("appointments_channel", render_to_string(partial: "counsellors/pending_appointments", locals: {appointment: @appointment, index: 0 }))
       PatientChannel.broadcast_to(@user, render_to_string(partial: "users/appointment_booking", locals: {appointment: @appointment}))
       # redirect_to profile_user_path(current_user), notice: 'Appointment was successfully created.'
       # redirect_to profile_user_path(current_user, anchor: 'carouselExampleControls'), notice: 'Appointment was successfully created.'

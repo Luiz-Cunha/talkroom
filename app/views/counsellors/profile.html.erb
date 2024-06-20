@@ -39,31 +39,7 @@
   <div data-controller="appointments" id="carouselPendingAppointments" class="carousel slide col-md-8">
     <div class="carousel-inner" data-appointments-target="appointments">
       <% @appointments.order(created_at: :desc).each_with_index do |appointment, index| %>
-        <div class="carousel-item <%= 'active' if index == 0 %>">
-          <div class="row justify-content-center">
-            <div class="col-md-6 mb-4">
-              <div class="card-previous-appointments">
-                <ul class="list-group">
-                  <li class="list-group-item">
-                    <div class="card-appointments flex-grow-1">
-                      <% if appointment.user.photo.attached? %>
-                        <%= image_tag cl_image_path(appointment.user.photo.key), alt: 'Profile Photo', class: 'img-fluid img-counsellor' %>
-                      <% else %>
-                        <%= image_tag asset_path('counsellor.png'), alt: 'Default Profile Photo', class: 'img-fluid img-counsellor' %>
-                      <% end %>
-                      <%= render 'appointment_accept', appointment: appointment %>
-                      <% if appointment.counsellor_id == current_counsellor.id %>
-                        <% chatroom = ClientChatroom.find_by(user_id: appointment.user_id, counsellor_id: appointment.counsellor_id) %>
-                      <% end %>
-                    </div>
-                  </li>
-                </ul>
-                <div class="appointment-card-details">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <%= render "pending_appointments", appointment: appointment, index: index %>
       <% end %>
     </div>
 

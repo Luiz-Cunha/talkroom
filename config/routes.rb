@@ -46,7 +46,7 @@ Rails.application.routes.draw do
   resources :client_chatrooms, only: [:show, :create] do
     resources :messages, only: :create
   end
-  resources :appointments, only: [:new, :create, :edit, :update, :destroy, :show]
+  resources :appointments, only: [:new, :create, :edit, :update, :destroy, :show,]
 
   resources :counsellor_chatrooms, only: :show do
     resources :messages, only: :create

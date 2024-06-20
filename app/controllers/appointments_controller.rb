@@ -44,8 +44,9 @@ class AppointmentsController < ApplicationController
   def destroy
     @appointment = Appointment.find(params[:id])
     @appointment.destroy
-    redirect_to profile_user_path(current_user), notice: 'Appointment was successfully deleted.'
+    redirect_to profile_path, notice: 'Appointment was successfully deleted.'
   end
+
 
   private
 
@@ -66,6 +67,16 @@ class AppointmentsController < ApplicationController
       if current_user.instance_of?(User)
         redirect_to profile_user_path(current_user), notice: 'Appointment was successfully updated.'
       end
+    end
+  end
+
+  def profile_path
+    if current_user
+      profile_user_path(current_user)
+    elsif current_counsellor
+      profile_counsellor_path(current_counsellor)
+    else
+      root_path
     end
   end
 end

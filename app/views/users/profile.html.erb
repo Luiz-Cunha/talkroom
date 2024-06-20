@@ -45,6 +45,7 @@
         </button>
       </div>
     </div>
+    
     <div class="row justify-content-center mt-3">
       <div class="col-md-6">
         <div class="d-flex flex-column align-content-center justify-content-center" data-controller="toggle" data-toggle-value="<%= user_signed_in? %>">
@@ -79,12 +80,10 @@
     </div>
     <div id="carouselPreviousAppointments" class="carousel slide col-md-8">
       <div class="carousel-inner">
-        <% @appointments.order(created_at: :desc).each_slice(3).with_index do |appointment_group, index| %>
+        <% @appointments.order(created_at: :desc).each_with_index do |appointment, index| %>
           <div class="carousel-item <%= 'active' if index == 0 %>">
             <div class="row justify-content-center">
-              <% appointment_group.each do |appointment| %>
                 <%= render 'users/previous_appointment', appointment: appointment %>
-              <% end %>
             </div>
           </div>
         <% end %>

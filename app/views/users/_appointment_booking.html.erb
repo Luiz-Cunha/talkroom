@@ -11,9 +11,9 @@
                 <%= image_tag asset_path('counsellor.png'), alt: 'Default Profile Photo', class: 'img-fluid img-counsellor' %>
               <% end %>
               <% if appointment.confirmation %>
-                <p>Confirmed</p>
+                <p><strong>Confirmed</strong></p>
               <% else %>
-                <p>Pending</p>
+                <p><strong>Pending</strong></p>
               <% end %>
               <div class="card-previous-appointments d-flex justify-content-center">
                 <div class="card-body-counsellor">
@@ -32,7 +32,7 @@
                       <p class="text-center">You have no appointments.</p>
                     <% end %>
                   <% end %>
-                  <div class="d-flex gap-3">
+                  <div class="d-flex justify-content-center gap-3">
                     <%= link_to edit_appointment_path(appointment) do %>
                       <i class="fa-solid fa-pen-to-square"></i>
                     <% end %>

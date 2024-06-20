@@ -36,7 +36,7 @@ class AppointmentsController < ApplicationController
     @user = @appointment.user
     @appointment.counsellor = current_counsellor
     if @appointment.update(appointment_params)
-      UpdateAppointmentChannel.broadcast_to(@user, { appointmentHtml: render_to_string(partial: "users/appointment_booking", locals: {appointment: @appointment}), appointmentId: @appointment.id })
+      UpdateAppointmentChannel.broadcast_to(@user, { appointmentHtml: render_to_string(partial: "users/appointment_booking", locals: {appointment: @appointment, index: 1}), appointmentId: @appointment.id })
       redirect_correct_page
     else
       render :edit

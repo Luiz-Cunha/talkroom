@@ -12,7 +12,7 @@
   <div class="profile-data">
     <div class="container justify-content-center">
       <div class="d-flex justify-content-center py-4">
-        <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : asset_path('patient1.png') %>" alt="Profile" class="profile-image">
+        <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : asset_path('white-hands.png') %>" alt="Profile" class="profile-image">
         <div>
           <p><strong><i class="fa-solid fa-envelope"></i></strong> <%= @user.email %></p>
           <p><strong><i class="fa-solid fa-user"></i></strong> <%= @user.fullname %></p>

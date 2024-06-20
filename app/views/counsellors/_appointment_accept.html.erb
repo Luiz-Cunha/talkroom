@@ -1,16 +1,17 @@
-<div class="card mb-3">
-  <div class="card-body">
-    <h5 class="card-title"><%= appointment.user.fullname %></h5>
-    <p class="card-text"><%= appointment.symptom %></p>
+<div class="card-previous-appointments d-flex justify-content-center">
+  <div class="card-body-counsellor">
+    <h5 class="card-title"><strong><%= appointment.user.fullname %></strong></h5>
+    <p class="card-text"><strong><%= appointment.symptom %></strong></p>
     <%= simple_form_for appointment do |f| %>
-      <div>
+      <div class= "d-flex justity-contente-center">
         <strong>Schedule Time:</strong>
         <%= appointment.schedule_time.strftime("%B %d, %Y at %I:%M %p") %>
-        <div class="ms-3">
+        <div class=" d-flex justify-content-center ms-3">
           <%= f.input :confirmation, as: :hidden, input_html: { value: true } %>
-          <%= f.submit 'Accept', class: 'btn btn-info' %>
+          <%= f.submit 'Accept', class: 'btn-accept ">' %>
         </div>
       </div>
     <% end %>
+
   </div>
 </div>

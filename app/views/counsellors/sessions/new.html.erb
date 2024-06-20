@@ -1,29 +1,30 @@
-<div class="envelop">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-body">
-            <h2 class="card-title text-center">Log in</h2>
-            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form" }) do |f| %>
-              <div class="form-group">
-                <%= f.label :email %>
-                <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
-              </div>
-              <div class="form-group">
-                <%= f.label :password %>
-                <%= f.password_field :password, class: "form-control", autocomplete: "current-password" %>
-              </div>
-              <div class="form-group form-check">
-                <%= f.check_box :remember_me, class: "form-check-input" %>
-                <%= f.label :remember_me, class: "form-check-label" %>
-              </div>
-              <div class="text-center">
-                <%= f.submit "Log in", class: "btn btn-primary" %>
-              </div>
-            <% end %>
-            <%= render "counsellors/shared/links" %>
-          </div>
+<div class="banner" style="background: linear-gradient(270deg, #007D6E 0%, #5EB47C 100%)">
+  <div class="container">
+    <h1>Log in Counsellor</h1>
+  </div>
+</div>
+<div class="container min-vh-100">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-6">
+      <div class="form-login text-center me-5 py-4" style="background-color: #ffffff; color: #28697E; font-family: 'Alegreya', serif;">
+        <h2 class="card-title text-center">Log in</h2>
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :email,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "email" } %>
+          <%= f.input :password,
+                required: false,
+                input_html: { autocomplete: "current-password" } %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
         </div>
+            <div class="form-actions">
+              <%= f.button :submit, "Log in" %>
+            </div>
+          <% end %>
+          <%= render "counsellors/shared/links" %>
       </div>
     </div>
   </div>
+</div>

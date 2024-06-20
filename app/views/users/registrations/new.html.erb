@@ -1,8 +1,14 @@
-<div class="container" style="background-color: #f0f4f1; color: #28697E; font-family: 'Alegreya', serif;">
+<div class="banner" style="background: linear-gradient(270deg, #007D6E 0%, #5EB47C 100%)">
+  <div class="container">
+    <h1>Sign up Pacient</h1>
+  </div>
+</div>
+<div class="container min-vh-100">
   <div class="row justify-content-center">
     <div class="col-12 col-sm-6">
-      <h2>Sign up</h2>
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "my-4" }) do |f| %>
+      <div class="form-login text-center me-5 py-4" style="background-color: #ffffff; color: #28697E; font-family: 'Alegreya', serif;">
+        <h2 class="card-title text-center">Sign up</h2>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "my-4" }) do |f| %>
         <%= f.error_notification %>
         <div class="form-inputs">
           <%= f.input :email,
@@ -47,5 +53,5 @@
     </div>
   </div>
 </div>
-
+</div>
 <%= render "users/shared/links" %>

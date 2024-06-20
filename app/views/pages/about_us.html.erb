@@ -1,14 +1,48 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-md-6">
-      <h1 class="mb-4">About Us</h1>
-      <p>Welcome to TalkRoom, platform dedicated to providing accessible mental health support to individuals around the world. Our mission is both simple and profound: to connect people with free counseling services by matching them with psychology students gaining practical experience in their field.</p>
-      <p>At TalkRoom, we believe that everyone deserves access to mental health care, regardless of their financial situation. By bridging the gap between those seeking support and psychology students, we ensure compassionate care while nurturing future professionals.</p>
-      <p>Through supervised sessions, our student counsellors offer empathetic guidance under the mentorship of licensed professionals, fostering personal growth and improved well-being.</p>
-      <p>Join us in creating a supportive community where individuals receive the help they need, and future mental health professionals thrive.</p>
+<div class="banner mb-5" style="background: linear-gradient(270deg, #007D6E 0%, #5EB47C 100%)">
+  <div class="container">
+    <div style="border-left: 3px solid white;
+          padding-left: 30px;
+          margin-left: 60px;">
+      <h1>About us</h1>
     </div>
-    <div class="col-md-6">
-      <div class="image" style="background-image: url('<%= asset_path('logo-2.png') %>'); background-size: cover; background-position: center; height: 400px;"></div>
+  </div>
+</div>
+
+<div class="container">
+  <p class="text-center green-text-little mb-5" style="color: #0E8571;">TalkRoom has been created by a group of tech enthusiasts who<br> live around the world. We aspire to make a difference, one patient<br>at a time!</p>
+  <p class="text-center text-with-size-h4 mb-5" style="color: #078170;">Meet the team!</p>
+  <div class="row">
+    <div class="col-6">
+      <%= image_tag "Pedro.png", class:"aboutus-card mt-2"%>
+    </div>
+    <div class="col-6 align-content-center justify-content-center">
+      <p class="body-light-text aboutus-border">Pedro has a passion for plants</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 align-content-center justify-content-center">
+      <p class="body-light-text aboutus-border">Also known as 'the madre'</p>
+    </div>
+
+    <div class="col-6">
+      <%= image_tag "Municki.png", class:"aboutus-card mt-2"%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <%= image_tag "Luiz.png", class:"aboutus-card mt-2"%>
+    </div>
+
+    <div class="col-6 align-content-center justify-content-center">
+      <p class="body-light-text aboutus-border">Better coffee drinker than coder</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 align-content-center justify-content-center">
+    <p class="body-light-text aboutus-border">Apparently he invented ChatGPT</p>
+    </div>
+    <div class="col-6">
+      <%= image_tag "Eemon.png", class:"aboutus-card mt-2"%>
     </div>
   </div>
 </div>

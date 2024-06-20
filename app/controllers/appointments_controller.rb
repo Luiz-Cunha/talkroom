@@ -3,8 +3,8 @@ class AppointmentsController < ApplicationController
   skip_before_action :authenticate_user!, if: :check_user_type_counsellor
 
   def new
-    @appointment = Appointment.new
-    @appointment.user = current_user
+    # @appointment = Appointment.new
+    # @appointment.user = current_user
   end
 
   def create
@@ -33,8 +33,10 @@ class AppointmentsController < ApplicationController
 
   def update
     @appointment = Appointment.find(params[:id])
+    @user = @appointment.user
     @appointment.counsellor = current_counsellor
     if @appointment.update(appointment_params)
+      UpdateAppointmentChannel.broadcast_to(@user, { appointmentHtml: render_to_string(partial: "users/appointment_booking", locals: {appointment: @appointment}), appointmentId: @appointment.id })
       redirect_correct_page
     else
       render :edit

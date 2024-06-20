@@ -17,4 +17,9 @@ export default class extends Controller {
     event.target.reset()
     this.hideFormTarget.classList.toggle("d-none")
   }
+
+  disconnect() {
+    console.log("Unsubscribed from the patients controller")
+    this.subscription.unsubscribe()
+  }
 }

@@ -31,14 +31,8 @@
     <div class="container">
       <div id="carouselAppointments" class="carousel slide">
         <div class="carousel-inner" data-controller="update-appointment" data-update-appointment-userid-value="<%= current_user.id %>">
-          <% @appointments.order(created_at: :desc).each_slice(3).with_index do |appointment_group, index| %>
-            <div class="carousel-item <%= 'active' if index == 0 %>">
-              <div class="d-flex justify-content-center" data-patients-target="patientsAppointments">
-                <% appointment_group.each do |appointment| %>
-                  <%= render "appointment_booking", appointment: appointment %>
-                <% end %>
-              </div>
-            </div>
+          <% @appointments.order(created_at: :desc).each_with_index do |appointment, index| %>
+                <%= render "appointment_booking", appointment: appointment, index: index %>
           <% end %>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselAppointments" data-bs-slide="prev">

@@ -6,7 +6,7 @@ class ClientChatroomsController < ApplicationController
     @user = User.find(params[:user_id])
     @client_chatroom = ClientChatroom.new(user: @user, counsellor: @counsellor)
     if @client_chatroom.save
-      redirect_to @client_chatroom, notice: 'Chatroom created successfully.'
+      redirect_to @client_chatroom, notice: 'Chatroom created successfully.', allow_other_host: true
     else
       redirect_to root_path, alert: 'Unable to create chatroom.'
     end

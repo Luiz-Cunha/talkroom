@@ -37,7 +37,7 @@
   </div>
 
   <div data-controller="appointments" id="" class="col-md-8">
-    <div class="row justify-content-center" data-appointments-target="appointments">
+    <div class="row justify-content-center scroller" data-appointments-target="appointments">
       <% @appointments.order(created_at: :desc).each_with_index do |appointment, index| %>
         <%= render "pending_appointments", appointment: appointment, index: index %>
       <% end %>

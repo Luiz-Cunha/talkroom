@@ -30,8 +30,8 @@
   <div class="container-appointments">
     <div class="container">
       <div id="" class="">
-        <div class="" data-controller="update-appointment" data-update-appointment-userid-value="<%= current_user.id %>">
-          <div class="row justify-content-center" data-patients-target="patientsAppointments" >
+        <div class="scroller" data-controller="update-appointment" data-update-appointment-userid-value="<%= current_user.id %>">
+          <div class="row justify-content-center" data-patients-target="patientsAppointments">
           <% @appointments.order(created_at: :desc).each_with_index do |appointment, index| %>
                 <%= render "appointment_booking", appointment: appointment, index: index %>
           <% end %>

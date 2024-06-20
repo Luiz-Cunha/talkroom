@@ -30,7 +30,7 @@
   <div class="container-appointments">
     <div class="container">
       <div id="carouselAppointments" class="carousel slide">
-        <div class="carousel-inner" data-controller="update-appointment" data-update-appointment-userid-value="<%= current_user.id %>">
+        <div class="carousel-inner" data-patients-target="patientsAppointments" data-controller="update-appointment" data-update-appointment-userid-value="<%= current_user.id %>">
           <% @appointments.order(created_at: :desc).each_with_index do |appointment, index| %>
                 <%= render "appointment_booking", appointment: appointment, index: index %>
           <% end %>

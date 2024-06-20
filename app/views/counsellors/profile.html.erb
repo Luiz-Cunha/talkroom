@@ -36,8 +36,8 @@
     <img src="/assets/profile7.png" class="img-fluid">
   </div>
 
-  <div id="carouselPendingAppointments" class="carousel slide col-md-8">
-    <div class="carousel-inner">
+  <div data-controller="appointments" id="carouselPendingAppointments" class="carousel slide col-md-8">
+    <div class="carousel-inner" data-appointments-target="appointments">
       <% @appointments.order(created_at: :desc).each_with_index do |appointment, index| %>
         <div class="carousel-item <%= 'active' if index == 0 %>">
           <div class="row justify-content-center">

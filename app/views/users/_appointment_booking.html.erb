@@ -1,7 +1,7 @@
 <div class="col-md-4 mb-4" data-update-appointment-target="cardSpecific" data-appointment-id="<%= appointment.id %>">
   <div class="card-previous-appointments card-height <%= 'active' if appointment.confirmation %>" >
     <div class="appointment-card-header flex-column h-100">
-      <img src="https://randomuser.me/api/portraits/women/30.jpg" alt="" class="image-1">
+      <%= cl_image_tag appointment.user.photo.key, class:"image-1" %>
       <% if appointment.confirmation %>
         <p>Confirmed</p>
       <% else %>

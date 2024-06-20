@@ -20,8 +20,7 @@
           <p><strong><i class="fa-solid fa-location-dot"></i></strong> <%= @user.location %></p>
           <p><strong><i class="fa-solid fa-cake-candles"></i></strong> <%= @user.birthdate.strftime("%B %d, %Y") if @user.birthdate %></p>
           <p><strong><i class="fa-solid fa-notes-medical"></i></strong> <%= @user.other_issues %></p>
-          <p><strong><i class="fa-solid fa-file-medical"></i></strong></p>
-          <p><%= @user.consultation_history %></p>
+          <p><strong><i class="fa-solid fa-file-medical"></i></strong> <%= @user.consultation_history %></p>
           <%= link_to 'Change Password', edit_user_registration_path, class: 'btn-homepage' %>
         </div>
       </div>

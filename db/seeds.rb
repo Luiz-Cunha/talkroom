@@ -10,11 +10,11 @@ Counsellor.destroy_all
 Supervisor.destroy_all
 
 fileprof1 = URI.open("https://blog.polipet.com.br/wp-content/uploads/2024/01/pato-445x445.jpeg")
-fileprof2 = URI.open("https://blog.polipet.com.br/wp-content/uploads/2024/01/pato-445x445.jpeg")
-fileprof3 = URI.open("https://blog.polipet.com.br/wp-content/uploads/2024/01/pato-445x445.jpeg")
-fileprof4 = URI.open("https://blog.polipet.com.br/wp-content/uploads/2024/01/pato-445x445.jpeg")
-fileprof5 = URI.open("https://blog.polipet.com.br/wp-content/uploads/2024/01/pato-445x445.jpeg")
-fileprof6 = URI.open("https://blog.polipet.com.br/wp-content/uploads/2024/01/pato-445x445.jpeg")
+fileprof2 = URI.open("https://www.library.pima.gov/wp-content/uploads/sites/6/2022/11/Em-DeMeester-Lane-445x445-1.jpg")
+fileprof3 = URI.open("https://eyehealthclinic.bm/wp-content/uploads/2023/08/sub-header-images-445x445-corneal-disease.jpg")
+fileprof4 = URI.open("https://lnt.org/wp-content/uploads/2023/05/Phil-Edit-445x445.jpg")
+fileprof5 = URI.open("https://www.dallassymphony.org/wp-content/uploads/2020/12/Helene-Grimaud-445x445.jpg")
+fileprof6 = URI.open("https://lnt.org/wp-content/uploads/2023/06/Untitled-design-445x445.jpg")
 
 # Criação de supervisores
 supervisor1 = Supervisor.new(

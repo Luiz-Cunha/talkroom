@@ -54,9 +54,9 @@
               Login
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="loginDropdown">
-              <li><%= link_to "Login as User", new_user_session_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Login as Patient", new_user_session_path, class: "dropdown-item" %></li>
               <li><%= link_to "Login as Counsellor", new_counsellor_session_path, class: "dropdown-item" %></li>
-              <li><%= link_to "Login as Supervisor", new_supervisor_session_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Login as Supervisor", new_supervisor_session_path, class: "dropdown-item disabled" %></li>
             </ul>
           </li>
         <% end %>

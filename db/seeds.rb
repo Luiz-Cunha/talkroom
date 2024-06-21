@@ -49,6 +49,27 @@ supervisor2 = Supervisor.new(
 supervisor2.photo.attach(io: fileprof2, filename: "supervisor2_profile_pic.png", content_type: "image/png")
 supervisor2.save!
 
+#User default test
+user1 = User.new(
+  email: "user1@example.com",
+  password: 'password',
+  password_confirmation: 'password',
+  fullname: "John Doe",
+  birthdate: Date.new(1990, 5, 15),
+  gender: "Male",
+  location: "San Francisco, CA",
+  received_counseling_description: "Had counseling during college.",
+  received_counseling_before: true,
+  other_issues: "Anxiety",
+  consent: true,
+  terms_conditions: true,
+  issues_array: ["Stress", "Work-life balance"],
+  consultation_history: "Discussed stress management techniques."
+)
+user1.photo.attach(io: fileprof5, filename: "user1_profile_pic.png", content_type: "image/png")
+user1.save!
+
+
 # Criação de conselheiros
 counsellor1 = Counsellor.new(
   email: "emily.johnson@gmail.com",

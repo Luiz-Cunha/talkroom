@@ -47,7 +47,7 @@
     <div class="container">
       <div id="" class="">
         <div class="" data-controller="update-appointment" data-update-appointment-userid-value="<%= current_user.id %>">
-          <div class="row justify-content-center <%= 'scroller' if @appointments.any? %>" data-patients-target="patientsAppointments">
+          <div class="row justify-content-center <%= 'scroller' if @appointments.any? %> pt-2" data-patients-target="patientsAppointments">
             <% @appointments.order(created_at: :desc).each_with_index do |appointment, index| %>
               <%= render "appointment_booking", appointment: appointment, index: index %>
             <% end %>
@@ -77,8 +77,8 @@
       <div class="carousel-inner">
         <% @appointments.order(created_at: :desc).each_with_index do |appointment, index| %>
           <div class="carousel-item <%= 'active' if index == 0 %>">
-            <div class="row justify-content-center">
-                <%= render 'users/previous_appointment', appointment: appointment %>
+            <div class="row justify-content-center pt-2">
+              <%= render 'users/previous_appointment', appointment: appointment %>
             </div>
           </div>
         <% end %>

@@ -275,3 +275,39 @@ margin-top: 200px;
   height: 610px;
   overflow-y: scroll;
 }
+
+.scroller::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scroller::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #d65c33, #34d399);
+  border-radius: 6px;
+}
+
+.scroller::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #b74b29, #2ec8a1);
+}
+
+.scroller::-webkit-scrollbar-track {
+  background: #e0e0e0;
+  border-radius: 6px;
+}
+
+/* For Firefox */
+.scroller {
+  scrollbar-width: thin;
+  scrollbar-color: #d65c33 #e0e0e0;
+}
+
+.scroller {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.confirmed-border {
+  border: 1px solid black;
+  padding: 10px;
+  display: inline-block;
+  border-radius: 30px;
+  background: #5EB47C;
+}

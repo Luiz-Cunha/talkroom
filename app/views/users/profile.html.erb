@@ -28,19 +28,8 @@
   </div>
 
   <div class="container-appointments">
-    <div class="container">
-      <div id="" class="">
-        <div class="scroller" data-controller="update-appointment" data-update-appointment-userid-value="<%= current_user.id %>">
-          <div class="row justify-content-center" data-patients-target="patientsAppointments">
-          <% @appointments.order(created_at: :desc).each_with_index do |appointment, index| %>
-                <%= render "appointment_booking", appointment: appointment, index: index %>
-          <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="row justify-content-center mt-3">
+    <div class="row justify-content-center mb-5">
       <div class="col-md-6">
         <div class="d-flex flex-column align-content-center justify-content-center" data-controller="toggle" data-toggle-value="<%= user_signed_in? %>">
           <button class="btn-lg-booking" data-action="click->toggle#fire">Book an appointment</button>
@@ -49,6 +38,18 @@
               <%= f.input :schedule_time, as: :string, input_html: { data: { controller: "datepicker" } } %>
               <%= f.input :symptom, as: :text %>
               <%= f.button :submit, 'Book Appointment', class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div id="" class="">
+        <div class="" data-controller="update-appointment" data-update-appointment-userid-value="<%= current_user.id %>">
+          <div class="row justify-content-center <%= 'scroller' if @appointments.any? %> pt-2" data-patients-target="patientsAppointments">
+            <% @appointments.order(created_at: :desc).each_with_index do |appointment, index| %>
+              <%= render "appointment_booking", appointment: appointment, index: index %>
             <% end %>
           </div>
         </div>
@@ -76,8 +77,8 @@
       <div class="carousel-inner">
         <% @appointments.order(created_at: :desc).each_with_index do |appointment, index| %>
           <div class="carousel-item <%= 'active' if index == 0 %>">
-            <div class="row justify-content-center">
-                <%= render 'users/previous_appointment', appointment: appointment %>
+            <div class="row justify-content-center pt-2">
+              <%= render 'users/previous_appointment', appointment: appointment %>
             </div>
           </div>
         <% end %>

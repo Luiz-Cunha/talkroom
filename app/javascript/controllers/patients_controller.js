@@ -9,6 +9,7 @@ export default class extends Controller {
     this.subscription = createConsumer().subscriptions.create({ channel: "PatientChannel", id: this.useridValue }, {
       received: (data) => {
         this.patientsAppointmentsTarget.insertAdjacentHTML('afterbegin', data)
+        this.#updateScrollerClass()
       }
     })
   }
@@ -21,5 +22,13 @@ export default class extends Controller {
   disconnect() {
     console.log("Unsubscribed from the patients controller")
     this.subscription.unsubscribe()
+  }
+
+  #updateScrollerClass() {
+    if (this.patientsAppointmentsTarget.childElementCount > 0) {
+      this.patientsAppointmentsTarget.classList.add('scroller')
+    } else {
+      this.patientsAppointmentsTarget.classList.remove('scroller')
+    }
   }
 }

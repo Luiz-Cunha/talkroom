@@ -1,40 +1,40 @@
 <!-- First Page -->
-<div class="d-flex justify-content-center align-items-center" style="height: 90vh;">
-  <div class="ps-5">
+<div class="d-flex flex-column flex-lg-row justify-content-center align-items-center my-lg-5" >
+  <div class="ps-5 text-center text-lg-start">
     <p class="card-homepage-top">
       Healthy Minds, Happy Lives
       <span style="color: rgba(236, 116, 74, 1)">Mental Health</span>
       Consultancy
     </p>
     <p class="subtitle-card-homepage-top">Do you need to talk? We are here for you!</p>
-    <%= link_to 'Get Started', signup_page_path, class: "btn btn-homepage"%>
+    <%= link_to 'Get Started', signup_page_path, class: "btn btn-homepage mt-3"%>
   </div>
-  <div>
+  <div class="mb-5 mt-3 mt-lg-0">
     <%= image_tag 'profile7.png', loading: 'lazy', class: 'img-1' %>
   </div>
 </div>
 
 <!-- Green Banner -->
 <div class="w-100 d-flex flex-column justify-content-center align-items-center mb-5" style="background: linear-gradient(270deg, #007D6E 0%, #5EB47C 100%); height: 420px;">
-  <%= image_tag 'home8.png', loading: 'lazy', class: "align-self-start" %>
-  <p class="text-in-greenbanner-quotes">
+  <%= image_tag 'home8.png', loading: 'lazy', class: "align-self-start mb-3 mb-lg-0" %>
+  <p class="text-in-greenbanner-quotes text-center px-3">
     You are not alone. In times of difficulty, remember that there are
     people who care about you. Friends, family, and mental health
     professionals are here to support you.
   </p>
-  <%= image_tag 'home7.png', loading: 'lazy', class: "align-self-end" %>
+  <%= image_tag 'home7.png', loading: 'lazy', class: "align-self-end mt-3 mt-lg-0" %>
 </div>
 
 <!-- Text Before Three Cards -->
 <!-- and Three Cards -->
 
 <div class="d-flex flex-column justify-content-center align-items-center mb-5">
-  <div class="before-cards-banner-flex-text w-100 mt-5">
+  <div class="before-cards-banner-flex-text w-100 mt-5 text-center">
     <p style="color: #000;" class="text-with-size-h6">Why Talkroom?</p>
     <p class="text-with-size-h2"> Why Our Mental Health Consultants are <br> <span class="d-flex justify-content-center">the Best Choice</span> </p>
   </div>
 
-  <div class="d-flex justify-content-center align-items-center mt-5">
+  <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center mt-5 gap-3">
     <div class="left-card p-3">
       <div class="inside-left-card">
         <%= image_tag 'home3.png', loading: 'lazy', class: 'img-4 mt-2' %>
@@ -73,16 +73,16 @@
 </div>
 
 <!-- About Us -->
-<div class="d-flex justify-content-center align-items-center mb-5">
+<div class="d-flex flex-column flex-lg-row justify-content-center align-items-center mb-5">
   <div class="mt-5">
     <%= image_tag 'home2.png', loading: 'lazy', class: 'img-7' %>
   </div>
-  <div style="width: 659px;">
+  <div style="width: 100%; max-width: 659px;" class="text-center text-lg-start mt-4 mt-lg-0 px-3">
     <p class="text-with-size-h6">About Us</p>
-    <p class="text-with-size-h2" style="width: 659px;">
+    <p class="text-with-size-h2">
       Discover the Faces Behind Our Mental Health Consultancy
     </p>
-    <div class="d-flex mt-5">
+    <div class="d-flex justify-content-center justify-content-lg-start mt-5 gap-3">
       <%= image_tag ("female_avatar.png"), class: 'homepage-avatar rounded-circle', alt: 'Counsellor female avatar' %>
       <%= image_tag ("male_avatar.png"), class: 'homepage-avatar rounded-circle', alt: 'Counsellor male avatar' %>
     </div>
@@ -91,11 +91,11 @@
 
 <!-- Map -->
 
-<div class="map-display-text w-100 mb-5">
+<div class="map-display-text w-100 mb-5 text-center">
   <p class="text-with-size-h6">Maps</p>
   <p class="text-with-size-h2">Mapping Out Mental Health Consulting Strategies</p>
 </div>
-<div class="map-container rounded-circle justify-content-center">
+<div class="map-container rounded-circle justify-content-center d-flex">
   <div id="map" data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">

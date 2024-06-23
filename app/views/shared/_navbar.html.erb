@@ -1,11 +1,13 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-lg navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to root_path, class: 'navbar-brand' do %>
-      <%= image_tag 'logo-2.png', class: 'logo-nav ms-3' %>
-    <% end %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="d-flex justify-content-between w-100">
+      <%= link_to root_path, class: 'navbar-brand' do %>
+        <%= image_tag 'logo-2.png', class: 'logo-nav ms-3' %>
+      <% end %>
+      <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item me-3">
@@ -22,7 +24,6 @@
         </li>
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
-            <%# <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> %>
             <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : asset_path('white-hands.png') %>" />
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "User Profile", profile_user_path(current_user), class: "dropdown-item" %>

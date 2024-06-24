@@ -311,3 +311,29 @@ margin-top: 200px;
   border-radius: 30px;
   background: #5EB47C;
 }
+
+.card-appointment {
+  border-radius: 12px;
+  background: #FFF;
+  box-shadow: 0 1px 5px #ec744a ;
+  width: 268px;
+  height: 264px;
+}
+
+.img-card-appointment {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.btn-appointment {
+  padding: 5px;
+  border-radius: 8px;
+  background-color: #ec744a;
+  color: #fff;
+  text-decoration: none;
+  font: 700 22px Manrope, sans-serif;
+  border: none;
+  text-align: center;
+}

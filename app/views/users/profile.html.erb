@@ -36,7 +36,7 @@
           <div class="container my-2 <%= 'd-none' unless @appointment.errors.any? %>" data-toggle-target="formToggle" data-patients-target="hideForm">
             <%= simple_form_for @appointment, html: { data: { action: "turbo:submit-end->patients#resetForm" }} do |f| %>
               <%= f.input :schedule_time, as: :string, input_html: { data: { controller: "datepicker" } } %>
-              <%= f.input :symptom, as: :text %>
+              <%= f.input :symptom, as: :text, input_html: { maxlength: 60 } %>
               <%= f.button :submit, 'Book Appointment', class: "btn btn-primary" %>
             <% end %>
           </div>

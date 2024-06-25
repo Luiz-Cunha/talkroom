@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center py-2">
-  <div class="card-appointment">
+  <div class="<%= appointment.confirmation ? 'card-appointment-accepted' : 'card-appointment' %>">
     <div class="d-flex justify-content-center py-2">
       <% if appointment.user.photo.attached? %>
         <%= image_tag cl_image_path(appointment.user.photo.key), alt: 'Profile User Photo', class: 'img-card-appointment mx-4' %>

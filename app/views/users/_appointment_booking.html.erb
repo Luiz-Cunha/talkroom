@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center col-md-6 mb-4" data-update-appointment-target="cardSpecific" data-appointment-id="<%= appointment.id %>">
-  <div class="card-appointment">
+  <div class="<%= appointment.confirmation ? 'card-appointment-accepted' : 'card-appointment' %>">
     <div class="d-flex justify-content-center py-2">
       <% if appointment.user.photo.attached? %>
         <%= image_tag cl_image_path(appointment.user.photo.key), alt: 'Profile User Photo', class: 'img-card-appointment mx-4' %>
@@ -10,7 +10,7 @@
         <%= image_tag asset_path('question-mark.jpg'), alt: 'Default Profile Photo', class: 'img-card-appointment mx-4' %>
       <% else %>
         <% if appointment.counsellor.photo.attached? %>
-          <%= image_tag cl_image_path(appointment.counsellor.photo.key), alt: 'Profile Counsellor Photo', class: 'img-card-appointment mx-4' %>
+          <%= image_tag cl_image_path(appointment.counsellor.photo.key), alt: 'Profile Counsellor Photo', class: 'img-card-appointment img-jump mx-4' %>
         <% end %>
       <% end %>
     </div>

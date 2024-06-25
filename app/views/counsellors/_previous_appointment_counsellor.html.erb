@@ -1,17 +1,13 @@
 <div class="d-flex justify-content-center py-2">
-  <div class="<%= appointment.confirmation ? 'card-appointment-accepted' : 'card-appointment' %>">
+  <div class="card-appointment-accepted">
     <div class="d-flex justify-content-center py-2">
       <% if appointment.user.photo.attached? %>
         <%= image_tag cl_image_path(appointment.user.photo.key), alt: 'Profile User Photo', class: 'img-card-appointment mx-4' %>
       <% else %>
         <%= image_tag asset_path('counsellor.png'), alt: 'Default Profile Photo', class: 'img-card-appointment mx-4' %>
       <% end %>
-      <% if appointment.counsellor.nil? %>
-        <%= image_tag asset_path('question-mark.jpg'), alt: 'Default Profile Photo', class: 'img-card-appointment mx-4' %>
-      <% else %>
-        <% if appointment.counsellor.photo.attached? %>
-          <%= image_tag cl_image_path(appointment.counsellor.photo.key), alt: 'Profile Counsellor Photo', class: 'img-card-appointment mx-4' %>
-        <% end %>
+      <% if appointment.counsellor.photo.attached? %>
+        <%= image_tag cl_image_path(appointment.counsellor.photo.key), alt: 'Profile Counsellor Photo', class: 'img-card-appointment mx-4' %>
       <% end %>
     </div>
     <div class="ps-2">

@@ -32,7 +32,7 @@
 
 <div class="container-previous-appointments-margin-top d-flex justify-content-center">
   <div data-controller="appointments" class="col-12 col-md-8">
-    <div class="container <%= 'scroller' if @appointments.any? %> pt-2" data-appointments-target="appointments">
+    <div class="row justify-content-center <%= 'scroller' if @appointments.any? %> pt-2" data-appointments-target="appointments">
       <% @appointments.order(created_at: :desc).each_with_index do |appointment, index| %>
         <%= render "pending_appointments", appointment: appointment, index: index %>
       <% end %>

@@ -1,27 +1,26 @@
-<div class="banner" style="background: linear-gradient(270deg, #007D6E 0%, #5EB47C 100%)">
+<div class="banner mb-5" style="background: linear-gradient(270deg, #007D6E 0%, #5EB47C 100%)">
   <div class="container">
     <h1>Sign up</h1>
   </div>
 </div>
-<div class="container min-vh-100">
+
+<div class="container mb-5">
   <div class="row justify-content-center">
-    <div class="col-12 col-sm-6">
+    <div class="col-12 col-md-8 col-lg-6">
       <div class="form-login text-center me-5 py-4" style="background-color: #ffffff; color: #28697E; font-family: 'Alegreya', serif;">
-      <%= image_tag "logo-2.png", class: 'img-medium mx-2 mb-3' %>
+        <%= image_tag "logo-2.png", class: 'img-medium mx-2 mb-3' %>
         <h3 class="mb-3">Who are you?</h3>
         <div class="d-flex justify-content-around">
           <div>
-            <%= link_to 'Patient', new_user_registration_path, class:"btn btn-success d-block btn-shadow"%>
-            <%= image_tag 'patient3.png', class: 'img-small mx-2' %>
+            <%= link_to 'Patient', new_user_registration_path, class:"btn-appointment d-block mt-0 mb-5"%>
+            <%= image_tag 'patient3.png', class: 'img-medium mx-2' %>
           </div>
           <div>
-            <%= link_to 'Counsellor', new_counsellor_registration_path, class:"btn btn-success d-block btn-shadow"%>
-            <%= image_tag 'doctor.png', class: 'img-small mx-2' %>
+            <%= link_to 'Counsellor', new_counsellor_registration_path, class:"btn-appointment d-block mt-0 mb-5"%>
+            <%= image_tag 'doctor.png', class: 'img-medium mx-2' %>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
- <%# background: linear-gradient(270deg, #007D6E 0%, #5EB47C 100%) %>

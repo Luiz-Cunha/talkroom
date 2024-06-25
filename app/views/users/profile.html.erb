@@ -9,64 +9,63 @@
     </div>
   </div>
 
-  <div class="profile-data">
-    <div class="container justify-content-center">
-      <div class="d-flex justify-content-center py-4">
-        <img src="<%= current_user.photo.attached? ? cl_image_path(current_user.photo.key) : asset_path('white-hands.png') %>" alt="Profile" class="profile-image">
-        <div>
-          <p><strong><i class="fa-solid fa-envelope"></i></strong> <%= @user.email %></p>
-          <p><strong><i class="fa-solid fa-user"></i></strong> <%= @user.fullname %></p>
-          <p><strong><i class="fa-solid fa-venus-mars"></i></strong> <%= @user.gender %></p>
-          <p><strong><i class="fa-solid fa-location-dot"></i></strong> <%= @user.location %></p>
-          <p><strong><i class="fa-solid fa-cake-candles"></i></strong> <%= @user.birthdate.strftime("%B %d, %Y") if @user.birthdate %></p>
-          <p><strong><i class="fa-solid fa-notes-medical"></i></strong> <%= @user.other_issues %></p>
-          <p><strong><i class="fa-solid fa-file-medical"></i></strong> <%= @user.consultation_history %></p>
-          <%= link_to 'Change Password', edit_user_registration_path, class: 'btn-homepage' %>
-        </div>
+<div class="profile-data">
+  <div class="container">
+    <div class="row justify-content-center py-4">
+      <div class="col-12 col-lg-4 d-flex align-items-center justify-content-center">
+        <%= image_tag cl_image_path(current_user.photo.key), alt: 'Profile Patient', class: 'img-fluid rounded-circle profile-image ' %>
+      </div>
+      <div class="col-12 col-lg-8">
+        <p><strong><i class="fa-solid fa-envelope"></i></strong> <%= @user.email %></p>
+        <p><strong><i class="fa-solid fa-user"></i></strong> <%= @user.fullname %></p>
+        <p><strong><i class="fa-solid fa-venus-mars"></i></strong> <%= @user.gender %></p>
+        <p><strong><i class="fa-solid fa-location-dot"></i></strong> <%= @user.location %></p>
+        <p><strong><i class="fa-solid fa-cake-candles"></i></strong> <%= @user.birthdate.strftime("%B %d, %Y") if @user.birthdate %></p>
+        <p><strong><i class="fa-solid fa-notes-medical"></i></strong> <%= @user.other_issues %></p>
+        <p><strong><i class="fa-solid fa-file-medical"></i></strong> <%= @user.consultation_history %></p>
+        <%= link_to 'Change Password', edit_user_registration_path, class: 'btn-homepage' %>
       </div>
     </div>
   </div>
+</div>
 
   <div class="container-appointments">
-
-    <div class="row justify-content-center mb-5">
-      <div class="col-md-6">
-        <div class="d-flex flex-column align-content-center justify-content-center" data-controller="toggle" data-toggle-value="<%= user_signed_in? %>">
-          <button class="btn-lg-booking" data-action="click->toggle#fire">Book an appointment</button>
-          <div class="container my-2 <%= 'd-none' unless @appointment.errors.any? %>" data-toggle-target="formToggle" data-patients-target="hideForm">
-            <%= simple_form_for @appointment, html: { data: { action: "turbo:submit-end->patients#resetForm" }} do |f| %>
-              <%= f.input :schedule_time, as: :string, input_html: { data: { controller: "datepicker" } } %>
-              <%= f.input :symptom, as: :text, input_html: { maxlength: 60 } %>
-              <%= f.button :submit, 'Book Appointment', class: "btn btn-primary" %>
-            <% end %>
+    <div class="container">
+      <div class="row justify-content-center mb-5">
+        <div class="col-md-6">
+          <div class="d-flex flex-column align-content-center justify-content-center" data-controller="toggle" data-toggle-value="<%= user_signed_in? %>">
+            <button class="btn-lg-booking" data-action="click->toggle#fire">Book an appointment</button>
+            <div class="container my-2 <%= 'd-none' unless @appointment.errors.any? %>" data-toggle-target="formToggle" data-patients-target="hideForm">
+              <%= simple_form_for @appointment, html: { data: { action: "turbo:submit-end->patients#resetForm" }} do |f| %>
+                <%= f.input :schedule_time, as: :string, input_html: { data: { controller: "datepicker" } } %>
+                <%= f.input :symptom, as: :text, input_html: { maxlength: 60, placeholder: 'Enter your symptom (max 60 characters)' } %>
+                <%= f.button :submit, 'Book Appointment', class: "btn-homepage rounded-pill m-0" %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
     <div class="container">
-      <div id="" class="">
-        <div class="" data-controller="update-appointment" data-update-appointment-userid-value="<%= current_user.id %>">
-          <div class="row justify-content-center <%= 'scroller' if @appointments.any? %> pt-2" data-patients-target="patientsAppointments">
-            <% @appointments.order(created_at: :desc).each_with_index do |appointment, index| %>
-              <%= render "appointment_booking", appointment: appointment, index: index %>
-            <% end %>
-          </div>
+      <div data-controller="update-appointment" data-update-appointment-userid-value="<%= current_user.id %>">
+        <div class="row justify-content-center <%= 'scroller' if @appointments.any? %> pt-2" data-patients-target="patientsAppointments">
+          <% @appointments.order(created_at: :desc).each_with_index do |appointment, index| %>
+            <%= render "appointment_booking", appointment: appointment, index: index %>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="big-tag w-100">
-    <%= image_tag 'home8.png', loading: 'lazy', class: 'imag1' %>
+  <div class="big-tag w-100 text-center">
+    <%= image_tag 'home8.png', loading: 'lazy', class: 'img-fluid imag1' %>
     <div class="big-tag2">
       <h1>Taking care of your mental health is essential for your overall well-being</h1>
-      <%= image_tag 'home7.png', loading: 'lazy', class: 'imag2' %>
+      <%= image_tag 'home7.png', loading: 'lazy', class: 'img-fluid imag2' %>
     </div>
   </div>
 
-  <div class="previous-title">
-    Previous Appointments
+  <div class="previous-title text-center">
+    Edit or Delete your Appointments
   </div>
 
   <div class="container previous-appointments d-flex justify-content-center">

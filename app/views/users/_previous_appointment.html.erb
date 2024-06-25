@@ -1,21 +1,43 @@
-<div class="col-md-4 mb-4">
-  <div class="card-previous-appointments d-flex align-items-center">
-    <div class="appointment-card-header d-flex align-items-center">
-      <% if appointment.counsellor %>
+<div class="d-flex justify-content-center py-2">
+  <div class="<%= appointment.confirmation ? 'card-appointment-accepted' : 'card-appointment' %>">
+    <div class="d-flex justify-content-center py-2">
+      <% if appointment.user.photo.attached? %>
+        <%= image_tag cl_image_path(appointment.user.photo.key), alt: 'Profile User Photo', class: 'img-card-appointment mx-4' %>
+      <% else %>
+        <%= image_tag asset_path('counsellor.png'), alt: 'Default Profile Photo', class: 'img-card-appointment mx-4' %>
+      <% end %>
+      <% if appointment.counsellor.nil? %>
+        <%= image_tag asset_path('question-mark.jpg'), alt: 'Default Profile Photo', class: 'img-card-appointment mx-4' %>
+      <% else %>
         <% if appointment.counsellor.photo.attached? %>
-          <%= image_tag cl_image_path(appointment.counsellor.photo.key), alt: 'Counsellor Photo', class: 'image-1' %>
-        <% else %>
-          <%= image_tag asset_path('default_profile.png'), alt: 'Default Profile Photo', class: 'image-1' %>
+          <%= image_tag cl_image_path(appointment.counsellor.photo.key), alt: 'Profile Counsellor Photo', class: 'img-card-appointment mx-4' %>
         <% end %>
       <% end %>
-      <div class="card-appointments">
-        <p><i class="fa-solid fa-user-doctor"></i> <%= appointment.counsellor&.fullname %></p>
-        <p><i class="fa-solid fa-calendar-days"></i> <%= appointment.schedule_time.strftime("%B %d, %Y at %I:%M %p") %><br /></p>
-        <p><i class="fa-solid fa-head-side-virus"></i> <%= appointment.symptom %></p>
-        <%= link_to appointment_path(appointment), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-      <i class="fa-sharp fa-solid fa-trash"></i>
+    </div>
+    <div class="ps-2">
+      <h5 class="card-title"><strong><%= appointment.user.fullname %></strong></h5>
+      <p class="card-text"><%= appointment.symptom %></p>
+      <p> <strong>Schedule Time:</strong>
+        <%= appointment.schedule_time.strftime("%B %d, %Y at %I:%M %p") %>
+      </p>
+      <% if appointment.confirmation %>
+        <% chatroom = ClientChatroom.find_by(user_id: appointment.user_id, counsellor_id: appointment.counsellor_id) %>
+        <% if chatroom.present? %>
+          <%= link_to 'Your Talkroom', client_chatroom_path(chatroom), class: 'btn-appointment justify-content-center mb-2' %>
+        <% elsif %>
+          <%= button_to 'Create Talkroom', client_chatrooms_path(user_id: appointment.user_id, counsellor_id: appointment.counsellor_id), method: :post, class: 'btn-appointment justify-content-center mb-2' %>
+        <% end %>
       <% end %>
-      </div>
     </div>
   </div>
+  <div class="d-flex flex-column ms-2">
+    <%= link_to appointment_path(appointment), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+      <i class="text-white fa-sharp fa-solid fa-trash btn btn-danger btn-lg rounded-circle"></i>
+    <% end %>
+
+    <%= link_to edit_appointment_path(appointment) do %>
+      <i class="fa-solid fa-pen-to-square btn btn-primary btn-lg rounded-circle mt-4"></i>
+    <% end %>
+  </div>
+
 </div>

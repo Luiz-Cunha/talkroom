@@ -26,7 +26,8 @@
                       required: true,
                       autofocus: true,
                       input_html: { autocomplete: "birthdate" }%>
-          <%= f.input :gender, prompt: "Select Gender", collection: [['Male', 'male'], ['Female', 'female'], ['Other', 'other']] %>
+          <%= f.input :gender, prompt: "Select Gender", collection: [['Male', 'male'], ['Female', 'female'], ['Other', 'other']],
+                      required: true %>
           <%= f.input :address,
                       required: true,
                       autofocus: true,
@@ -35,7 +36,8 @@
                       required: true %>
           <%= f.input :university_id, label: "University Student ID",
                       required: true %>
-          <%= f.input :degree_program %>
+          <%= f.input :degree_program,
+                      required: true %>
           <%= f.input :year_of_study,
                       required: true, label: "Admission year" %>
           <%= f.input :expected_graduation_date,
